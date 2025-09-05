@@ -1,0 +1,332 @@
+{% extends "base.html" %}
+
+{% block title %}Preferences - Job Application Bot{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col">
+        <h1 class="h2 mb-0">
+            <i class="fas fa-cog me-2 text-primary"></i>Job Preferences
+        </h1>
+        <p class="text-muted">Customize your job search criteria and application settings</p>
+    </div>
+</div>
+
+<form method="POST">
+    <div class="row">
+        <!-- Search Criteria -->
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-search me-2"></i>Search Criteria
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="keywords" class="form-label">Job Keywords</label>
+                            <div id="keywordsContainer">
+                                {% set keywords = preferences.keywords|from_json if preferences.keywords else ['software engineer', 'python developer'] %}
+                                {% for keyword in keywords %}
+                                <div class="input-group mb-2">
+                                    <input type="text" class="form-control" name="keywords" value="{{ keyword }}" placeholder="e.g. Software Engineer">
+                                    <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-primary" onclick="addKeyword()">
+                                <i class="fas fa-plus me-1"></i>Add Keyword
+                            </button>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="locations" class="form-label">Preferred Locations</label>
+                            <div id="locationsContainer">
+                                {% set locations = preferences.locations|from_json if preferences.locations else ['Remote', 'Hybrid', 'San Francisco', 'New York'] %}
+                                {% for location in locations %}
+                                <div class="input-group mb-2">
+                                    <input type="text" class="form-control" name="locations" value="{{ location }}" placeholder="e.g. Remote, San Francisco">
+                                    <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-primary" onclick="addLocation()">
+                                <i class="fas fa-plus me-1"></i>Add Location
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="experience_levels" class="form-label">Experience Levels</label>
+                            <div id="experienceContainer">
+                                {% set experience_levels = preferences.experience_levels|from_json if preferences.experience_levels else ['entry', 'mid', 'senior'] %}
+                                {% for level in experience_levels %}
+                                <div class="input-group mb-2">
+                                    <select class="form-select" name="experience_levels">
+                                        <option value="entry" {% if level == 'entry' %}selected{% endif %}>Entry Level</option>
+                                        <option value="mid" {% if level == 'mid' %}selected{% endif %}>Mid Level</option>
+                                        <option value="senior" {% if level == 'senior' %}selected{% endif %}>Senior Level</option>
+                                        <option value="lead" {% if level == 'lead' %}selected{% endif %}>Lead/Principal</option>
+                                        <option value="manager" {% if level == 'manager' %}selected{% endif %}>Manager</option>
+                                    </select>
+                                    <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-primary" onclick="addExperience()">
+                                <i class="fas fa-plus me-1"></i>Add Experience Level
+                            </button>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="job_types" class="form-label">Job Types</label>
+                            <div id="jobTypesContainer">
+                                {% set job_types = preferences.job_types|from_json if preferences.job_types else ['full-time', 'contract'] %}
+                                {% for job_type in job_types %}
+                                <div class="input-group mb-2">
+                                    <select class="form-select" name="job_types">
+                                        <option value="full-time" {% if job_type == 'full-time' %}selected{% endif %}>Full-time</option>
+                                        <option value="part-time" {% if job_type == 'part-time' %}selected{% endif %}>Part-time</option>
+                                        <option value="contract" {% if job_type == 'contract' %}selected{% endif %}>Contract</option>
+                                        <option value="temporary" {% if job_type == 'temporary' %}selected{% endif %}>Temporary</option>
+                                        <option value="internship" {% if job_type == 'internship' %}selected{% endif %}>Internship</option>
+                                    </select>
+                                    <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-primary" onclick="addJobType()">
+                                <i class="fas fa-plus me-1"></i>Add Job Type
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="exclude_keywords" class="form-label">Exclude Keywords (Optional)</label>
+                            <div id="excludeContainer">
+                                {% set exclude_keywords = preferences.exclude_keywords|from_json if preferences.exclude_keywords else [] %}
+                                {% for keyword in exclude_keywords %}
+                                <div class="input-group mb-2">
+                                    <input type="text" class="form-control" name="exclude_keywords" value="{{ keyword }}" placeholder="e.g. unpaid, intern">
+                                    <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-primary" onclick="addExcludeKeyword()">
+                                <i class="fas fa-plus me-1"></i>Add Exclude Keyword
+                            </button>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="salary_min" class="form-label">Minimum Salary (Optional)</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" class="form-control" name="salary_min" 
+                                       value="{{ preferences.salary_min or '' }}" placeholder="50000">
+                                <span class="input-group-text">per year</span>
+                            </div>
+                            <small class="form-text text-muted">Leave empty to include all salary ranges</small>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="date_posted" class="form-label">Date Posted</label>
+                            <select class="form-select" name="date_posted">
+                                <option value="day" {% if preferences.date_posted == 'day' %}selected{% endif %}>Past 24 hours</option>
+                                <option value="3days" {% if preferences.date_posted == '3days' %}selected{% endif %}>Past 3 days</option>
+                                <option value="week" {% if preferences.date_posted == 'week' %}selected{% endif %}>Past week</option>
+                                <option value="month" {% if preferences.date_posted == 'month' %}selected{% endif %}>Past month</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Application Settings -->
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-paper-plane me-2"></i>Application Settings
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="daily_application_limit" class="form-label">Daily Application Limit</label>
+                        <input type="number" class="form-control" name="daily_application_limit" 
+                               value="{{ preferences.daily_application_limit or 10 }}" min="1" max="50">
+                        <small class="form-text text-muted">Maximum applications per day</small>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="auto_apply_enabled" 
+                                   {% if preferences.auto_apply_enabled %}checked{% endif %}>
+                            <label class="form-check-label">
+                                Enable Auto-Apply
+                            </label>
+                        </div>
+                        <small class="form-text text-muted">Automatically apply to jobs that match your criteria</small>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="apply_to_external_sites" 
+                                   {% if preferences.apply_to_external_sites %}checked{% endif %}>
+                            <label class="form-check-label">
+                                Apply to External Sites
+                            </label>
+                        </div>
+                        <small class="form-text text-muted">Apply to jobs that redirect to company websites</small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Stats -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-info-circle me-2"></i>Current Settings
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Keywords:</span>
+                        <span class="badge bg-primary">{{ (preferences.keywords|from_json|length) if preferences.keywords else 0 }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Locations:</span>
+                        <span class="badge bg-primary">{{ (preferences.locations|from_json|length) if preferences.locations else 0 }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Auto-Apply:</span>
+                        <span class="badge bg-{{ 'success' if preferences.auto_apply_enabled else 'secondary' }}">
+                            {{ 'Enabled' if preferences.auto_apply_enabled else 'Disabled' }}
+                        </span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Daily Limit:</span>
+                        <span class="badge bg-info">{{ preferences.daily_application_limit or 10 }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Save Button -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body text-center">
+                    <button type="submit" class="btn btn-success btn-lg me-3">
+                        <i class="fas fa-save me-2"></i>Save Preferences
+                    </button>
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary btn-lg">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function removeField(button) {
+    button.parentElement.remove();
+}
+
+function addKeyword() {
+    const container = document.getElementById('keywordsContainer');
+    const div = document.createElement('div');
+    div.className = 'input-group mb-2';
+    div.innerHTML = `
+        <input type="text" class="form-control" name="keywords" placeholder="e.g. Software Engineer">
+        <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">
+            <i class="fas fa-times"></i>
+        </button>
+    `;
+    container.appendChild(div);
+}
+
+function addLocation() {
+    const container = document.getElementById('locationsContainer');
+    const div = document.createElement('div');
+    div.className = 'input-group mb-2';
+    div.innerHTML = `
+        <input type="text" class="form-control" name="locations" placeholder="e.g. Remote, San Francisco">
+        <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">
+            <i class="fas fa-times"></i>
+        </button>
+    `;
+    container.appendChild(div);
+}
+
+function addExperience() {
+    const container = document.getElementById('experienceContainer');
+    const div = document.createElement('div');
+    div.className = 'input-group mb-2';
+    div.innerHTML = `
+        <select class="form-select" name="experience_levels">
+            <option value="entry">Entry Level</option>
+            <option value="mid">Mid Level</option>
+            <option value="senior">Senior Level</option>
+            <option value="lead">Lead/Principal</option>
+            <option value="manager">Manager</option>
+        </select>
+        <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">
+            <i class="fas fa-times"></i>
+        </button>
+    `;
+    container.appendChild(div);
+}
+
+function addJobType() {
+    const container = document.getElementById('jobTypesContainer');
+    const div = document.createElement('div');
+    div.className = 'input-group mb-2';
+    div.innerHTML = `
+        <select class="form-select" name="job_types">
+            <option value="full-time">Full-time</option>
+            <option value="part-time">Part-time</option>
+            <option value="contract">Contract</option>
+            <option value="temporary">Temporary</option>
+            <option value="internship">Internship</option>
+        </select>
+        <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">
+            <i class="fas fa-times"></i>
+        </button>
+    `;
+    container.appendChild(div);
+}
+
+function addExcludeKeyword() {
+    const container = document.getElementById('excludeContainer');
+    const div = document.createElement('div');
+    div.className = 'input-group mb-2';
+    div.innerHTML = `
+        <input type="text" class="form-control" name="exclude_keywords" placeholder="e.g. unpaid, intern">
+        <button type="button" class="btn btn-outline-danger" onclick="removeField(this)">
+            <i class="fas fa-times"></i>
+        </button>
+    `;
+    container.appendChild(div);
+}
+</script>
+{% endblock %}

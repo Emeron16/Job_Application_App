@@ -1,0 +1,55 @@
+{
+  "job_search": {
+    "keywords": [
+      "software engineer",
+      "python developer",
+      "full stack developer",
+      "backend developer",
+      "data scientist"
+    ],
+    "locations": [
+      "Remote",
+      "San Francisco, CA",
+      "New York, NY",
+      "Seattle, WA",
+      "Austin, TX"
+    ],
+    "experience_levels": [
+      "entry",
+      "mid",
+      "senior"
+    ],
+    "job_types": [
+      "full-time",
+      "contract"
+    ],
+    "exclude_keywords": [
+      "unpaid",
+      "internship",
+      "volunteer"
+    ],
+    "salary_min": 80000,
+    "date_posted": "week"
+  },
+  "application": {
+    "resume_path": "documents/resume.pdf",
+    "cover_letter_path": "documents/cover_letter.txt",
+    "daily_application_limit": 10,
+    "auto_apply_enabled": false,
+    "apply_to_external_sites": false
+  },
+  "rate_limit": {
+    "requests_per_minute": 30,
+    "requests_per_hour": 100,
+    "retry_attempts": 3,
+    "retry_delay_base": 1.0,
+    "request_timeout": 30,
+    "cooldown_period": 300
+  },
+  "storage": {
+    "use_google_sheets": true,
+    "google_sheets_id": null,
+    "local_storage_path": "data/job_postings.json",
+    "log_file_path": "logs/application_log.txt"
+  }
+}

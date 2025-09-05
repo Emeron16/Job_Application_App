@@ -1,0 +1,1772 @@
+2025-09-04 08:28:19,683 - JobApplicationBot - INFO - Saved 2 new jobs to documents/Job update.xlsx
+2025-09-04 08:28:19,687 - JobApplicationBot - INFO - Loaded 2 jobs from documents/Job update.xlsx
+2025-09-04 08:28:19,693 - JobApplicationBot - INFO - Updated job test_job_001 status to applied
+2025-09-04 08:28:19,696 - JobApplicationBot - INFO - Loaded 2 jobs from documents/Job update.xlsx
+2025-09-04 08:28:24,779 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully
+2025-09-04 08:28:24,813 - JobApplicationBot - WARNING - Document not found: documents/resume.pdf
+2025-09-04 08:28:24,814 - JobApplicationBot - INFO - Loaded document: documents/cover_letter.txt
+2025-09-04 08:28:24,814 - JobApplicationBot - WARNING - Document not found: documents/resume.pdf
+2025-09-04 08:28:24,814 - JobApplicationBot - INFO - Loaded document: documents/cover_letter.txt
+2025-09-04 08:28:24,814 - JobApplicationBot - WARNING - Document not found: documents/resume.pdf
+2025-09-04 08:28:24,814 - JobApplicationBot - INFO - Loaded document: documents/cover_letter.txt
+2025-09-04 08:28:24,814 - JobApplicationBot - INFO - Using Excel file as primary storage
+2025-09-04 08:28:24,814 - JobApplicationBot - INFO - Job Application Bot initialized successfully
+2025-09-04 08:28:24,814 - JobApplicationBot - ERROR - Configuration validation failed:
+2025-09-04 08:28:24,814 - JobApplicationBot - ERROR -   - Google credentials file not found: credentials/google_credentials.json
+2025-09-04 08:28:24,818 - JobApplicationBot - INFO - Loaded 2 jobs from documents/Job update.xlsx
+2025-09-04 08:29:53,042 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully
+2025-09-04 08:29:53,087 - JobApplicationBot - WARNING - Document not found: documents/resume.pdf
+2025-09-04 08:29:53,087 - JobApplicationBot - INFO - Loaded document: documents/cover_letter.txt
+2025-09-04 08:29:53,087 - JobApplicationBot - WARNING - Document not found: documents/resume.pdf
+2025-09-04 08:29:53,087 - JobApplicationBot - INFO - Loaded document: documents/cover_letter.txt
+2025-09-04 08:29:53,087 - JobApplicationBot - WARNING - Document not found: documents/resume.pdf
+2025-09-04 08:29:53,087 - JobApplicationBot - INFO - Loaded document: documents/cover_letter.txt
+2025-09-04 08:29:53,087 - JobApplicationBot - INFO - Using Excel file as primary storage
+2025-09-04 08:29:53,087 - JobApplicationBot - INFO - Job Application Bot initialized successfully
+2025-09-04 08:29:53,087 - JobApplicationBot - ERROR - Configuration validation failed:
+2025-09-04 08:29:53,087 - JobApplicationBot - ERROR -   - Google credentials file not found: credentials/google_credentials.json
+2025-09-04 08:33:03,888 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully
+2025-09-04 08:33:03,936 - JobApplicationBot - INFO - Loaded document: documents/cover_letter.txt
+2025-09-04 08:33:03,936 - JobApplicationBot - INFO - Loaded document: documents/cover_letter.txt
+2025-09-04 08:33:03,937 - JobApplicationBot - INFO - Loaded document: documents/cover_letter.txt
+2025-09-04 08:33:03,937 - JobApplicationBot - INFO - Using Excel file as primary storage
+2025-09-04 08:33:03,937 - JobApplicationBot - INFO - Job Application Bot initialized successfully
+2025-09-04 08:33:03,937 - JobApplicationBot - INFO - Configuration validation passed
+2025-09-04 08:33:35,928 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully
+2025-09-04 08:33:35,976 - JobApplicationBot - INFO - Loaded document: documents/cover_letter.txt
+2025-09-04 08:33:35,976 - JobApplicationBot - INFO - Loaded document: documents/cover_letter.txt
+2025-09-04 08:33:35,976 - JobApplicationBot - INFO - Loaded document: documents/cover_letter.txt
+2025-09-04 08:33:35,976 - JobApplicationBot - INFO - Using Excel file as primary storage
+2025-09-04 08:33:35,976 - JobApplicationBot - INFO - Job Application Bot initialized successfully
+2025-09-04 08:33:36,062 - JobApplicationBot - INFO - Loaded 2 jobs from documents/Job update.xlsx
+2025-09-04 08:35:12,854 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully
+2025-09-04 08:35:12,885 - JobApplicationBot - INFO - Loaded document: documents/cover_letter.txt
+2025-09-04 08:35:12,885 - JobApplicationBot - INFO - Loaded document: documents/cover_letter.txt
+2025-09-04 08:35:12,885 - JobApplicationBot - INFO - Loaded document: documents/cover_letter.txt
+2025-09-04 08:35:12,885 - JobApplicationBot - INFO - Using Excel file as primary storage
+2025-09-04 08:35:12,885 - JobApplicationBot - INFO - Job Application Bot initialized successfully
+2025-09-04 08:35:12,885 - JobApplicationBot - INFO - Starting job search...
+2025-09-04 08:35:12,885 - JobApplicationBot - INFO - Searching linkedin for 'software engineer' in 'Remote'
+2025-09-04 08:35:12,885 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=software+engineer&location=Remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-04 08:35:17,352 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:17,355 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:17,359 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:17,362 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:17,365 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:17,369 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:17,372 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:17,375 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:17,378 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:17,381 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:17,383 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:17,386 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:17,389 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:17,392 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:17,395 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:17,398 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:17,400 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:17,403 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:17,406 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:17,409 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:17,409 - JobApplicationBot - INFO - Found 0 jobs on LinkedIn
+2025-09-04 08:35:19,412 - JobApplicationBot - INFO - Searching indeed for 'software engineer' in 'Remote'
+2025-09-04 08:35:19,412 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=software+engineer&l=Remote&fromage=1&sort=date&start=0
+2025-09-04 08:35:19,501 - JobApplicationBot - ERROR - Indeed request error: 403 Client Error: Forbidden for url: https://www.indeed.com/jobs?q=software+engineer&l=Remote&fromage=1&sort=date&start=0
+2025-09-04 08:35:21,506 - JobApplicationBot - INFO - Searching glassdoor for 'software engineer' in 'Remote'
+2025-09-04 08:35:21,507 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=software+engineer&locT=C&locId=Remote&jobType=fulltime&fromAge=1&minSalary=0&includeNoSalaryJobs=true&radius=25
+2025-09-04 08:35:21,595 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=software+engineer&locT=C&locId=Remote&jobType=fulltime&fromAge=1&minSalary=0&includeNoSalaryJobs=true&radius=25
+2025-09-04 08:35:23,604 - JobApplicationBot - INFO - Searching linkedin for 'software engineer' in 'San Francisco'
+2025-09-04 08:35:23,604 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=software+engineer&location=San+Francisco&f_TPR=r86400&f_JT=F&start=0
+2025-09-04 08:35:27,536 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:27,539 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:27,542 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:27,545 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:27,547 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:27,550 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:27,553 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:27,556 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:27,558 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:27,561 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:27,564 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:27,567 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:27,569 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:27,572 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:27,575 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:27,578 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:27,581 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:27,583 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:27,586 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:27,588 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:27,588 - JobApplicationBot - INFO - Found 0 jobs on LinkedIn
+2025-09-04 08:35:29,593 - JobApplicationBot - INFO - Searching indeed for 'software engineer' in 'San Francisco'
+2025-09-04 08:35:29,593 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=software+engineer&l=San+Francisco&fromage=1&sort=date&start=0
+2025-09-04 08:35:29,661 - JobApplicationBot - ERROR - Indeed request error: 403 Client Error: Forbidden for url: https://www.indeed.com/jobs?q=software+engineer&l=San+Francisco&fromage=1&sort=date&start=0
+2025-09-04 08:35:31,668 - JobApplicationBot - INFO - Searching glassdoor for 'software engineer' in 'San Francisco'
+2025-09-04 08:35:31,669 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=software+engineer&locT=C&locId=San+Francisco&jobType=fulltime&fromAge=1&minSalary=0&includeNoSalaryJobs=true&radius=25
+2025-09-04 08:35:31,742 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=software+engineer&locT=C&locId=San+Francisco&jobType=fulltime&fromAge=1&minSalary=0&includeNoSalaryJobs=true&radius=25
+2025-09-04 08:35:33,748 - JobApplicationBot - INFO - Searching linkedin for 'software engineer' in 'New York'
+2025-09-04 08:35:33,748 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=software+engineer&location=New+York&f_TPR=r86400&f_JT=F&start=0
+2025-09-04 08:35:37,689 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:37,691 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:37,694 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:37,697 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:37,699 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:37,701 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:37,704 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:37,706 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:37,709 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:37,712 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:37,715 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:37,717 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:37,720 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:37,723 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:37,725 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:37,728 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:37,731 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:37,733 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:37,736 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:37,738 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:37,738 - JobApplicationBot - INFO - Found 0 jobs on LinkedIn
+2025-09-04 08:35:39,744 - JobApplicationBot - INFO - Searching indeed for 'software engineer' in 'New York'
+2025-09-04 08:35:39,744 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=software+engineer&l=New+York&fromage=1&sort=date&start=0
+2025-09-04 08:35:39,789 - JobApplicationBot - ERROR - Indeed request error: 403 Client Error: Forbidden for url: https://www.indeed.com/jobs?q=software+engineer&l=New+York&fromage=1&sort=date&start=0
+2025-09-04 08:35:41,795 - JobApplicationBot - INFO - Searching glassdoor for 'software engineer' in 'New York'
+2025-09-04 08:35:41,795 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=software+engineer&locT=C&locId=New+York&jobType=fulltime&fromAge=1&minSalary=0&includeNoSalaryJobs=true&radius=25
+2025-09-04 08:35:41,885 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=software+engineer&locT=C&locId=New+York&jobType=fulltime&fromAge=1&minSalary=0&includeNoSalaryJobs=true&radius=25
+2025-09-04 08:35:43,890 - JobApplicationBot - INFO - Searching linkedin for 'python developer' in 'Remote'
+2025-09-04 08:35:43,890 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=python+developer&location=Remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-04 08:35:47,922 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:47,925 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:47,928 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:47,931 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:47,933 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:47,936 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:47,938 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:47,941 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:47,944 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:47,946 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:47,949 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:47,952 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:47,954 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:47,957 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:47,959 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:47,962 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:47,964 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:47,967 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:47,969 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:47,971 - JobApplicationBot - ERROR - Missing element in LinkedIn job card: Message: no such element: Unable to locate element: {"method":"css selector","selector":".base-search-card__title a"}
+  (Session info: chrome=139.0.7258.155); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Stacktrace:
+0   chromedriver                        0x0000000100776e00 cxxbridge1$str$ptr + 2742224
+1   chromedriver                        0x000000010076ed00 cxxbridge1$str$ptr + 2709200
+2   chromedriver                        0x00000001002b90b8 cxxbridge1$string$len + 90520
+3   chromedriver                        0x00000001003005d8 cxxbridge1$string$len + 382648
+4   chromedriver                        0x00000001002f5ea4 cxxbridge1$string$len + 339844
+5   chromedriver                        0x0000000100341980 cxxbridge1$string$len + 649824
+6   chromedriver                        0x00000001002f48f4 cxxbridge1$string$len + 334292
+7   chromedriver                        0x000000010073a478 cxxbridge1$str$ptr + 2494024
+8   chromedriver                        0x000000010073d6a4 cxxbridge1$str$ptr + 2506868
+9   chromedriver                        0x000000010071b3b0 cxxbridge1$str$ptr + 2366848
+10  chromedriver                        0x000000010073df4c cxxbridge1$str$ptr + 2509084
+11  chromedriver                        0x000000010070c4a8 cxxbridge1$str$ptr + 2305656
+12  chromedriver                        0x000000010075d644 cxxbridge1$str$ptr + 2637844
+13  chromedriver                        0x000000010075d7d0 cxxbridge1$str$ptr + 2638240
+14  chromedriver                        0x000000010076e94c cxxbridge1$str$ptr + 2708252
+15  libsystem_pthread.dylib             0x00000001952dfc0c _pthread_start + 136
+16  libsystem_pthread.dylib             0x00000001952dab80 thread_start + 8
+
+2025-09-04 08:35:47,971 - JobApplicationBot - INFO - Found 0 jobs on LinkedIn
+2025-09-04 08:36:31,340 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully
+2025-09-04 08:36:31,368 - JobApplicationBot - INFO - Loaded document: documents/cover_letter.txt
+2025-09-04 08:36:31,368 - JobApplicationBot - INFO - Loaded document: documents/cover_letter.txt
+2025-09-04 08:36:31,368 - JobApplicationBot - INFO - Loaded document: documents/cover_letter.txt
+2025-09-04 08:36:31,368 - JobApplicationBot - INFO - Using Excel file as primary storage
+2025-09-04 08:36:31,368 - JobApplicationBot - INFO - Job Application Bot initialized successfully
+2025-09-04 08:36:31,368 - JobApplicationBot - INFO - Starting job application process...
+2025-09-04 08:36:31,427 - JobApplicationBot - INFO - Loaded 2 jobs from documents/Job update.xlsx
+2025-09-04 08:36:31,427 - JobApplicationBot - INFO - Attempting to apply to 1 jobs
+2025-09-04 08:36:31,435 - JobApplicationBot - INFO - Updated job test_job_002 status to failed
+2025-09-04 08:36:31,435 - JobApplicationBot - WARNING - Job test_job_002 not found for status update
+2025-09-04 08:36:31,439 - JobApplicationBot - INFO - Updated job test_job_002 status to failed
+2025-09-04 08:36:31,440 - JobApplicationBot - ERROR - APPLICATION FAILED: Data Scientist at Data Analytics Inc - Auto-apply disabled - manual application required
+2025-09-04 08:36:31,440 - JobApplicationBot - INFO - Application session completed: 0/1 successful

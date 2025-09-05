@@ -1,0 +1,13 @@
+{
+  "applications": [
+    {
+      "job_title": "Data Scientist",
+      "company": "Data Analytics Inc",
+      "job_url": "https://linkedin.com/job/67890",
+      "success": false,
+      "message": "Auto-apply disabled - manual application required",
+      "timestamp": "2025-09-04T08:36:31.427288"
+    }
+  ],
+  "last_updated": "2025-09-04T08:36:31.440012"
+}

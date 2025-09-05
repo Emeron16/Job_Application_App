@@ -1,0 +1,357 @@
+{% extends "base.html" %}
+
+{% block title %}Jobs - Job Application Bot{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col">
+        <h1 class="h2 mb-0">
+            <i class="fas fa-search me-2 text-primary"></i>Job Search & Management
+        </h1>
+        <p class="text-muted">Search, filter, and manage your job applications</p>
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-primary me-2" onclick="searchJobs()">
+            <i class="fas fa-search me-1"></i>Search New Jobs
+        </button>
+        <button class="btn btn-success" onclick="applyToSelectedJobs()">
+            <i class="fas fa-paper-plane me-1"></i>Apply to Selected
+        </button>
+    </div>
+</div>
+
+<!-- Filters -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="card-title mb-0">
+            <i class="fas fa-filter me-2"></i>Filters
+        </h5>
+    </div>
+    <div class="card-body">
+        <form method="GET" class="row g-3">
+            <div class="col-md-3">
+                <label for="search" class="form-label">Search</label>
+                <input type="text" class="form-control" id="search" name="search" 
+                       value="{{ search_query }}" placeholder="Job title, company...">
+            </div>
+            
+            <div class="col-md-3">
+                <label for="status" class="form-label">Status</label>
+                <select class="form-select" id="status" name="status">
+                    <option value="all" {% if status_filter == 'all' %}selected{% endif %}>All Status</option>
+                    <option value="not_applied" {% if status_filter == 'not_applied' %}selected{% endif %}>Not Applied</option>
+                    <option value="applied" {% if status_filter == 'applied' %}selected{% endif %}>Applied</option>
+                    <option value="failed" {% if status_filter == 'failed' %}selected{% endif %}>Failed</option>
+                </select>
+            </div>
+            
+            <div class="col-md-3">
+                <label for="board" class="form-label">Platform</label>
+                <select class="form-select" id="board" name="board">
+                    <option value="all" {% if board_filter == 'all' %}selected{% endif %}>All Platforms</option>
+                    <option value="linkedin" {% if board_filter == 'linkedin' %}selected{% endif %}>LinkedIn</option>
+                    <option value="indeed" {% if board_filter == 'indeed' %}selected{% endif %}>Indeed</option>
+                    <option value="glassdoor" {% if board_filter == 'glassdoor' %}selected{% endif %}>Glassdoor</option>
+                </select>
+            </div>
+            
+            <div class="col-md-3 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary me-2">
+                    <i class="fas fa-search me-1"></i>Filter
+                </button>
+                <a href="{{ url_for('jobs') }}" class="btn btn-outline-secondary">
+                    <i class="fas fa-times me-1"></i>Clear
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Jobs Table -->
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="card-title mb-0">
+            <i class="fas fa-list me-2"></i>Job Postings
+            {% if jobs.total %}
+                <span class="badge bg-secondary ms-2">{{ jobs.total }} total</span>
+            {% endif %}
+        </h5>
+        
+        {% if jobs.items %}
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="selectAll" onchange="toggleAllJobs()">
+            <label class="form-check-label" for="selectAll">
+                Select All
+            </label>
+        </div>
+        {% endif %}
+    </div>
+    
+    <div class="card-body p-0">
+        {% if jobs.items %}
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th width="50">
+                                <input type="checkbox" id="selectAllHeader" onchange="toggleAllJobs()">
+                            </th>
+                            <th>Job Details</th>
+                            <th>Company</th>
+                            <th>Location</th>
+                            <th>Platform</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for job in jobs.items %}
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="job-checkbox" value="{{ job.id }}" 
+                                       {% if job.application_status != 'not_applied' %}disabled{% endif %}>
+                            </td>
+                            <td>
+                                <div>
+                                    <strong>{{ job.title }}</strong>
+                                    {% if job.salary_range %}
+                                        <br><small class="text-success">{{ job.salary_range }}</small>
+                                    {% endif %}
+                                    {% if job.job_type %}
+                                        <br><small class="text-muted">{{ job.job_type }}</small>
+                                    {% endif %}
+                                </div>
+                            </td>
+                            <td>
+                                <strong>{{ job.company }}</strong>
+                                {% if job.company_size %}
+                                    <br><small class="text-muted">{{ job.company_size }}</small>
+                                {% endif %}
+                            </td>
+                            <td>{{ job.location }}</td>
+                            <td>
+                                <span class="badge bg-secondary">
+                                    <i class="fab fa-{{ job.job_board }} me-1"></i>
+                                    {{ job.job_board|title }}
+                                </span>
+                            </td>
+                            <td>
+                                {% if job.application_status == 'applied' %}
+                                    <span class="badge bg-success">Applied</span>
+                                    {% if job.applied_date %}
+                                        <br><small class="text-muted">{{ job.applied_date.strftime('%m/%d/%Y') }}</small>
+                                    {% endif %}
+                                {% elif job.application_status == 'failed' %}
+                                    <span class="badge bg-danger">Failed</span>
+                                {% else %}
+                                    <span class="badge bg-warning">Pending</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <small class="text-muted">
+                                    {{ job.scraped_date.strftime('%m/%d/%Y') if job.scraped_date else 'N/A' }}
+                                </small>
+                            </td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    {% if job.url %}
+                                    <a href="{{ job.url }}" target="_blank" class="btn btn-outline-primary btn-sm" title="View Job">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    {% endif %}
+                                    
+                                    {% if job.application_status == 'not_applied' %}
+                                    <button class="btn btn-outline-success btn-sm" onclick="applyToJob({{ job.id }})" title="Apply Now">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                    {% endif %}
+                                    
+                                    <button class="btn btn-outline-info btn-sm" onclick="viewJobDetails({{ job.id }})" title="View Details">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Pagination -->
+            {% if jobs.pages > 1 %}
+            <div class="card-footer">
+                <nav aria-label="Job pagination">
+                    <ul class="pagination pagination-sm mb-0 justify-content-center">
+                        {% if jobs.has_prev %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ url_for('jobs', page=jobs.prev_num, status=status_filter, board=board_filter, search=search_query) }}">
+                                    <i class="fas fa-chevron-left"></i>
+                                </a>
+                            </li>
+                        {% endif %}
+                        
+                        {% for page_num in jobs.iter_pages() %}
+                            {% if page_num %}
+                                {% if page_num != jobs.page %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ url_for('jobs', page=page_num, status=status_filter, board=board_filter, search=search_query) }}">
+                                            {{ page_num }}
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item active">
+                                        <span class="page-link">{{ page_num }}</span>
+                                    </li>
+                                {% endif %}
+                            {% else %}
+                                <li class="page-item disabled">
+                                    <span class="page-link">...</span>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        {% if jobs.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ url_for('jobs', page=jobs.next_num, status=status_filter, board=board_filter, search=search_query) }}">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+            {% endif %}
+            
+        {% else %}
+            <div class="text-center py-5">
+                <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                <h5 class="text-muted">No jobs found</h5>
+                <p class="text-muted">Try adjusting your filters or search for new jobs.</p>
+                <button class="btn btn-primary" onclick="searchJobs()">
+                    <i class="fas fa-search me-1"></i>Search Jobs Now
+                </button>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Job Details Modal -->
+<div class="modal fade" id="jobDetailsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Job Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="jobDetailsContent">
+                <!-- Job details will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="#" id="jobDetailsApplyBtn" class="btn btn-success" target="_blank">
+                    <i class="fas fa-external-link-alt me-1"></i>View on Platform
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function toggleAllJobs() {
+    const selectAll = document.getElementById('selectAll') || document.getElementById('selectAllHeader');
+    const checkboxes = document.querySelectorAll('.job-checkbox:not([disabled])');
+    
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = selectAll.checked;
+    });
+}
+
+function applyToSelectedJobs() {
+    const selectedJobs = Array.from(document.querySelectorAll('.job-checkbox:checked')).map(cb => cb.value);
+    
+    if (selectedJobs.length === 0) {
+        alert('Please select at least one job to apply to.');
+        return;
+    }
+    
+    if (confirm(`Apply to ${selectedJobs.length} selected jobs?`)) {
+        showLoading('Applying to selected jobs...');
+        
+        fetch('/api/apply_jobs', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                job_ids: selectedJobs,
+                max_applications: selectedJobs.length
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            hideLoading();
+            if (data.status === 'success') {
+                showAlert('success', 'Job applications started! Check back in a few minutes for updates.');
+                setTimeout(() => location.reload(), 3000);
+            } else {
+                showAlert('error', data.message || 'Failed to start job applications');
+            }
+        })
+        .catch(error => {
+            hideLoading();
+            showAlert('error', 'Error: ' + error.message);
+        });
+    }
+}
+
+function applyToJob(jobId) {
+    if (confirm('Apply to this job?')) {
+        showLoading('Applying to job...');
+        
+        fetch('/api/apply_jobs', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                job_ids: [jobId],
+                max_applications: 1
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            hideLoading();
+            if (data.status === 'success') {
+                showAlert('success', 'Job application started!');
+                setTimeout(() => location.reload(), 2000);
+            } else {
+                showAlert('error', data.message || 'Failed to start job application');
+            }
+        })
+        .catch(error => {
+            hideLoading();
+            showAlert('error', 'Error: ' + error.message);
+        });
+    }
+}
+
+function viewJobDetails(jobId) {
+    // This would fetch job details from an API endpoint
+    // For now, we'll show a placeholder
+    document.getElementById('jobDetailsContent').innerHTML = `
+        <div class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2">Loading job details...</p>
+        </div>
+    `;
+    
+    const modal = new bootstrap.Modal(document.getElementById('jobDetailsModal'));
+    modal.show();
+}
+</script>
+{% endblock %}
