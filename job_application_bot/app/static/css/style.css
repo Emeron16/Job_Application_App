@@ -395,3 +395,104 @@ canvas {
 .bg-gradient-success {
     background: linear-gradient(135deg, var(--success-color), #1e7e34) !important;
 }
+
+/* Live Job Search Animations */
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(40, 167, 69, 0.3);
+    }
+}
+
+.new-job-animation {
+    animation: slideInFromTop 0.6s ease-out, pulseGlow 2s ease-in-out;
+    border-left: 4px solid var(--success-color) !important;
+}
+
+.new-job-card {
+    position: relative;
+}
+
+.new-job-card .badge.bg-success {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+/* Live Search Progress */
+.search-progress {
+    font-weight: 600;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.job-counter {
+    font-weight: bold;
+    color: var(--success-color);
+    transition: all 0.3s ease;
+}
+
+/* WebSocket Connection Status */
+.connection-status {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    z-index: 1050;
+    transition: all 0.3s ease;
+}
+
+.connection-status.connected {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.connection-status.disconnected {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* Live Job List Container */
+.live-jobs-container {
+    max-height: 600px;
+    overflow-y: auto;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 1rem;
+    background-color: #fff;
+}
+
+.live-jobs-header {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e9ecef;
+    margin-bottom: 1rem;
+    z-index: 10;
+}

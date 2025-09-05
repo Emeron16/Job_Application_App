@@ -260,6 +260,14 @@
 
 {% block scripts %}
 <script>
+function getStatusBadgeClass(status) {
+    switch(status) {
+        case 'applied': return 'success';
+        case 'failed': return 'danger';
+        default: return 'warning';
+    }
+}
+
 function toggleAllJobs() {
     const selectAll = document.getElementById('selectAll') || document.getElementById('selectAllHeader');
     const checkboxes = document.querySelectorAll('.job-checkbox:not([disabled])');
@@ -339,8 +347,7 @@ function applyToJob(jobId) {
 }
 
 function viewJobDetails(jobId) {
-    // This would fetch job details from an API endpoint
-    // For now, we'll show a placeholder
+    // Show loading state
     document.getElementById('jobDetailsContent').innerHTML = `
         <div class="text-center">
             <div class="spinner-border" role="status">
@@ -352,6 +359,72 @@ function viewJobDetails(jobId) {
     
     const modal = new bootstrap.Modal(document.getElementById('jobDetailsModal'));
     modal.show();
+    
+    // Fetch job details from API
+    fetch(`/api/job_details/${jobId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'error') {
+                throw new Error(data.message);
+            }
+            
+            // Build job details HTML
+            let html = '<div class="row"><div class="col-12">';
+            html += '<h4>' + data.title + '</h4>';
+            html += '<p class="text-muted mb-3"><strong>' + data.company + '</strong> • ' + data.location + ' • ' + data.job_board + '</p>';
+            html += '</div></div>';
+            
+            html += '<div class="row"><div class="col-md-6">';
+            html += '<h6>Job Details</h6><ul class="list-unstyled">';
+            if (data.salary_range) html += '<li><strong>Salary:</strong> ' + data.salary_range + '</li>';
+            if (data.job_type) html += '<li><strong>Type:</strong> ' + data.job_type + '</li>';
+            if (data.experience_level) html += '<li><strong>Experience:</strong> ' + data.experience_level + '</li>';
+            if (data.company_size) html += '<li><strong>Company Size:</strong> ' + data.company_size + '</li>';
+            if (data.industry) html += '<li><strong>Industry:</strong> ' + data.industry + '</li>';
+            html += '</ul></div>';
+            
+            html += '<div class="col-md-6"><h6>Application Status</h6>';
+            html += '<p><span class="badge bg-' + getStatusBadgeClass(data.application_status) + '">' + data.application_status + '</span></p>';
+            if (data.applied_date) html += '<p><small>Applied: ' + new Date(data.applied_date).toLocaleDateString() + '</small></p>';
+            if (data.application_notes) html += '<p><small>Notes: ' + data.application_notes + '</small></p>';
+            html += '</div></div>';
+            
+            if (data.description) {
+                html += '<div class="row mt-3"><div class="col-12">';
+                html += '<h6>Job Description</h6>';
+                html += '<div class="border p-3 rounded bg-light"><p>' + data.description + '</p></div>';
+                html += '</div></div>';
+            }
+            
+            if (data.skills_required && data.skills_required.length > 0) {
+                html += '<div class="row mt-3"><div class="col-12">';
+                html += '<h6>Required Skills</h6><div>';
+                for (let skill of data.skills_required) {
+                    html += '<span class="badge bg-secondary me-1">' + skill + '</span>';
+                }
+                html += '</div></div></div>';
+            }
+            
+            // Update modal content
+            document.getElementById('jobDetailsContent').innerHTML = html;
+            
+            // Update the "View on Platform" button
+            const applyBtn = document.getElementById('jobDetailsApplyBtn');
+            if (data.url) {
+                applyBtn.href = data.url;
+                applyBtn.style.display = 'inline-block';
+            } else {
+                applyBtn.style.display = 'none';
+            }
+        })
+        .catch(error => {
+            document.getElementById('jobDetailsContent').innerHTML = `
+                <div class="alert alert-danger">
+                    <h6>Error Loading Job Details</h6>
+                    <p>Unable to load job details: ${error.message}</p>
+                </div>
+            `;
+        });
 }
 </script>
 {% endblock %}

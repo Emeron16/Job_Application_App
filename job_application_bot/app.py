@@ -6,6 +6,7 @@ import os
 from flask import Flask, render_template, request, jsonify, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_socketio import SocketIO, emit
 from datetime import datetime
 import threading
 import json
@@ -25,6 +26,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Initialize extensions
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+socketio = SocketIO(app, cors_allowed_origins="*")
 
 # Add custom Jinja2 filters
 @app.template_filter('from_json')
@@ -96,6 +98,7 @@ class JobPreferences(db.Model):
     salary_min = db.Column(db.Integer)
     date_posted = db.Column(db.String(50))
     daily_application_limit = db.Column(db.Integer, default=10)
+    job_search_limit = db.Column(db.Integer, default=20)
     auto_apply_enabled = db.Column(db.Boolean, default=False)
     apply_to_external_sites = db.Column(db.Boolean, default=False)
     created_date = db.Column(db.DateTime, default=datetime.utcnow)
@@ -216,9 +219,14 @@ def update_preferences():
     prefs.experience_levels = json.dumps(request.form.getlist('experience_levels'))
     prefs.job_types = json.dumps(request.form.getlist('job_types'))
     prefs.exclude_keywords = json.dumps(request.form.getlist('exclude_keywords'))
-    prefs.salary_min = int(request.form.get('salary_min', 0)) or None
+    
+    # Handle salary_min - convert to int if not empty, otherwise None
+    salary_min_value = request.form.get('salary_min', '').strip()
+    prefs.salary_min = int(salary_min_value) if salary_min_value else None
+    
     prefs.date_posted = request.form.get('date_posted', 'week')
     prefs.daily_application_limit = int(request.form.get('daily_application_limit', 10))
+    prefs.job_search_limit = int(request.form.get('job_search_limit', 20))
     prefs.auto_apply_enabled = 'auto_apply_enabled' in request.form
     prefs.apply_to_external_sites = 'apply_to_external_sites' in request.form
     prefs.updated_date = datetime.utcnow()
@@ -234,6 +242,10 @@ def api_search_jobs():
         data = request.get_json()
         job_boards = data.get('job_boards', ['linkedin', 'indeed', 'glassdoor'])
         
+        # Get user preferences for job search limit
+        prefs = JobPreferences.query.first()
+        job_limit = prefs.job_search_limit if prefs else 20
+        
         # Convert string names to JobBoard enums
         board_enums = []
         for board in job_boards:
@@ -244,10 +256,29 @@ def api_search_jobs():
             elif board == 'glassdoor':
                 board_enums.append(JobBoard.GLASSDOOR)
         
-        # Run job search in background thread
+        # Run job search in background thread with live updates
         def search_jobs_background():
-            bot = get_bot()
-            bot.search_jobs(board_enums)
+            try:
+                socketio.emit('search_status', {'status': 'started', 'message': 'Job search started...'})
+                
+                def progress_callback(data):
+                    socketio.emit('search_status', data)
+                
+                bot = get_bot()
+                # Pass job limit and progress callback to the search function
+                jobs = bot.search_jobs_with_limit(board_enums, job_limit, progress_callback)
+                
+                socketio.emit('search_status', {
+                    'status': 'completed', 
+                    'message': f'Search completed! Found {len(jobs)} jobs.',
+                    'jobs_count': len(jobs)
+                })
+                
+            except Exception as e:
+                socketio.emit('search_status', {
+                    'status': 'error', 
+                    'message': f'Search failed: {str(e)}'
+                })
         
         thread = threading.Thread(target=search_jobs_background)
         thread.start()
@@ -262,14 +293,68 @@ def api_apply_jobs():
     """API endpoint to apply to jobs"""
     try:
         data = request.get_json()
+        job_ids = data.get('job_ids', [])
         max_applications = data.get('max_applications', 10)
         
-        # Run applications in background thread
-        def apply_jobs_background():
-            bot = get_bot()
-            bot.apply_to_jobs(max_applications)
+        if job_ids:
+            # Apply to specific jobs
+            def apply_specific_jobs_background():
+                try:
+                    applied_count = 0
+                    failed_count = 0
+                    
+                    for job_id in job_ids:
+                        # Get job from database
+                        job = JobPosting.query.get(job_id)
+                        if job and job.application_status == 'not_applied':
+                            # Check if this is a real job or a redirect
+                            if "View on Indeed" in job.title or "Multiple Companies" in job.company:
+                                # This is a search redirect, mark as requires manual action
+                                job.application_status = 'failed'
+                                job.applied_date = datetime.utcnow()
+                                job.application_notes = 'Manual application required - click "View on Platform" to apply'
+                                failed_count += 1
+                            else:
+                                # For now, mark as requiring manual application since auto-apply is complex
+                                # In the future, this could integrate with the full automation system
+                                job.application_status = 'failed'
+                                job.applied_date = datetime.utcnow()
+                                job.application_notes = 'Auto-apply disabled - please apply manually via "View on Platform"'
+                                failed_count += 1
+                            
+                            db.session.commit()
+                    
+                    total_processed = applied_count + failed_count
+                    if applied_count > 0:
+                        socketio.emit('application_status', {
+                            'status': 'completed',
+                            'message': f'Applied to {applied_count} job(s), {failed_count} require manual application.',
+                            'applied_count': applied_count,
+                            'failed_count': failed_count
+                        })
+                    else:
+                        socketio.emit('application_status', {
+                            'status': 'completed',
+                            'message': f'Processed {total_processed} job(s). All require manual application via "View on Platform".',
+                            'failed_count': failed_count
+                        })
+                        
+                except Exception as e:
+                    socketio.emit('application_status', {
+                        'status': 'error',
+                        'message': f'Application failed: {str(e)}'
+                    })
+        else:
+            # Apply to jobs generally
+            def apply_jobs_background():
+                bot = get_bot()
+                bot.apply_to_jobs(max_applications)
         
-        thread = threading.Thread(target=apply_jobs_background)
+        if job_ids:
+            thread = threading.Thread(target=apply_specific_jobs_background)
+        else:
+            thread = threading.Thread(target=apply_jobs_background)
+        
         thread.start()
         
         return jsonify({'status': 'success', 'message': 'Job applications started'})
@@ -296,7 +381,17 @@ def api_job_stats():
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
+@app.route('/api/job_details/<int:job_id>')
+def api_job_details(job_id):
+    """API endpoint to get job details"""
+    try:
+        job = JobPosting.query.get_or_404(job_id)
+        return jsonify(job.to_dict())
+    
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    socketio.run(app, debug=True, host='0.0.0.0', port=5002)

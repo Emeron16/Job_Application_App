@@ -16,6 +16,7 @@ from models import JobPosting, JobBoard, ApplicationStatus
 from job_searchers import JobSearchManager
 from application_automation import ApplicationManager
 from storage import StorageManager
+from flask_storage import FlaskDatabaseStorage
 from utils import Logger, RateLimiter
 
 
@@ -40,14 +41,8 @@ class JobApplicationBot:
         self.search_manager = JobSearchManager(self.rate_limiter, self.logger)
         self.application_manager = ApplicationManager(self.config, self.logger, self.rate_limiter)
         
-        self.storage_manager = StorageManager(
-            use_google_sheets=self.config.storage.use_google_sheets,
-            google_sheets_id=self.config.storage.google_sheets_id,
-            credentials_path=self.config.google_credentials_path,
-            local_storage_path=self.config.storage.local_storage_path,
-            logger=self.logger,
-            excel_file_path="documents/Job update.xlsx"
-        )
+        # Use Flask database storage for web integration
+        self.storage_manager = FlaskDatabaseStorage(self.logger)
         
         self.logger.info("Job Application Bot initialized successfully")
     
@@ -86,6 +81,72 @@ class JobApplicationBot:
             if result.errors:
                 for error in result.errors:
                     self.logger.error(f"Search error on {result.job_board.value}: {error}")
+        
+        # Remove duplicates
+        unique_jobs = self.search_manager.deduplicate_jobs(all_jobs)
+        
+        self.logger.info(f"Found {len(unique_jobs)} unique job postings")
+        
+        # Save jobs to storage
+        if unique_jobs:
+            self.storage_manager.save_jobs(unique_jobs)
+        
+        return unique_jobs
+    
+    def search_jobs_with_limit(self, job_boards: Optional[List[JobBoard]] = None, job_limit: int = 20, progress_callback=None) -> List[JobPosting]:
+        """Search for jobs across specified job boards with a specific limit."""
+        self.logger.info(f"Starting job search with limit of {job_limit} jobs per board...")
+        
+        if job_boards is None:
+            job_boards = [JobBoard.LINKEDIN, JobBoard.INDEED, JobBoard.GLASSDOOR]
+        
+        # Search for jobs with limit
+        search_results = self.search_manager.search_all_boards_with_limit(
+            keywords=self.config.job_search.keywords,
+            locations=self.config.job_search.locations,
+            job_boards=job_boards,
+            job_limit=job_limit,
+            progress_callback=progress_callback
+        )
+        
+        # Collect all found jobs and emit individual job events with global limit
+        all_jobs = []
+        jobs_found_count = 0
+        
+        for result in search_results:
+            # Apply global limit
+            jobs_to_add = result.jobs_found
+            if jobs_found_count + len(jobs_to_add) > job_limit:
+                jobs_to_add = jobs_to_add[:job_limit - jobs_found_count]
+            
+            all_jobs.extend(jobs_to_add)
+            jobs_found_count += len(jobs_to_add)
+            
+            # Emit progress for each result
+            if progress_callback and jobs_to_add:
+                progress_callback({
+                    'status': 'progress',
+                    'message': f'Found {len(jobs_to_add)} jobs on {result.job_board.value}',
+                    'jobs_count': jobs_found_count,
+                    'board': result.job_board.value
+                })
+                
+                # Emit individual job events for live display
+                for job in jobs_to_add:
+                    progress_callback({
+                        'status': 'job_found',
+                        'job': job.to_dict(),
+                        'total_found': jobs_found_count
+                    })
+            
+            if result.errors:
+                for error in result.errors:
+                    self.logger.error(f"Search error on {result.job_board.value}: {error}")
+            
+            # Stop if we've reached the global limit
+            if jobs_found_count >= job_limit:
+                self.logger.info(f"Reached global job limit of {job_limit}, stopping search")
+                break
         
         # Remove duplicates
         unique_jobs = self.search_manager.deduplicate_jobs(all_jobs)

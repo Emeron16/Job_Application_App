@@ -68,7 +68,7 @@ class LinkedInSearcher(JobSearcher):
         except Exception as e:
             self.logger.error(f"Failed to setup Chrome driver for LinkedIn: {e}")
     
-    def search_jobs(self, keywords: str, location: str, **filters) -> SearchResult:
+    def search_jobs(self, keywords: str, location: str, job_limit: int = 20, **filters) -> SearchResult:
         """Search for jobs on LinkedIn."""
         search_result = SearchResult(
             job_board=JobBoard.LINKEDIN,
@@ -107,7 +107,7 @@ class LinkedInSearcher(JobSearcher):
             # Extract job postings
             job_cards = self.driver.find_elements(By.CSS_SELECTOR, ".job-search-card")
             
-            for card in job_cards[:20]:  # Limit to first 20 results
+            for card in job_cards[:job_limit]:  # Limit to specified number of results
                 try:
                     job = self._extract_linkedin_job(card)
                     if job:
@@ -126,27 +126,89 @@ class LinkedInSearcher(JobSearcher):
             search_result.errors.append(f"LinkedIn search error: {str(e)}")
             self.logger.error(f"LinkedIn search error: {e}")
         
+        # No demo jobs - let real scraping work or fail gracefully
+        if not search_result.jobs_found:
+            self.logger.warning(f"No jobs found for LinkedIn search: {keywords} in {location}")
+        
         return search_result
     
     def _extract_linkedin_job(self, card) -> Optional[JobPosting]:
         """Extract job details from LinkedIn job card."""
         try:
-            # Title and URL
-            title_element = card.find_element(By.CSS_SELECTOR, ".base-search-card__title a")
+            # Try multiple selectors for title and URL
+            title_selectors = [
+                ".base-search-card__title a",
+                ".job-search-card__title a", 
+                "[data-entity-urn] h3 a",
+                ".base-card__full-link",
+                "h3 a"
+            ]
+            
+            title_element = None
+            for selector in title_selectors:
+                try:
+                    title_element = card.find_element(By.CSS_SELECTOR, selector)
+                    break
+                except NoSuchElementException:
+                    continue
+                    
+            if not title_element:
+                self.logger.warning("Could not find title element in LinkedIn job card")
+                return None
+                
             title = title_element.text.strip()
-            url = title_element.get_attribute("href")
+            url = title_element.get_attribute("href") or "https://linkedin.com/jobs"
             
-            # Company
-            company_element = card.find_element(By.CSS_SELECTOR, ".base-search-card__subtitle a")
-            company = company_element.text.strip()
+            # Try multiple selectors for company
+            company_selectors = [
+                ".base-search-card__subtitle a",
+                ".job-search-card__subtitle-link",
+                ".base-search-card__subtitle",
+                "[data-entity-urn] h4 a",
+                "h4 a"
+            ]
             
-            # Location
-            location_element = card.find_element(By.CSS_SELECTOR, ".job-search-card__location")
-            location = location_element.text.strip()
+            company = "Unknown Company"
+            for selector in company_selectors:
+                try:
+                    company_element = card.find_element(By.CSS_SELECTOR, selector)
+                    company = company_element.text.strip()
+                    break
+                except NoSuchElementException:
+                    continue
             
-            # Date posted
-            date_element = card.find_element(By.CSS_SELECTOR, ".job-search-card__listdate")
-            posting_date = date_element.get_attribute("datetime") or date_element.text.strip()
+            # Try multiple selectors for location
+            location_selectors = [
+                ".job-search-card__location",
+                ".base-search-card__metadata span",
+                "[data-entity-urn] span",
+                ".job-result-card__location"
+            ]
+            
+            location = "Remote"
+            for selector in location_selectors:
+                try:
+                    location_element = card.find_element(By.CSS_SELECTOR, selector)
+                    location = location_element.text.strip()
+                    break
+                except NoSuchElementException:
+                    continue
+            
+            # Try to get posting date
+            posting_date = "Today"
+            date_selectors = [
+                ".job-search-card__listdate",
+                ".job-result-card__listdate",
+                "time"
+            ]
+            
+            for selector in date_selectors:
+                try:
+                    date_element = card.find_element(By.CSS_SELECTOR, selector)
+                    posting_date = date_element.get_attribute("datetime") or date_element.text.strip()
+                    break
+                except NoSuchElementException:
+                    continue
             
             job_id = self._generate_job_id(title, company, url)
             
@@ -160,9 +222,38 @@ class LinkedInSearcher(JobSearcher):
                 job_id=job_id
             )
             
-        except NoSuchElementException as e:
-            self.logger.error(f"Missing element in LinkedIn job card: {e}")
+        except Exception as e:
+            self.logger.error(f"Error extracting LinkedIn job: {e}")
             return None
+    
+    def _create_demo_linkedin_jobs(self, keywords: str, location: str) -> List[JobPosting]:
+        """Create demo jobs for testing when LinkedIn scraping fails."""
+        demo_jobs = []
+        companies = ["TechCorp", "InnovateLabs", "DataSystems", "CloudWorks", "DevCompany"]
+        titles = [
+            f"Senior {keywords}",
+            f"{keywords} Developer",
+            f"Lead {keywords}",
+            f"{keywords} Engineer",
+            f"Principal {keywords}"
+        ]
+        
+        for i in range(min(5, len(companies))):
+            job = JobPosting(
+                title=titles[i % len(titles)],
+                company=companies[i],
+                location=location,
+                posting_date="2 days ago",
+                url=f"https://linkedin.com/jobs/demo-{i+1}",
+                job_board=JobBoard.LINKEDIN,
+                job_id=self._generate_job_id(titles[i % len(titles)], companies[i], f"demo-{i+1}"),
+                description=f"Exciting opportunity for a {keywords} at {companies[i]} in {location}. Join our innovative team!",
+                salary_range="$80,000 - $120,000",
+                experience_level="Mid-Senior level"
+            )
+            demo_jobs.append(job)
+        
+        return demo_jobs
     
     def __del__(self):
         """Cleanup driver on destruction."""
@@ -176,7 +267,7 @@ class IndeedSearcher(JobSearcher):
         super().__init__(rate_limiter, logger)
         self.base_url = "https://www.indeed.com/jobs"
     
-    def search_jobs(self, keywords: str, location: str, **filters) -> SearchResult:
+    def search_jobs(self, keywords: str, location: str, job_limit: int = 20, **filters) -> SearchResult:
         """Search for jobs on Indeed."""
         search_result = SearchResult(
             job_board=JobBoard.INDEED,
@@ -200,17 +291,39 @@ class IndeedSearcher(JobSearcher):
             search_url = f"{self.base_url}?{urlencode(params)}"
             self.logger.info(f"Searching Indeed: {search_url}")
             
-            # Make request
-            response = self.session.get(search_url, timeout=30)
+            # Enhanced headers to avoid 403 errors with session management
+            headers = {
+                'User-Agent': self.ua.random,  # Use random user agent
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+                'Accept-Language': 'en-US,en;q=0.9',
+                'Accept-Encoding': 'gzip, deflate, br',
+                'Cache-Control': 'no-cache',
+                'Pragma': 'no-cache',
+                'Sec-Ch-Ua': '"Chromium";v="118", "Google Chrome";v="118", "Not=A?Brand";v="99"',
+                'Sec-Ch-Ua-Mobile': '?0',
+                'Sec-Ch-Ua-Platform': '"macOS"',
+                'Sec-Fetch-Dest': 'document',
+                'Sec-Fetch-Mode': 'navigate',
+                'Sec-Fetch-Site': 'none',
+                'Sec-Fetch-User': '?1',
+                'Upgrade-Insecure-Requests': '1',
+            }
+            
+            # Make request with enhanced headers
+            response = self.session.get(search_url, headers=headers, timeout=30)
             response.raise_for_status()
             
             # Parse HTML
             soup = BeautifulSoup(response.content, 'html.parser')
             
-            # Find job cards
+            # Find job cards - try multiple selectors
             job_cards = soup.find_all('div', class_='job_seen_beacon')
+            if not job_cards:
+                job_cards = soup.find_all('div', class_='slider_container')
+            if not job_cards:
+                job_cards = soup.find_all('div', attrs={'data-jk': True})
             
-            for card in job_cards[:20]:  # Limit to first 20 results
+            for card in job_cards[:job_limit]:  # Limit to specified number of results
                 try:
                     job = self._extract_indeed_job(card)
                     if job:
@@ -229,38 +342,115 @@ class IndeedSearcher(JobSearcher):
             search_result.errors.append(f"Indeed search error: {str(e)}")
             self.logger.error(f"Indeed search error: {e}")
         
+        # If scraping completely failed, create a minimal real job entry pointing to Indeed search
+        if not search_result.jobs_found and any("403" in str(error) for error in search_result.errors):
+            # Create one job that points to the actual Indeed search results
+            indeed_search_url = f"https://www.indeed.com/jobs?q={keywords.replace(' ', '+')}&l={location.replace(' ', '+')}"
+            fallback_job = JobPosting(
+                title=f"{keywords} - View on Indeed",
+                company="Multiple Companies",
+                location=location,
+                posting_date="Today", 
+                url=indeed_search_url,
+                job_board=JobBoard.INDEED,
+                job_id=self._generate_job_id(f"{keywords}-indeed-search", "indeed", indeed_search_url),
+                description=f"Click 'View on Platform' to see {keywords} jobs on Indeed for {location}",
+                salary_range="Varies",
+                job_type="Multiple"
+            )
+            search_result.jobs_found.append(fallback_job)
+            search_result.total_results = 1
+            self.logger.info(f"Created Indeed search redirect for: {keywords} in {location}")
+        elif not search_result.jobs_found:
+            self.logger.warning(f"No jobs found for Indeed search: {keywords} in {location}")
+        
         return search_result
     
     def _extract_indeed_job(self, card) -> Optional[JobPosting]:
         """Extract job details from Indeed job card."""
         try:
-            # Title and URL
-            title_link = card.find('h2', class_='jobTitle').find('a')
+            # Try multiple selectors for title and URL
+            title_link = None
+            title_selectors = [
+                'h2.jobTitle a',
+                'h2[data-testid="job-title"] a',
+                'a[data-jk]',
+                '.jobTitle a',
+                'h2 a'
+            ]
+            
+            for selector in title_selectors:
+                title_link = card.select_one(selector)
+                if title_link:
+                    break
+                    
+            if not title_link:
+                self.logger.warning("Could not find title link in Indeed job card")
+                return None
+                
             title = title_link.get('title') or title_link.text.strip()
             
             # Build full URL
             href = title_link.get('href')
-            url = f"https://www.indeed.com{href}" if href.startswith('/') else href
+            url = f"https://www.indeed.com{href}" if href and href.startswith('/') else (href or "https://www.indeed.com")
             
-            # Company
-            company_element = card.find('span', class_='companyName')
-            if company_element:
-                company_link = company_element.find('a')
-                company = company_link.text.strip() if company_link else company_element.text.strip()
-            else:
-                company = "Unknown"
+            # Try multiple selectors for company
+            company = "Unknown Company"
+            company_selectors = [
+                'span.companyName a',
+                'span.companyName',
+                '[data-testid="company-name"]',
+                '.companyName'
+            ]
             
-            # Location
-            location_element = card.find('div', class_='companyLocation')
-            location = location_element.text.strip() if location_element else "Unknown"
+            for selector in company_selectors:
+                company_element = card.select_one(selector)
+                if company_element:
+                    company = company_element.text.strip()
+                    break
             
-            # Date posted
-            date_element = card.find('span', class_='date')
-            posting_date = date_element.text.strip() if date_element else "Unknown"
+            # Try multiple selectors for location
+            location = "Remote"
+            location_selectors = [
+                'div.companyLocation',
+                '[data-testid="job-location"]',
+                '.companyLocation',
+                '.locationsContainer'
+            ]
             
-            # Salary (if available)
-            salary_element = card.find('span', class_='salary-snippet')
-            salary_range = salary_element.text.strip() if salary_element else ""
+            for selector in location_selectors:
+                location_element = card.select_one(selector)
+                if location_element:
+                    location = location_element.text.strip()
+                    break
+            
+            # Try multiple selectors for date
+            posting_date = "Today"
+            date_selectors = [
+                'span.date',
+                '[data-testid="myJobsStateDate"]',
+                '.date'
+            ]
+            
+            for selector in date_selectors:
+                date_element = card.select_one(selector)
+                if date_element:
+                    posting_date = date_element.text.strip()
+                    break
+            
+            # Try to get salary
+            salary_range = ""
+            salary_selectors = [
+                'span.salary-snippet',
+                '.salary-snippet-container',
+                '[data-testid="job-salary"]'
+            ]
+            
+            for selector in salary_selectors:
+                salary_element = card.select_one(selector)
+                if salary_element:
+                    salary_range = salary_element.text.strip()
+                    break
             
             job_id = self._generate_job_id(title, company, url)
             
@@ -278,6 +468,35 @@ class IndeedSearcher(JobSearcher):
         except Exception as e:
             self.logger.error(f"Error parsing Indeed job card: {e}")
             return None
+    
+    def _create_demo_indeed_jobs(self, keywords: str, location: str) -> List[JobPosting]:
+        """Create demo jobs for testing when Indeed scraping fails."""
+        demo_jobs = []
+        companies = ["StartupTech", "BigCorp Inc", "FinanceFlow", "HealthTech", "EduSoft"]
+        titles = [
+            f"{keywords} Specialist",
+            f"Remote {keywords}",
+            f"{keywords} Consultant",
+            f"Full Stack {keywords}",
+            f"Junior {keywords}"
+        ]
+        
+        for i in range(min(4, len(companies))):
+            job = JobPosting(
+                title=titles[i % len(titles)],
+                company=companies[i],
+                location=location,
+                posting_date="1 day ago",
+                url=f"https://indeed.com/jobs/demo-{i+1}",
+                job_board=JobBoard.INDEED,
+                job_id=self._generate_job_id(titles[i % len(titles)], companies[i], f"indeed-demo-{i+1}"),
+                description=f"Great opportunity for a {keywords} to join {companies[i]}. Competitive benefits!",
+                salary_range="$70,000 - $110,000",
+                job_type="Full-time"
+            )
+            demo_jobs.append(job)
+        
+        return demo_jobs
 
 class GlassdoorSearcher(JobSearcher):
     """Glassdoor job searcher using web scraping."""
@@ -286,7 +505,7 @@ class GlassdoorSearcher(JobSearcher):
         super().__init__(rate_limiter, logger)
         self.base_url = "https://www.glassdoor.com/Job/jobs.htm"
     
-    def search_jobs(self, keywords: str, location: str, **filters) -> SearchResult:
+    def search_jobs(self, keywords: str, location: str, job_limit: int = 20, **filters) -> SearchResult:
         """Search for jobs on Glassdoor."""
         search_result = SearchResult(
             job_board=JobBoard.GLASSDOOR,
@@ -381,6 +600,40 @@ class JobSearchManager:
                         try:
                             self.logger.info(f"Searching {board.value} for '{keyword}' in '{location}'")
                             result = self.searchers[board].search_jobs(keyword, location)
+                            all_results.append(result)
+                            
+                            # Add delay between searches
+                            time.sleep(2)
+                            
+                        except Exception as e:
+                            self.logger.error(f"Error searching {board.value}: {e}")
+                            error_result = SearchResult(
+                                job_board=board,
+                                query=keyword,
+                                location=location,
+                                jobs_found=[],
+                                errors=[f"Search failed: {str(e)}"]
+                            )
+                            all_results.append(error_result)
+        
+        return all_results
+    
+    def search_all_boards_with_limit(self, keywords: List[str], locations: List[str], 
+                                   job_boards: Optional[List[JobBoard]] = None, 
+                                   job_limit: int = 20, progress_callback=None) -> List[SearchResult]:
+        """Search for jobs across multiple boards with a limit on results per search."""
+        if job_boards is None:
+            job_boards = list(self.searchers.keys())
+        
+        all_results = []
+        
+        for keyword in keywords:
+            for location in locations:
+                for board in job_boards:
+                    if board in self.searchers:
+                        try:
+                            self.logger.info(f"Searching {board.value} for '{keyword}' in '{location}' (limit: {job_limit})")
+                            result = self.searchers[board].search_jobs(keyword, location, job_limit=job_limit)
                             all_results.append(result)
                             
                             # Add delay between searches

@@ -2,11 +2,15 @@
 
 // Global variables
 let loadingModal;
+let socket;
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize Bootstrap components
     loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
+    
+    // Initialize WebSocket connection
+    initializeWebSocket();
     
     // Add fade-in animation to cards
     const cards = document.querySelectorAll('.card');
@@ -22,6 +26,131 @@ document.addEventListener('DOMContentLoaded', function() {
         return new bootstrap.Tooltip(tooltipTriggerEl);
     });
 });
+
+// WebSocket Functions
+function initializeWebSocket() {
+    // Only initialize if Socket.IO is available
+    if (typeof io !== 'undefined') {
+        socket = io();
+        
+        socket.on('connect', function() {
+            console.log('WebSocket connected');
+        });
+        
+        socket.on('disconnect', function() {
+            console.log('WebSocket disconnected');
+        });
+        
+        socket.on('search_status', function(data) {
+            if (data.status === 'job_found') {
+                handleNewJob(data);
+            } else {
+                handleSearchStatus(data);
+            }
+        });
+        
+        socket.on('job_found', function(data) {
+            handleNewJob(data);
+        });
+    }
+}
+
+function handleSearchStatus(data) {
+    const { status, message, jobs_count } = data;
+    
+    if (status === 'started') {
+        showLiveSearchProgress('Job search started...', 0);
+    } else if (status === 'completed') {
+        showAlert('success', message);
+        hideLoading();
+        refreshStats();
+        // Refresh the jobs page if we're on it
+        if (window.location.pathname === '/jobs') {
+            setTimeout(() => window.location.reload(), 2000);
+        }
+    } else if (status === 'error') {
+        showAlert('error', message);
+        hideLoading();
+    } else if (status === 'progress') {
+        showLiveSearchProgress(message, jobs_count || 0);
+    }
+}
+
+function handleNewJob(data) {
+    // Add new job to the live list if we're on the jobs page
+    if (window.location.pathname === '/jobs' && data.job) {
+        addJobToLiveList(data.job);
+    }
+    updateJobCounter(data.total_found || 0);
+}
+
+function showLiveSearchProgress(message, jobCount) {
+    const loadingText = document.getElementById('loadingText');
+    if (loadingText) {
+        loadingText.textContent = `${message} (${jobCount} jobs found)`;
+    }
+    
+    // Update any progress indicators
+    const progressElements = document.querySelectorAll('.search-progress');
+    progressElements.forEach(el => {
+        el.textContent = `Found ${jobCount} jobs so far...`;
+    });
+}
+
+function addJobToLiveList(jobData) {
+    const jobsList = document.querySelector('.jobs-list, .job-cards');
+    if (!jobsList) return;
+    
+    const jobCard = createJobCard(jobData);
+    jobsList.insertAdjacentHTML('afterbegin', jobCard);
+    
+    // Add animation to new job
+    const newCard = jobsList.firstElementChild;
+    newCard.classList.add('new-job-animation');
+    setTimeout(() => {
+        newCard.classList.remove('new-job-animation');
+    }, 2000);
+}
+
+function createJobCard(job) {
+    return `
+        <div class="card mb-3 new-job-card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h5 class="card-title">
+                            <a href="${job.url}" target="_blank" class="text-decoration-none">
+                                ${job.title}
+                            </a>
+                            <span class="badge bg-success ms-2">NEW</span>
+                        </h5>
+                        <p class="card-text">
+                            <strong>${job.company}</strong> • ${job.location}
+                        </p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <i class="fas fa-calendar-alt me-1"></i>${job.posting_date}
+                                <i class="fas fa-globe ms-3 me-1"></i>${job.job_board}
+                            </small>
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <span class="badge bg-primary mb-2">${job.application_status}</span>
+                        <br>
+                        <input type="checkbox" class="job-checkbox" value="${job.id}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function updateJobCounter(count) {
+    const counters = document.querySelectorAll('.job-counter');
+    counters.forEach(counter => {
+        counter.textContent = count;
+    });
+}
 
 // Utility Functions
 function showLoading(message = 'Processing...') {
