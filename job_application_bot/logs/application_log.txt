@@ -7039,3 +7039,74 @@ Stacktrace:
 2025-09-05 17:45:13,491 - JobApplicationBot - INFO - Found 10 unique job postings
 2025-09-05 17:45:13,521 - JobApplicationBot - INFO - Connected to Flask database
 2025-09-05 17:45:13,601 - JobApplicationBot - INFO - Saved 10 new jobs to Flask database
+2025-09-05 18:05:43,071 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully
+2025-09-05 18:05:43,206 - JobApplicationBot - INFO - Loaded document: documents/cover_letter.txt
+2025-09-05 18:05:43,207 - JobApplicationBot - INFO - Loaded document: documents/cover_letter.txt
+2025-09-05 18:05:43,210 - JobApplicationBot - INFO - Loaded document: documents/cover_letter.txt
+2025-09-05 18:05:43,211 - JobApplicationBot - INFO - Job Application Bot initialized successfully
+2025-09-05 18:05:43,211 - JobApplicationBot - INFO - Starting job search with limit of 10 jobs per board...
+2025-09-05 18:05:43,211 - JobApplicationBot - INFO - Searching linkedin for 'software engineer' in 'Remote' (limit: 10)
+2025-09-05 18:05:43,211 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=software+engineer&location=Remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-05 18:05:48,561 - JobApplicationBot - INFO - Found 10 jobs on LinkedIn
+2025-09-05 18:05:50,561 - JobApplicationBot - INFO - Searching indeed for 'software engineer' in 'Remote' (limit: 10)
+2025-09-05 18:05:50,562 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=software+engineer&l=Remote&fromage=1&sort=date&start=0
+2025-09-05 18:05:50,721 - JobApplicationBot - ERROR - Indeed request error: 403 Client Error: Forbidden for url: https://www.indeed.com/jobs?q=software+engineer&l=Remote&fromage=1&sort=date&start=0
+2025-09-05 18:05:50,721 - JobApplicationBot - INFO - Created Indeed search redirect for: software engineer in Remote
+2025-09-05 18:05:52,727 - JobApplicationBot - INFO - Searching glassdoor for 'software engineer' in 'Remote' (limit: 10)
+2025-09-05 18:05:52,727 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=software+engineer&locT=C&locId=Remote&jobType=fulltime&fromAge=1&minSalary=0&includeNoSalaryJobs=true&radius=25
+2025-09-05 18:05:53,001 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=software+engineer&locT=C&locId=Remote&jobType=fulltime&fromAge=1&minSalary=0&includeNoSalaryJobs=true&radius=25
+2025-09-05 18:05:55,008 - JobApplicationBot - INFO - Searching linkedin for 'software engineer' in 'San Francisco' (limit: 10)
+2025-09-05 18:05:55,009 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=software+engineer&location=San+Francisco&f_TPR=r86400&f_JT=F&start=0
+2025-09-05 18:05:59,690 - JobApplicationBot - INFO - Found 10 jobs on LinkedIn
+2025-09-05 18:06:01,694 - JobApplicationBot - INFO - Searching indeed for 'software engineer' in 'San Francisco' (limit: 10)
+2025-09-05 18:06:01,694 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=software+engineer&l=San+Francisco&fromage=1&sort=date&start=0
+2025-09-05 18:06:01,807 - JobApplicationBot - ERROR - Indeed request error: 403 Client Error: Forbidden for url: https://www.indeed.com/jobs?q=software+engineer&l=San+Francisco&fromage=1&sort=date&start=0
+2025-09-05 18:06:01,807 - JobApplicationBot - INFO - Created Indeed search redirect for: software engineer in San Francisco
+2025-09-05 18:06:03,813 - JobApplicationBot - INFO - Searching glassdoor for 'software engineer' in 'San Francisco' (limit: 10)
+2025-09-05 18:06:03,813 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=software+engineer&locT=C&locId=San+Francisco&jobType=fulltime&fromAge=1&minSalary=0&includeNoSalaryJobs=true&radius=25
+2025-09-05 18:06:03,938 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=software+engineer&locT=C&locId=San+Francisco&jobType=fulltime&fromAge=1&minSalary=0&includeNoSalaryJobs=true&radius=25
+2025-09-05 18:06:05,942 - JobApplicationBot - INFO - Searching linkedin for 'software engineer' in 'New York' (limit: 10)
+2025-09-05 18:06:05,943 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=software+engineer&location=New+York&f_TPR=r86400&f_JT=F&start=0
+2025-09-05 18:06:10,654 - JobApplicationBot - INFO - Found 10 jobs on LinkedIn
+2025-09-05 18:06:12,658 - JobApplicationBot - INFO - Searching indeed for 'software engineer' in 'New York' (limit: 10)
+2025-09-05 18:06:12,659 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=software+engineer&l=New+York&fromage=1&sort=date&start=0
+2025-09-05 18:06:12,777 - JobApplicationBot - ERROR - Indeed request error: 403 Client Error: Forbidden for url: https://www.indeed.com/jobs?q=software+engineer&l=New+York&fromage=1&sort=date&start=0
+2025-09-05 18:06:12,778 - JobApplicationBot - INFO - Created Indeed search redirect for: software engineer in New York
+2025-09-05 18:06:14,785 - JobApplicationBot - INFO - Searching glassdoor for 'software engineer' in 'New York' (limit: 10)
+2025-09-05 18:06:14,786 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=software+engineer&locT=C&locId=New+York&jobType=fulltime&fromAge=1&minSalary=0&includeNoSalaryJobs=true&radius=25
+2025-09-05 18:06:14,892 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=software+engineer&locT=C&locId=New+York&jobType=fulltime&fromAge=1&minSalary=0&includeNoSalaryJobs=true&radius=25
+2025-09-05 18:06:16,895 - JobApplicationBot - INFO - Searching linkedin for 'python developer' in 'Remote' (limit: 10)
+2025-09-05 18:06:16,895 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=python+developer&location=Remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-05 18:06:21,500 - JobApplicationBot - INFO - Found 10 jobs on LinkedIn
+2025-09-05 18:06:23,503 - JobApplicationBot - INFO - Searching indeed for 'python developer' in 'Remote' (limit: 10)
+2025-09-05 18:06:23,504 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=python+developer&l=Remote&fromage=1&sort=date&start=0
+2025-09-05 18:06:23,614 - JobApplicationBot - ERROR - Indeed request error: 403 Client Error: Forbidden for url: https://www.indeed.com/jobs?q=python+developer&l=Remote&fromage=1&sort=date&start=0
+2025-09-05 18:06:23,614 - JobApplicationBot - INFO - Created Indeed search redirect for: python developer in Remote
+2025-09-05 18:06:25,620 - JobApplicationBot - INFO - Searching glassdoor for 'python developer' in 'Remote' (limit: 10)
+2025-09-05 18:06:25,620 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=python+developer&locT=C&locId=Remote&jobType=fulltime&fromAge=1&minSalary=0&includeNoSalaryJobs=true&radius=25
+2025-09-05 18:06:25,752 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=python+developer&locT=C&locId=Remote&jobType=fulltime&fromAge=1&minSalary=0&includeNoSalaryJobs=true&radius=25
+2025-09-05 18:06:27,760 - JobApplicationBot - INFO - Searching linkedin for 'python developer' in 'San Francisco' (limit: 10)
+2025-09-05 18:06:27,760 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=python+developer&location=San+Francisco&f_TPR=r86400&f_JT=F&start=0
+2025-09-05 18:06:32,241 - JobApplicationBot - INFO - Found 10 jobs on LinkedIn
+2025-09-05 18:06:34,245 - JobApplicationBot - INFO - Searching indeed for 'python developer' in 'San Francisco' (limit: 10)
+2025-09-05 18:06:34,245 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=python+developer&l=San+Francisco&fromage=1&sort=date&start=0
+2025-09-05 18:06:34,387 - JobApplicationBot - ERROR - Indeed request error: 403 Client Error: Forbidden for url: https://www.indeed.com/jobs?q=python+developer&l=San+Francisco&fromage=1&sort=date&start=0
+2025-09-05 18:06:34,388 - JobApplicationBot - INFO - Created Indeed search redirect for: python developer in San Francisco
+2025-09-05 18:06:36,390 - JobApplicationBot - INFO - Searching glassdoor for 'python developer' in 'San Francisco' (limit: 10)
+2025-09-05 18:06:36,391 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=python+developer&locT=C&locId=San+Francisco&jobType=fulltime&fromAge=1&minSalary=0&includeNoSalaryJobs=true&radius=25
+2025-09-05 18:06:36,503 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=python+developer&locT=C&locId=San+Francisco&jobType=fulltime&fromAge=1&minSalary=0&includeNoSalaryJobs=true&radius=25
+2025-09-05 18:06:38,509 - JobApplicationBot - INFO - Searching linkedin for 'python developer' in 'New York' (limit: 10)
+2025-09-05 18:06:38,510 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=python+developer&location=New+York&f_TPR=r86400&f_JT=F&start=0
+2025-09-05 18:06:43,155 - JobApplicationBot - INFO - Found 10 jobs on LinkedIn
+2025-09-05 18:06:45,160 - JobApplicationBot - INFO - Searching indeed for 'python developer' in 'New York' (limit: 10)
+2025-09-05 18:06:45,160 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=python+developer&l=New+York&fromage=1&sort=date&start=0
+2025-09-05 18:06:45,310 - JobApplicationBot - ERROR - Indeed request error: 403 Client Error: Forbidden for url: https://www.indeed.com/jobs?q=python+developer&l=New+York&fromage=1&sort=date&start=0
+2025-09-05 18:06:45,310 - JobApplicationBot - INFO - Created Indeed search redirect for: python developer in New York
+2025-09-05 18:06:47,316 - JobApplicationBot - INFO - Searching glassdoor for 'python developer' in 'New York' (limit: 10)
+2025-09-05 18:06:47,316 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=python+developer&locT=C&locId=New+York&jobType=fulltime&fromAge=1&minSalary=0&includeNoSalaryJobs=true&radius=25
+2025-09-05 18:06:47,524 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=python+developer&locT=C&locId=New+York&jobType=fulltime&fromAge=1&minSalary=0&includeNoSalaryJobs=true&radius=25
+2025-09-05 18:06:49,530 - JobApplicationBot - INFO - Reached global job limit of 10, stopping search
+2025-09-05 18:06:49,531 - JobApplicationBot - INFO - Removed 0 duplicate jobs
+2025-09-05 18:06:49,531 - JobApplicationBot - INFO - Found 10 unique job postings
+2025-09-05 18:06:49,552 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-05 18:06:49,617 - JobApplicationBot - INFO - Saved 10 new jobs to Flask database

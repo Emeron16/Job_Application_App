@@ -296,59 +296,139 @@ def api_apply_jobs():
         job_ids = data.get('job_ids', [])
         max_applications = data.get('max_applications', 10)
         
+        # Clean logging
+        print(f"📝 Job application request: {len(job_ids)} jobs, max_applications: {max_applications}")
+        
         if job_ids:
-            # Apply to specific jobs
+                        # Apply to specific jobs
             def apply_specific_jobs_background():
-                try:
-                    applied_count = 0
-                    failed_count = 0
-                    
-                    for job_id in job_ids:
-                        # Get job from database
-                        job = JobPosting.query.get(job_id)
-                        if job and job.application_status == 'not_applied':
-                            # Check if this is a real job or a redirect
-                            if "View on Indeed" in job.title or "Multiple Companies" in job.company:
-                                # This is a search redirect, mark as requires manual action
-                                job.application_status = 'failed'
-                                job.applied_date = datetime.utcnow()
-                                job.application_notes = 'Manual application required - click "View on Platform" to apply'
-                                failed_count += 1
-                            else:
-                                # For now, mark as requiring manual application since auto-apply is complex
-                                # In the future, this could integrate with the full automation system
-                                job.application_status = 'failed'
-                                job.applied_date = datetime.utcnow()
-                                job.application_notes = 'Auto-apply disabled - please apply manually via "View on Platform"'
-                                failed_count += 1
+                with app.app_context():  # Fix: Add Flask application context
+                    try:
+                        print(f"🔍 DEBUG: Starting background job application for {len(job_ids)} jobs")
+                        applied_count = 0
+                        failed_count = 0
+                        
+                        # Get current preferences to check auto-apply settings
+                        prefs = JobPreferences.query.first()
+                        auto_apply_enabled = prefs.auto_apply_enabled if prefs else False
+                        apply_to_external = prefs.apply_to_external_sites if prefs else False
+                        
+                        print(f"🔍 DEBUG: Auto-apply enabled: {auto_apply_enabled}")
+                        print(f"🔍 DEBUG: Apply to external sites: {apply_to_external}")
+                        
+                        for job_id in job_ids:
+                            print(f"🔍 DEBUG: Processing job_id = {job_id}")
+                            # Get job from database
+                            job = JobPosting.query.get(job_id)
+                            print(f"🔍 DEBUG: Found job in database: {job.title if job else 'None'}")
+                            print(f"🔍 DEBUG: Job status: {job.application_status if job else 'N/A'}")
                             
-                            db.session.commit()
-                    
-                    total_processed = applied_count + failed_count
-                    if applied_count > 0:
+                            if job and job.application_status == 'not_applied':
+                                # Check if this is a search redirect
+                                if "View on Indeed" in job.title or "Multiple Companies" in job.company:
+                                    print(f"🔍 DEBUG: Job {job_id} is a search redirect")
+                                    job.application_status = 'failed'
+                                    job.applied_date = datetime.utcnow()
+                                    job.application_notes = 'Search redirect - click "View on Platform" to see jobs'
+                                    failed_count += 1
+                                elif auto_apply_enabled:
+                                    print(f"🔍 DEBUG: Auto-apply enabled - attempting to apply to job {job_id}")
+                                    
+                                    # Check if external application is allowed
+                                    is_external = job.url and not any(domain in job.url for domain in ['linkedin.com', 'indeed.com', 'glassdoor.com'])
+                                    
+                                    if is_external and not apply_to_external:
+                                        print(f"🔍 DEBUG: Job {job_id} is external and external applications disabled")
+                                        job.application_status = 'failed'
+                                        job.applied_date = datetime.utcnow()
+                                        job.application_notes = 'External application - disabled in preferences'
+                                        failed_count += 1
+                                    else:
+                                        # Attempt actual auto-application
+                                        success = attempt_auto_application(job)
+                                        if success:
+                                            print(f"🔍 DEBUG: Successfully applied to job {job_id}")
+                                            job.application_status = 'applied'
+                                            job.applied_date = datetime.utcnow()
+                                            job.application_notes = 'Auto-applied successfully'
+                                            applied_count += 1
+                                        else:
+                                            print(f"🔍 DEBUG: Auto-application failed for job {job_id}")
+                                            job.application_status = 'failed'
+                                            job.applied_date = datetime.utcnow()
+                                            job.application_notes = 'Auto-application failed - requires manual application'
+                                            failed_count += 1
+                                else:
+                                    print(f"🔍 DEBUG: Auto-apply disabled - marking job {job_id} for manual application")
+                                    job.application_status = 'ready_to_apply'  # Better status name
+                                    job.applied_date = datetime.utcnow()
+                                    job.application_notes = 'Ready for manual application - click "View on Platform"'
+                                    failed_count += 1  # Count as failed for now, but with better messaging
+                                
+                                print(f"🔍 DEBUG: Committing changes for job {job_id}")
+                                db.session.commit()
+                                print(f"🔍 DEBUG: Successfully updated job {job_id} status to {job.application_status}")
+                            else:
+                                print(f"🔍 DEBUG: Skipping job {job_id} - either not found or already applied/failed")
+                        
+                        total_processed = applied_count + failed_count
+                        print(f"🔍 DEBUG: Final counts - applied: {applied_count}, failed: {failed_count}, total: {total_processed}")
+                        
+                        if applied_count > 0:
+                            message = f'Applied to {applied_count} job(s), {failed_count} require manual application.'
+                            print(f"🔍 DEBUG: Emitting success status: {message}")
+                            socketio.emit('application_status', {
+                                'status': 'completed',
+                                'message': message,
+                                'applied_count': applied_count,
+                                'failed_count': failed_count
+                            })
+                        else:
+                            message = f'Processed {total_processed} job(s). All require manual application via "View on Platform".'
+                            print(f"🔍 DEBUG: Emitting manual application status: {message}")
+                            socketio.emit('application_status', {
+                                'status': 'completed',
+                                'message': message,
+                                'failed_count': failed_count
+                            })
+                            
+                    except Exception as e:
+                        print(f"🔍 DEBUG: Exception in background thread: {str(e)}")
                         socketio.emit('application_status', {
-                            'status': 'completed',
-                            'message': f'Applied to {applied_count} job(s), {failed_count} require manual application.',
-                            'applied_count': applied_count,
-                            'failed_count': failed_count
-                        })
-                    else:
-                        socketio.emit('application_status', {
-                            'status': 'completed',
-                            'message': f'Processed {total_processed} job(s). All require manual application via "View on Platform".',
-                            'failed_count': failed_count
+                            'status': 'error',
+                            'message': f'Application failed: {str(e)}'
                         })
                         
+            def attempt_auto_application(job):
+                """Attempt to automatically apply to a job using browser automation."""
+                try:
+                    print(f"🚀 REAL APPLICATION: Attempting to apply for {job.title} at {job.company}")
+                    
+                    # Import browser automation
+                    from browser_automation import BrowserAutomator
+                    
+                    # Create browser automator instance
+                    automator = BrowserAutomator()
+                    
+                    # Apply to the job
+                    success = automator.apply_to_job(job.url, job.job_board)
+                    
+                    if success:
+                        print(f"✅ REAL APPLICATION: Successfully applied to {job.title}")
+                        return True
+                    else:
+                        print(f"❌ REAL APPLICATION: Failed to apply to {job.title}")
+                        return False
+                        
                 except Exception as e:
-                    socketio.emit('application_status', {
-                        'status': 'error',
-                        'message': f'Application failed: {str(e)}'
-                    })
+                    print(f"🔍 DEBUG: Exception in real auto-application: {str(e)}")
+                    return False
         else:
             # Apply to jobs generally
             def apply_jobs_background():
-                bot = get_bot()
-                bot.apply_to_jobs(max_applications)
+                with app.app_context():  # Fix: Add Flask application context
+                    bot = get_bot()
+                    bot.apply_to_jobs(max_applications)
         
         if job_ids:
             thread = threading.Thread(target=apply_specific_jobs_background)

@@ -52,6 +52,11 @@ function initializeWebSocket() {
         socket.on('job_found', function(data) {
             handleNewJob(data);
         });
+        
+        socket.on('application_status', function(data) {
+            console.log('🔍 DEBUG: Received application_status via WebSocket:', data);
+            handleApplicationStatus(data);
+        });
     }
 }
 
@@ -150,6 +155,24 @@ function updateJobCounter(count) {
     counters.forEach(counter => {
         counter.textContent = count;
     });
+}
+
+function handleApplicationStatus(data) {
+    console.log('🔍 DEBUG: Handling application status:', data);
+    hideLoading();
+    
+    if (data.status === 'completed') {
+        showAlert('success', data.message);
+        // Refresh the page after a delay to show updated statuses
+        setTimeout(() => {
+            console.log('🔍 DEBUG: Refreshing page to show updated job statuses');
+            window.location.reload();
+        }, 2000);
+    } else if (data.status === 'error') {
+        showAlert('error', data.message);
+    } else {
+        console.log('🔍 DEBUG: Unknown application status:', data.status);
+    }
 }
 
 // Utility Functions

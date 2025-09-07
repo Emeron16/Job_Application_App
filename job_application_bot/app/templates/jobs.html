@@ -41,6 +41,7 @@
                     <option value="all" {% if status_filter == 'all' %}selected{% endif %}>All Status</option>
                     <option value="not_applied" {% if status_filter == 'not_applied' %}selected{% endif %}>Not Applied</option>
                     <option value="applied" {% if status_filter == 'applied' %}selected{% endif %}>Applied</option>
+                    <option value="ready_to_apply" {% if status_filter == 'ready_to_apply' %}selected{% endif %}>Ready to Apply</option>
                     <option value="failed" {% if status_filter == 'failed' %}selected{% endif %}>Failed</option>
                 </select>
             </div>
@@ -144,6 +145,8 @@
                                     {% endif %}
                                 {% elif job.application_status == 'failed' %}
                                     <span class="badge bg-danger">Failed</span>
+                                {% elif job.application_status == 'ready_to_apply' %}
+                                    <span class="badge bg-info">Ready to Apply</span>
                                 {% else %}
                                     <span class="badge bg-warning">Pending</span>
                                 {% endif %}
@@ -279,13 +282,18 @@ function toggleAllJobs() {
 
 function applyToSelectedJobs() {
     const selectedJobs = Array.from(document.querySelectorAll('.job-checkbox:checked')).map(cb => cb.value);
+    console.log('🔍 DEBUG: applyToSelectedJobs called');
+    console.log('🔍 DEBUG: Selected job checkboxes:', document.querySelectorAll('.job-checkbox:checked'));
+    console.log('🔍 DEBUG: Selected job IDs:', selectedJobs);
     
     if (selectedJobs.length === 0) {
+        console.log('🔍 DEBUG: No jobs selected');
         alert('Please select at least one job to apply to.');
         return;
     }
     
     if (confirm(`Apply to ${selectedJobs.length} selected jobs?`)) {
+        console.log('🔍 DEBUG: User confirmed bulk application');
         showLoading('Applying to selected jobs...');
         
         fetch('/api/apply_jobs', {
@@ -316,30 +324,42 @@ function applyToSelectedJobs() {
 }
 
 function applyToJob(jobId) {
+    console.log('🔍 DEBUG: applyToJob called with jobId:', jobId);
     if (confirm('Apply to this job?')) {
+        console.log('🔍 DEBUG: User confirmed application');
         showLoading('Applying to job...');
+        
+        const requestData = {
+            job_ids: [jobId],
+            max_applications: 1
+        };
+        console.log('🔍 DEBUG: Sending request data:', requestData);
         
         fetch('/api/apply_jobs', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                job_ids: [jobId],
-                max_applications: 1
-            })
+            body: JSON.stringify(requestData)
         })
-        .then(response => response.json())
+        .then(response => {
+            console.log('🔍 DEBUG: Received response:', response);
+            return response.json();
+        })
         .then(data => {
+            console.log('🔍 DEBUG: Response data:', data);
             hideLoading();
             if (data.status === 'success') {
+                console.log('🔍 DEBUG: Application started successfully');
                 showAlert('success', 'Job application started!');
                 setTimeout(() => location.reload(), 2000);
             } else {
+                console.log('🔍 DEBUG: Application failed:', data.message);
                 showAlert('error', data.message || 'Failed to start job application');
             }
         })
         .catch(error => {
+            console.log('🔍 DEBUG: Request error:', error);
             hideLoading();
             showAlert('error', 'Error: ' + error.message);
         });
