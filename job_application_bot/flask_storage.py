@@ -63,7 +63,9 @@ class FlaskDatabaseStorage:
                             skills_required=str(job.skills_required) if job.skills_required else None,
                             company_size=job.company_size,
                             industry=job.industry,
+                            has_easy_apply=getattr(job, 'has_easy_apply', False),
                             application_status='not_applied',
+                            status_changed_date=datetime.utcnow(),
                             scraped_date=datetime.utcnow()
                         )
                         

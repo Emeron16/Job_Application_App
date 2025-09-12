@@ -31,14 +31,30 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeWebSocket() {
     // Only initialize if Socket.IO is available
     if (typeof io !== 'undefined') {
-        socket = io();
+        // Connect to the specific port and host
+        socket = io('http://127.0.0.1:5002', {
+            transports: ['websocket', 'polling'],
+            timeout: 20000,
+            forceNew: true
+        });
         
         socket.on('connect', function() {
-            console.log('WebSocket connected');
+            console.log('WebSocket connected to port 5002');
         });
         
         socket.on('disconnect', function() {
             console.log('WebSocket disconnected');
+        });
+        
+        socket.on('connect_error', function(error) {
+            console.error('WebSocket connection error:', error);
+        });
+        
+        socket.on('connection_status', function(data) {
+            console.log('Connection status:', data);
+            if (data.status === 'connected') {
+                showAlert('success', 'Real-time updates connected!');
+            }
         });
         
         socket.on('search_status', function(data) {
@@ -47,6 +63,10 @@ function initializeWebSocket() {
             } else {
                 handleSearchStatus(data);
             }
+        });
+        
+        socket.on('screenshot_status', function(data) {
+            handleScreenshotStatus(data);
         });
         
         socket.on('job_found', function(data) {
@@ -65,19 +85,125 @@ function handleSearchStatus(data) {
     
     if (status === 'started') {
         showLiveSearchProgress('Job search started...', 0);
+    } else if (status === 'screenshots_starting') {
+        showLiveSearchProgress(message, jobs_count || 0);
     } else if (status === 'completed') {
-        showAlert('success', message);
-        hideLoading();
-        refreshStats();
-        // Refresh the jobs page if we're on it
-        if (window.location.pathname === '/jobs') {
-            setTimeout(() => window.location.reload(), 2000);
+        if (data.screenshot_collection) {
+            showLiveSearchProgress(message, jobs_count || 0);
+            // Don't hide loading or reload yet - wait for screenshot completion
+        } else {
+            showAlert('success', message);
+            hideLoading();
+            refreshStats();
+            // Refresh the jobs page if we're on it
+            if (window.location.pathname === '/jobs') {
+                setTimeout(() => window.location.reload(), 2000);
+            }
         }
     } else if (status === 'error') {
         showAlert('error', message);
         hideLoading();
     } else if (status === 'progress') {
         showLiveSearchProgress(message, jobs_count || 0);
+    }
+}
+
+function handleScreenshotStatus(data) {
+    const { status, message, total_jobs, completed, successful, failed } = data;
+    
+    if (status === 'started') {
+        showLiveSearchProgress(`📸 Screenshot collection started for ${total_jobs} jobs...`, 0);
+        showScreenshotControls(data.can_background, data.can_stop);
+    } else if (status === 'progress') {
+        showLiveSearchProgress(`📸 ${message} (${completed}/${total_jobs} completed)`, completed);
+        showScreenshotControls(data.can_background, data.can_stop);
+    } else if (status === 'backgrounded') {
+        showAlert('info', message);
+        hideLoading();
+        showScreenshotControls(data.can_background, data.can_stop);
+    } else if (status === 'stopped') {
+        showAlert('warning', message);
+        hideLoading();
+        hideScreenshotControls();
+        // Refresh the jobs page if we're on it
+        if (window.location.pathname === '/jobs') {
+            setTimeout(() => window.location.reload(), 2000);
+        }
+    } else if (status === 'completed') {
+        showAlert('success', `🎉 ${message} Screenshots saved to: ${data.screenshots_dir}`);
+        hideLoading();
+        hideScreenshotControls();
+        refreshStats();
+        // Refresh the jobs page if we're on it
+        if (window.location.pathname === '/jobs') {
+            setTimeout(() => window.location.reload(), 3000);
+        }
+    } else if (status === 'error') {
+        showAlert('error', `Screenshot collection failed: ${message}`);
+        hideLoading();
+        hideScreenshotControls();
+        // Still refresh to show the jobs that were found
+        if (window.location.pathname === '/jobs') {
+            setTimeout(() => window.location.reload(), 2000);
+        }
+    }
+}
+
+function showScreenshotControls(canBackground, canStop) {
+    // Create or update screenshot control buttons
+    let controlsDiv = document.getElementById('screenshotControls');
+    if (!controlsDiv) {
+        controlsDiv = document.createElement('div');
+        controlsDiv.id = 'screenshotControls';
+        controlsDiv.className = 'screenshot-controls mt-3';
+        controlsDiv.style.cssText = 'position: fixed; top: 20px; right: 20px; z-index: 1050; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);';
+        document.body.appendChild(controlsDiv);
+    }
+    
+    let buttonsHtml = '<div class="d-flex gap-2">';
+    
+    if (canBackground) {
+        buttonsHtml += `
+            <button class="btn btn-info btn-sm" onclick="controlScreenshotCollection('background')">
+                <i class="fas fa-minimize me-1"></i>Move to Background
+            </button>
+        `;
+    }
+    
+    if (canStop) {
+        buttonsHtml += `
+            <button class="btn btn-danger btn-sm" onclick="controlScreenshotCollection('stop')">
+                <i class="fas fa-stop me-1"></i>Stop Collection
+            </button>
+        `;
+    }
+    
+    buttonsHtml += '</div>';
+    controlsDiv.innerHTML = buttonsHtml;
+}
+
+function hideScreenshotControls() {
+    const controlsDiv = document.getElementById('screenshotControls');
+    if (controlsDiv) {
+        controlsDiv.remove();
+    }
+}
+
+async function controlScreenshotCollection(action) {
+    try {
+        const data = await makeApiRequest('/api/screenshot_control', {
+            method: 'POST',
+            body: JSON.stringify({ action: action })
+        });
+        
+        if (action === 'background') {
+            showAlert('info', 'Screenshot collection moved to background. Check console for progress updates.');
+        } else if (action === 'stop') {
+            showAlert('warning', 'Screenshot collection stopped.');
+        }
+        
+    } catch (error) {
+        showAlert('error', `Failed to ${action} screenshot collection: ${error.message}`);
     }
 }
 
@@ -89,16 +215,23 @@ function handleNewJob(data) {
     updateJobCounter(data.total_found || 0);
 }
 
-function showLiveSearchProgress(message, jobCount) {
+function showLiveSearchProgress(message, jobCount = 0) {
     const loadingText = document.getElementById('loadingText');
     if (loadingText) {
-        loadingText.textContent = `${message} (${jobCount} jobs found)`;
+        // Only show job count if it's greater than 0 or if the message already contains count info
+        if (jobCount > 0 || message.includes('jobs found') || message.includes('completed')) {
+            loadingText.textContent = message;
+        } else {
+            loadingText.textContent = `${message} (${jobCount} jobs found)`;
+        }
     }
     
     // Update any progress indicators
     const progressElements = document.querySelectorAll('.search-progress');
     progressElements.forEach(el => {
-        el.textContent = `Found ${jobCount} jobs so far...`;
+        if (jobCount > 0) {
+            el.textContent = `Found ${jobCount} jobs so far...`;
+        }
     });
 }
 

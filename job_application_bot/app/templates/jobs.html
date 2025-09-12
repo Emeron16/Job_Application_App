@@ -3,6 +3,98 @@
 {% block title %}Jobs - Job Application Bot{% endblock %}
 
 {% block content %}
+<style>
+.quick-apply-indicator {
+    color: #28a745;
+    font-weight: 500;
+}
+.manual-apply-indicator {
+    color: #17a2b8;
+    font-weight: 500;
+}
+.apply-type-badge {
+    font-size: 0.75em;
+    padding: 0.25em 0.5em;
+    border-radius: 0.375rem;
+}
+
+/* Keywords and Locations Bubble Styles */
+.keywords-bubbles, .locations-bubbles {
+    min-height: 40px;
+    padding: 8px;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: flex-start;
+}
+
+.keyword-bubble, .location-bubble {
+    display: inline-flex;
+    align-items: center;
+    background-color: #0d6efd;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 16px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    gap: 6px;
+    animation: bubbleIn 0.2s ease-out;
+}
+
+.location-bubble {
+    background-color: #198754;
+}
+
+.bubble-remove {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    transition: background-color 0.2s;
+}
+
+.bubble-remove:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.keyword-input-container .input-group,
+.location-input-container .input-group {
+    margin-bottom: 8px;
+}
+
+.empty-bubbles-message {
+    color: #6c757d;
+    font-style: italic;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 24px;
+}
+
+@keyframes bubbleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+</style>
 <div class="row mb-4">
     <div class="col">
         <h1 class="h2 mb-0">
@@ -11,11 +103,20 @@
         <p class="text-muted">Search, filter, and manage your job applications</p>
     </div>
     <div class="col-auto">
-        <button class="btn btn-primary me-2" onclick="searchJobs()">
+        <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#searchJobsModal">
             <i class="fas fa-search me-1"></i>Search New Jobs
         </button>
-        <button class="btn btn-success" onclick="applyToSelectedJobs()">
+        <button class="btn btn-success me-2" onclick="applyToSelectedJobs()">
             <i class="fas fa-paper-plane me-1"></i>Apply to Selected
+        </button>
+        <button class="btn btn-danger me-2" onclick="deleteSelectedJobs()">
+            <i class="fas fa-trash me-1"></i>Delete Selected
+        </button>
+        <button class="btn btn-outline-secondary" onclick="toggleSelectAll()">
+            <i class="fas fa-check-square me-1"></i>Toggle All
+        </button>
+        <button class="btn btn-outline-info ms-2" onclick="collectScreenshotsFromSelected()">
+            <i class="fas fa-camera me-1"></i>Collect Screenshots
         </button>
     </div>
 </div>
@@ -46,7 +147,7 @@
                 </select>
             </div>
             
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <label for="board" class="form-label">Platform</label>
                 <select class="form-select" id="board" name="board">
                     <option value="all" {% if board_filter == 'all' %}selected{% endif %}>All Platforms</option>
@@ -56,7 +157,20 @@
                 </select>
             </div>
             
-            <div class="col-md-3 d-flex align-items-end">
+            <div class="col-md-2">
+                <label for="apply_type" class="form-label">Application Type</label>
+                <select class="form-select" id="apply_type" name="apply_type">
+                    <option value="all" {% if apply_type_filter == 'all' %}selected{% endif %}>All Types</option>
+                    <option value="quick_apply" {% if apply_type_filter == 'quick_apply' %}selected{% endif %}>
+                        <i class="fas fa-bolt"></i> Quick Apply
+                    </option>
+                    <option value="manual_apply" {% if apply_type_filter == 'manual_apply' %}selected{% endif %}>
+                        <i class="fas fa-external-link-alt"></i> Manual Apply
+                    </option>
+                </select>
+            </div>
+            
+            <div class="col-md-2 d-flex align-items-end">
                 <button type="submit" class="btn btn-primary me-2">
                     <i class="fas fa-search me-1"></i>Filter
                 </button>
@@ -68,6 +182,46 @@
     </div>
 </div>
 
+<!-- Quick Stats -->
+{% if jobs.items %}
+<div class="row mb-3">
+    <div class="col-md-6">
+        <div class="card border-success">
+            <div class="card-body text-center py-2">
+                <small class="text-muted d-block">Quick Apply Jobs</small>
+                        <span class="h5 text-success mb-0">
+                            <i class="fas fa-bolt me-1"></i>
+                            {% set quick_apply_jobs = [] %}
+                            {% for job in jobs.items %}
+                                {% if (job.job_board == 'linkedin' and job.has_easy_apply) or (job.job_board == 'indeed' and job.has_easy_apply) %}
+                                    {% set _ = quick_apply_jobs.append(job) %}
+                                {% endif %}
+                            {% endfor %}
+                            {{ quick_apply_jobs | length }}
+                        </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card border-info">
+            <div class="card-body text-center py-2">
+                <small class="text-muted d-block">Manual Apply Jobs</small>
+                        <span class="h5 text-info mb-0">
+                            <i class="fas fa-external-link-alt me-1"></i>
+                            {% set manual_apply_jobs = [] %}
+                            {% for job in jobs.items %}
+                                {% if not ((job.job_board == 'linkedin' and job.has_easy_apply) or (job.job_board == 'indeed' and job.has_easy_apply)) %}
+                                    {% set _ = manual_apply_jobs.append(job) %}
+                                {% endif %}
+                            {% endfor %}
+                            {{ manual_apply_jobs | length }}
+                        </span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
 <!-- Jobs Table -->
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
@@ -75,6 +229,15 @@
             <i class="fas fa-list me-2"></i>Job Postings
             {% if jobs.total %}
                 <span class="badge bg-secondary ms-2">{{ jobs.total }} total</span>
+                {% if apply_type_filter == 'quick_apply' %}
+                    <span class="badge bg-success ms-1">
+                        <i class="fas fa-bolt me-1"></i>Quick Apply Only
+                    </span>
+                {% elif apply_type_filter == 'manual_apply' %}
+                    <span class="badge bg-info ms-1">
+                        <i class="fas fa-external-link-alt me-1"></i>Manual Apply Only
+                    </span>
+                {% endif %}
             {% endif %}
         </h5>
         
@@ -108,7 +271,7 @@
                     </thead>
                     <tbody>
                         {% for job in jobs.items %}
-                        <tr>
+                        <tr id="job-row-{{ job.id }}">
                             <td>
                                 <input type="checkbox" class="job-checkbox" value="{{ job.id }}" 
                                        {% if job.application_status != 'not_applied' %}disabled{% endif %}>
@@ -136,6 +299,16 @@
                                     <i class="fab fa-{{ job.job_board }} me-1"></i>
                                     {{ job.job_board|title }}
                                 </span>
+                                <br>
+                                {% if (job.job_board == 'linkedin' and job.has_easy_apply) or (job.job_board == 'indeed' and job.has_easy_apply) %}
+                                    <small class="quick-apply-indicator">
+                                        <i class="fas fa-bolt me-1"></i>Quick Apply
+                                    </small>
+                                {% else %}
+                                    <small class="manual-apply-indicator">
+                                        <i class="fas fa-external-link-alt me-1"></i>Manual Apply
+                                    </small>
+                                {% endif %}
                             </td>
                             <td>
                                 {% if job.application_status == 'applied' %}
@@ -168,10 +341,25 @@
                                     <button class="btn btn-outline-success btn-sm" onclick="applyToJob({{ job.id }})" title="Apply Now">
                                         <i class="fas fa-paper-plane"></i>
                                     </button>
+                                    <button class="btn btn-outline-primary btn-sm" onclick="markAsApplied({{ job.id }})" title="Mark as Applied">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                    {% elif job.application_status == 'failed' %}
+                                    <button class="btn btn-outline-primary btn-sm" onclick="markAsApplied({{ job.id }})" title="Mark as Applied">
+                                        <i class="fas fa-check"></i>
+                                    </button>
                                     {% endif %}
                                     
                                     <button class="btn btn-outline-info btn-sm" onclick="viewJobDetails({{ job.id }})" title="View Details">
                                         <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    
+                                    <button class="btn btn-outline-secondary btn-sm" onclick="openJobNotes({{ job.id }})" title="Add Notes">
+                                        <i class="fas fa-sticky-note"></i>
+                                    </button>
+                                    
+                                    <button class="btn btn-outline-danger btn-sm" onclick="deleteJob({{ job.id }})" title="Delete Job">
+                                        <i class="fas fa-trash"></i>
                                     </button>
                                 </div>
                             </td>
@@ -446,5 +634,847 @@ function viewJobDetails(jobId) {
             `;
         });
 }
+
+function deleteJob(jobId) {
+    if (!confirm('Are you sure you want to delete this job posting? This action cannot be undone.')) {
+        return;
+    }
+    
+    // Show loading state
+    const jobRow = document.getElementById(`job-row-${jobId}`);
+    const deleteBtn = jobRow.querySelector('.btn-outline-danger');
+    const originalContent = deleteBtn.innerHTML;
+    deleteBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+    deleteBtn.disabled = true;
+    
+    fetch(`/api/jobs/${jobId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            // Remove the row with animation
+            jobRow.style.transition = 'opacity 0.5s';
+            jobRow.style.opacity = '0';
+            setTimeout(() => {
+                jobRow.remove();
+                showAlert('success', data.message || 'Job deleted successfully');
+                
+                // Update stats if available
+                if (typeof refreshStats === 'function') {
+                    refreshStats();
+                }
+            }, 500);
+        } else {
+            throw new Error(data.message || 'Failed to delete job');
+        }
+    })
+    .catch(error => {
+        console.error('Delete job error:', error);
+        showAlert('error', 'Failed to delete job: ' + error.message);
+        
+        // Restore button state
+        deleteBtn.innerHTML = originalContent;
+        deleteBtn.disabled = false;
+    });
+}
+
+function markAsApplied(jobId) {
+    if (!confirm('Mark this job as applied? This will update the job status to "applied".')) {
+        return;
+    }
+    
+    // Show loading state
+    const jobRow = document.getElementById(`job-row-${jobId}`);
+    const markBtn = jobRow.querySelector('.btn-outline-primary[title="Mark as Applied"]');
+    const originalContent = markBtn.innerHTML;
+    markBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+    markBtn.disabled = true;
+    
+    fetch(`/api/jobs/${jobId}/mark-applied`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            // Update the status badge
+            const statusBadge = jobRow.querySelector('.badge');
+            statusBadge.className = 'badge bg-success';
+            statusBadge.textContent = 'Applied';
+            
+            // Remove the action buttons for applied jobs
+            const applyBtn = jobRow.querySelector('.btn-outline-success');
+            const markAppliedBtn = jobRow.querySelector('.btn-outline-primary[title="Mark as Applied"]');
+            if (applyBtn) applyBtn.remove();
+            if (markAppliedBtn) markAppliedBtn.remove();
+            
+            // Disable the checkbox
+            const checkbox = jobRow.querySelector('.job-checkbox');
+            if (checkbox) checkbox.disabled = true;
+            
+            showAlert('success', data.message || 'Job marked as applied successfully');
+            
+            // Update stats if available
+            if (typeof refreshStats === 'function') {
+                refreshStats();
+            }
+        } else {
+            throw new Error(data.message || 'Failed to mark job as applied');
+        }
+    })
+    .catch(error => {
+        console.error('Mark as applied error:', error);
+        showAlert('error', 'Failed to mark job as applied: ' + error.message);
+        
+        // Restore button state
+        markBtn.innerHTML = originalContent;
+        markBtn.disabled = false;
+    });
+}
+
+function toggleSelectAll() {
+    const checkboxes = document.querySelectorAll('.job-checkbox:not([disabled])');
+    const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+    
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = !allChecked;
+    });
+    
+    updateSelectedCount();
+}
+
+function updateSelectedCount() {
+    const selected = document.querySelectorAll('.job-checkbox:checked').length;
+    const toggleBtn = document.querySelector('button[onclick="toggleSelectAll()"]');
+    
+    if (selected > 0) {
+        toggleBtn.innerHTML = `<i class="fas fa-check-square me-1"></i>Unselect All (${selected})`;
+    } else {
+        toggleBtn.innerHTML = '<i class="fas fa-check-square me-1"></i>Select All';
+    }
+}
+
+function deleteSelectedJobs() {
+    const selectedCheckboxes = document.querySelectorAll('.job-checkbox:checked');
+    
+    if (selectedCheckboxes.length === 0) {
+        showAlert('warning', 'Please select jobs to delete');
+        return;
+    }
+    
+    const jobCount = selectedCheckboxes.length;
+    if (!confirm(`Are you sure you want to delete ${jobCount} selected job(s)? This action cannot be undone.`)) {
+        return;
+    }
+    
+    const jobIds = Array.from(selectedCheckboxes).map(cb => cb.value);
+    
+    // Show loading state
+    const deleteBtn = document.querySelector('button[onclick="deleteSelectedJobs()"]');
+    const originalContent = deleteBtn.innerHTML;
+    deleteBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Deleting...';
+    deleteBtn.disabled = true;
+    
+    fetch('/api/jobs/bulk-delete', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            job_ids: jobIds
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            // Remove the rows with animation
+            selectedCheckboxes.forEach(checkbox => {
+                const jobRow = checkbox.closest('tr');
+                jobRow.style.transition = 'opacity 0.5s';
+                jobRow.style.opacity = '0';
+                setTimeout(() => {
+                    jobRow.remove();
+                }, 500);
+            });
+            
+            showAlert('success', data.message || `Successfully deleted ${jobCount} job(s)`);
+            updateSelectedCount();
+            
+            // Update stats if available
+            if (typeof refreshStats === 'function') {
+                refreshStats();
+            }
+        } else {
+            throw new Error(data.message || 'Failed to delete jobs');
+        }
+    })
+    .catch(error => {
+        console.error('Bulk delete error:', error);
+        showAlert('error', 'Failed to delete jobs: ' + error.message);
+    })
+    .finally(() => {
+        // Restore button state
+        deleteBtn.innerHTML = originalContent;
+        deleteBtn.disabled = false;
+    });
+}
+
+// Add event listeners for checkbox changes
+document.addEventListener('DOMContentLoaded', function() {
+    // Update count when checkboxes change
+    document.addEventListener('change', function(e) {
+        if (e.target.classList.contains('job-checkbox')) {
+            updateSelectedCount();
+        }
+    });
+    
+    // Initial count update
+    updateSelectedCount();
+});
 </script>
+
+<!-- Search Jobs Modal -->
+<div class="modal fade" id="searchJobsModal" tabindex="-1" aria-labelledby="searchJobsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="searchJobsModalLabel">
+                    <i class="fas fa-search me-2"></i>Search New Jobs
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="searchJobsForm">
+                <div class="modal-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        These settings will be saved as your job search preferences
+                    </div>
+                    
+                    <!-- Keywords and Location -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Job Keywords</label>
+                            <div class="keyword-input-container">
+                                <div class="input-group mb-2">
+                                    <input type="text" class="form-control" id="keyword_input" 
+                                           placeholder="e.g. Software Engineer, Python Developer">
+                                    <button type="button" class="btn btn-outline-primary" id="add_keyword_btn">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                                <div id="keywords_container" class="keywords-bubbles">
+                                    <!-- Keyword bubbles will appear here -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Locations</label>
+                            <div class="location-input-container">
+                                <div class="input-group mb-2">
+                                    <input type="text" class="form-control" id="location_input" 
+                                           placeholder="e.g. New York, Remote, San Francisco">
+                                    <button type="button" class="btn btn-outline-primary" id="add_location_btn">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                                <div id="locations_container" class="locations-bubbles">
+                                    <!-- Location bubbles will appear here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Job Boards and Limit -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Job Boards</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="board_linkedin" name="job_boards" value="linkedin" checked>
+                                <label class="form-check-label" for="board_linkedin">LinkedIn</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="board_indeed" name="job_boards" value="indeed" checked>
+                                <label class="form-check-label" for="board_indeed">Indeed</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="board_glassdoor" name="job_boards" value="glassdoor">
+                                <label class="form-check-label" for="board_glassdoor">Glassdoor</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="job_limit" class="form-label">Jobs per Search</label>
+                            <select class="form-select" id="job_limit" name="job_limit">
+                                <option value="10">10 jobs</option>
+                                <option value="20" selected>20 jobs</option>
+                                <option value="50">50 jobs</option>
+                                <option value="100">100 jobs</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- ML Training Options -->
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <div class="card bg-light">
+                                <div class="card-body py-3">
+                                    <h6 class="card-title mb-2">
+                                        <i class="fas fa-robot me-2 text-info"></i>ML Training Options
+                                    </h6>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="collect_screenshots" name="collect_screenshots">
+                                        <label class="form-check-label" for="collect_screenshots">
+                                            <strong>Collect Screenshots for ML Training</strong>
+                                            <br>
+                                            <small class="text-muted">
+                                                Automatically capture screenshots of job pages and application forms to improve AI automation. 
+                                                This runs in the background after job search completes.
+                                            </small>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience Levels and Job Types -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Experience Level</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="exp_entry" name="experience_levels" value="entry">
+                                <label class="form-check-label" for="exp_entry">Entry Level</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="exp_mid" name="experience_levels" value="mid" checked>
+                                <label class="form-check-label" for="exp_mid">Mid Level</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="exp_senior" name="experience_levels" value="senior" checked>
+                                <label class="form-check-label" for="exp_senior">Senior Level</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Job Type</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="type_fulltime" name="job_types" value="full-time" checked>
+                                <label class="form-check-label" for="type_fulltime">Full-time</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="type_contract" name="job_types" value="contract">
+                                <label class="form-check-label" for="type_contract">Contract</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="type_parttime" name="job_types" value="part-time">
+                                <label class="form-check-label" for="type_parttime">Part-time</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Date Posted and Salary -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="date_posted" class="form-label">Date Posted</label>
+                            <select class="form-select" id="date_posted" name="date_posted">
+                                <option value="today">Today</option>
+                                <option value="week" selected>Past Week</option>
+                                <option value="month">Past Month</option>
+                                <option value="any">Any Time</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="salary_min" class="form-label">Minimum Salary</label>
+                            <input type="number" class="form-control" id="salary_min" name="salary_min" 
+                                   placeholder="e.g. 80000" min="0" step="1000">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search me-1"></i>Start Job Search
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Job Notes Modal -->
+<div class="modal fade" id="jobNotesModal" tabindex="-1" aria-labelledby="jobNotesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="jobNotesModalLabel">
+                    <i class="fas fa-sticky-note me-2"></i>Job Notes
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="jobNotesForm">
+                <div class="modal-body">
+                    <div id="jobNotesJobInfo" class="alert alert-light mb-3">
+                        <!-- Job info will be populated here -->
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="application_notes" class="form-label">Application Notes</label>
+                                <textarea class="form-control" id="application_notes" name="application_notes" 
+                                          rows="4" placeholder="Notes about your application, interview process, etc."></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="recruiter_notes" class="form-label">Recruiter Communications</label>
+                                <textarea class="form-control" id="recruiter_notes" name="recruiter_notes" 
+                                          rows="4" placeholder="Notes about recruiter contacts, follow-ups, etc."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-12">
+                            <small class="text-muted">
+                                <i class="fas fa-info-circle me-1"></i>
+                                These notes are private and only visible to you. Use them to track important details about this job opportunity.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-1"></i>Save Notes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+// Global arrays to store keywords and locations
+let keywords = [];
+let locations = [];
+
+// Load current preferences into the search modal
+document.addEventListener('DOMContentLoaded', function() {
+    loadSearchPreferences();
+    initializeBubbleInputs();
+    
+    // Handle search form submission
+    document.getElementById('searchJobsForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        performJobSearch();
+    });
+});
+
+function initializeBubbleInputs() {
+    // Add keyword functionality
+    const keywordInput = document.getElementById('keyword_input');
+    const addKeywordBtn = document.getElementById('add_keyword_btn');
+    
+    addKeywordBtn.addEventListener('click', function() {
+        addKeyword();
+    });
+    
+    keywordInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            addKeyword();
+        }
+    });
+    
+    // Add location functionality
+    const locationInput = document.getElementById('location_input');
+    const addLocationBtn = document.getElementById('add_location_btn');
+    
+    addLocationBtn.addEventListener('click', function() {
+        addLocation();
+    });
+    
+    locationInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            addLocation();
+        }
+    });
+}
+
+function addKeyword() {
+    const input = document.getElementById('keyword_input');
+    const keyword = input.value.trim();
+    
+    if (keyword && !keywords.includes(keyword)) {
+        keywords.push(keyword);
+        input.value = '';
+        renderKeywords();
+    }
+}
+
+function addLocation() {
+    const input = document.getElementById('location_input');
+    const location = input.value.trim();
+    
+    if (location && !locations.includes(location)) {
+        locations.push(location);
+        input.value = '';
+        renderLocations();
+    }
+}
+
+function removeKeyword(keyword) {
+    keywords = keywords.filter(k => k !== keyword);
+    renderKeywords();
+}
+
+function removeLocation(location) {
+    locations = locations.filter(l => l !== location);
+    renderLocations();
+}
+
+function renderKeywords() {
+    const container = document.getElementById('keywords_container');
+    
+    if (keywords.length === 0) {
+        container.innerHTML = '<div class="empty-bubbles-message">No keywords added yet</div>';
+        return;
+    }
+    
+    container.innerHTML = '';
+    keywords.forEach((keyword, index) => {
+        const bubbleDiv = document.createElement('div');
+        bubbleDiv.className = 'keyword-bubble';
+        bubbleDiv.innerHTML = `
+            <span>${keyword}</span>
+            <button type="button" class="bubble-remove">
+                <i class="fas fa-times"></i>
+            </button>
+        `;
+        
+        // Add event listener to the remove button
+        const removeBtn = bubbleDiv.querySelector('.bubble-remove');
+        removeBtn.addEventListener('click', () => removeKeyword(keyword));
+        
+        container.appendChild(bubbleDiv);
+    });
+}
+
+function renderLocations() {
+    const container = document.getElementById('locations_container');
+    
+    if (locations.length === 0) {
+        container.innerHTML = '<div class="empty-bubbles-message">No locations added yet</div>';
+        return;
+    }
+    
+    container.innerHTML = '';
+    locations.forEach((location, index) => {
+        const bubbleDiv = document.createElement('div');
+        bubbleDiv.className = 'location-bubble';
+        bubbleDiv.innerHTML = `
+            <span>${location}</span>
+            <button type="button" class="bubble-remove">
+                <i class="fas fa-times"></i>
+            </button>
+        `;
+        
+        // Add event listener to the remove button
+        const removeBtn = bubbleDiv.querySelector('.bubble-remove');
+        removeBtn.addEventListener('click', () => removeLocation(location));
+        
+        container.appendChild(bubbleDiv);
+    });
+}
+
+function loadSearchPreferences() {
+    // Load preferences from the server
+    fetch('/api/preferences')
+        .then(response => response.json())
+        .then(prefs => {
+            if (prefs) {
+                // Load keywords and locations into bubble arrays
+                if (prefs.keywords) {
+                    keywords = Array.isArray(prefs.keywords) ? prefs.keywords : 
+                              (typeof prefs.keywords === 'string' ? prefs.keywords.split(',').map(k => k.trim()).filter(k => k) : []);
+                }
+                if (prefs.locations) {
+                    locations = Array.isArray(prefs.locations) ? prefs.locations : 
+                               (typeof prefs.locations === 'string' ? prefs.locations.split(',').map(l => l.trim()).filter(l => l) : []);
+                }
+                
+                // Render the bubbles
+                renderKeywords();
+                renderLocations();
+                
+                // Load job limit
+                if (prefs.job_search_limit) {
+                    document.getElementById('job_limit').value = prefs.job_search_limit;
+                }
+                
+                // Load date posted
+                if (prefs.date_posted) {
+                    document.getElementById('date_posted').value = prefs.date_posted;
+                }
+                
+                // Load salary
+                if (prefs.salary_min) {
+                    document.getElementById('salary_min').value = prefs.salary_min;
+                }
+                
+                // Load experience levels
+                let expLevels = [];
+                try {
+                    expLevels = prefs.experience_levels ? JSON.parse(prefs.experience_levels) : [];
+                } catch (e) {
+                    console.log('Error parsing experience levels:', e);
+                    expLevels = Array.isArray(prefs.experience_levels) ? prefs.experience_levels : [];
+                }
+                document.getElementById('exp_entry').checked = expLevels.includes('entry');
+                document.getElementById('exp_mid').checked = expLevels.includes('mid');
+                document.getElementById('exp_senior').checked = expLevels.includes('senior');
+                
+                // Load job types
+                let jobTypes = [];
+                try {
+                    jobTypes = prefs.job_types ? JSON.parse(prefs.job_types) : [];
+                } catch (e) {
+                    console.log('Error parsing job types:', e);
+                    jobTypes = Array.isArray(prefs.job_types) ? prefs.job_types : [];
+                }
+                document.getElementById('type_fulltime').checked = jobTypes.includes('full-time');
+                document.getElementById('type_contract').checked = jobTypes.includes('contract');
+                document.getElementById('type_parttime').checked = jobTypes.includes('part-time');
+            }
+        })
+        .catch(error => {
+            console.error('Error loading preferences:', error);
+        });
+}
+
+function performJobSearch() {
+    const form = document.getElementById('searchJobsForm');
+    const formData = new FormData(form);
+    
+    // Validate that we have keywords and locations
+    if (keywords.length === 0) {
+        alert('Please add at least one job keyword');
+        return;
+    }
+    
+    if (locations.length === 0) {
+        alert('Please add at least one location');
+        return;
+    }
+    
+    // Get form data
+    const jobBoards = formData.getAll('job_boards');
+    const jobLimit = parseInt(formData.get('job_limit'));
+    const collectScreenshots = formData.get('collect_screenshots') === 'on';
+    const experienceLevels = formData.getAll('experience_levels');
+    const jobTypes = formData.getAll('job_types');
+    const datePosted = formData.get('date_posted');
+    const salaryMin = formData.get('salary_min') ? parseInt(formData.get('salary_min')) : null;
+    
+    // Save preferences first
+    const prefsData = {
+        keywords: JSON.stringify(keywords),
+        locations: JSON.stringify(locations),
+        experience_levels: JSON.stringify(experienceLevels),
+        job_types: JSON.stringify(jobTypes),
+        date_posted: datePosted,
+        salary_min: salaryMin,
+        job_search_limit: jobLimit
+    };
+    
+    // Save preferences to server
+    fetch('/preferences', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams(prefsData)
+    })
+    .then(() => {
+        // Close modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('searchJobsModal'));
+        modal.hide();
+        
+        // Show loading indicator
+        showLoading(`Searching for jobs across ${jobBoards.join(', ')}...`);
+        
+        // Start job search with selected boards and limit
+        const searchData = {
+            job_boards: jobBoards,
+            job_limit: jobLimit,
+            collect_screenshots: collectScreenshots
+        };
+        
+        fetch('/api/search_jobs', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(searchData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                showAlert('success', 'Job search started! Results will appear shortly.');
+                // Loading indicator will be hidden by SocketIO events
+            } else {
+                hideLoading();
+                showAlert('error', 'Failed to start job search: ' + (data.message || 'Unknown error'));
+            }
+        })
+        .catch(error => {
+            console.error('Search error:', error);
+            hideLoading();
+            showAlert('error', 'Failed to start job search: ' + error.message);
+        });
+    })
+    .catch(error => {
+        console.error('Preferences save error:', error);
+        hideLoading();
+        showAlert('error', 'Failed to save preferences: ' + error.message);
+    });
+}
+
+// Screenshot collection functionality
+function collectScreenshotsFromSelected() {
+    const selectedJobs = Array.from(document.querySelectorAll('.job-checkbox:checked')).map(cb => parseInt(cb.value));
+    
+    if (selectedJobs.length === 0) {
+        showAlert('warning', 'Please select at least one job to collect screenshots from.');
+        return;
+    }
+    
+    if (!confirm(`Collect screenshots from ${selectedJobs.length} selected jobs for ML training?`)) {
+        return;
+    }
+    
+    showLoading(`Starting screenshot collection for ${selectedJobs.length} jobs...`);
+    
+    fetch('/api/collect_screenshots', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            job_ids: selectedJobs,
+            max_screenshots: selectedJobs.length
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            showAlert('success', data.message);
+        } else {
+            showAlert('error', data.message);
+            hideLoading();
+        }
+    })
+    .catch(error => {
+        console.error('Screenshot collection error:', error);
+        hideLoading();
+        showAlert('error', 'Failed to start screenshot collection: ' + error.message);
+    });
+}
+
+// Job Notes functionality
+let currentJobId = null;
+
+function openJobNotes(jobId) {
+    currentJobId = jobId;
+    
+    // Load job details and notes
+    fetch(`/api/job_details/${jobId}`)
+        .then(response => response.json())
+        .then(job => {
+            // Update job info in modal
+            document.getElementById('jobNotesJobInfo').innerHTML = `
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="mb-1">${job.title}</h6>
+                        <small class="text-muted">${job.company} • ${job.location}</small>
+                    </div>
+                    <span class="badge bg-${job.application_status === 'applied' ? 'success' : job.application_status === 'failed' ? 'danger' : 'warning'}">
+                        ${job.application_status.charAt(0).toUpperCase() + job.application_status.slice(1).replace('_', ' ')}
+                    </span>
+                </div>
+            `;
+            
+            // Load existing notes
+            document.getElementById('application_notes').value = job.application_notes || '';
+            document.getElementById('recruiter_notes').value = job.recruiter_notes || '';
+            
+            // Show modal
+            const modal = new bootstrap.Modal(document.getElementById('jobNotesModal'));
+            modal.show();
+        })
+        .catch(error => {
+            console.error('Error loading job details:', error);
+            showAlert('error', 'Failed to load job details');
+        });
+}
+
+// Handle notes form submission
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('jobNotesForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        saveJobNotes();
+    });
+});
+
+function saveJobNotes() {
+    if (!currentJobId) return;
+    
+    const applicationNotes = document.getElementById('application_notes').value;
+    const recruiterNotes = document.getElementById('recruiter_notes').value;
+    
+    const saveBtn = document.querySelector('#jobNotesModal .btn-primary');
+    const originalContent = saveBtn.innerHTML;
+    saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Saving...';
+    saveBtn.disabled = true;
+    
+    fetch(`/api/jobs/${currentJobId}/notes`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            application_notes: applicationNotes,
+            recruiter_notes: recruiterNotes
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            // Close modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById('jobNotesModal'));
+            modal.hide();
+            
+            showAlert('success', 'Notes saved successfully!');
+        } else {
+            throw new Error(data.message || 'Failed to save notes');
+        }
+    })
+    .catch(error => {
+        console.error('Save notes error:', error);
+        showAlert('error', 'Failed to save notes: ' + error.message);
+    })
+    .finally(() => {
+        // Restore button state
+        saveBtn.innerHTML = originalContent;
+        saveBtn.disabled = false;
+    });
+}
+</script>
+
 {% endblock %}

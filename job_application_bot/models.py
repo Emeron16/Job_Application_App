@@ -38,6 +38,7 @@ class JobPosting:
     skills_required: List[str] = field(default_factory=list)
     company_size: str = ""
     industry: str = ""
+    has_easy_apply: bool = False  # Whether job has Easy Apply option
     
     # Application tracking
     application_status: ApplicationStatus = ApplicationStatus.NOT_APPLIED

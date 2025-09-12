@@ -26,7 +26,6 @@ class ApplicationConfig:
     """Configuration for application automation."""
     resume_path: str = "documents/resume.pdf"
     cover_letter_path: str = "documents/cover_letter.txt"
-    daily_application_limit: int = 10
     auto_apply_enabled: bool = False
     apply_to_external_sites: bool = False
 

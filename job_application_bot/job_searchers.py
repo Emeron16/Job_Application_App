@@ -52,21 +52,32 @@ class LinkedInSearcher(JobSearcher):
     def _setup_driver(self):
         """Setup Chrome driver for LinkedIn scraping."""
         try:
-            chrome_options = Options()
-            chrome_options.add_argument("--headless")
-            chrome_options.add_argument("--no-sandbox")
-            chrome_options.add_argument("--disable-dev-shm-usage")
-            chrome_options.add_argument("--disable-gpu")
-            chrome_options.add_argument("--window-size=1920,1080")
-            chrome_options.add_argument(f"--user-agent={self.ua.random}")
-            
-            self.driver = webdriver.Chrome(
-                service=webdriver.chrome.service.Service(ChromeDriverManager().install()),
-                options=chrome_options
-            )
-            self.logger.info("LinkedIn Chrome driver initialized successfully")
+            # Use the improved WebDriver helper
+            try:
+                from webdriver_helper import setup_chrome_driver
+                self.driver = setup_chrome_driver(headless=True)
+                self.logger.info("LinkedIn Chrome driver initialized successfully with webdriver_helper")
+            except ImportError:
+                # Fallback to original method
+                chrome_options = Options()
+                chrome_options.add_argument("--headless")
+                chrome_options.add_argument("--no-sandbox")
+                chrome_options.add_argument("--disable-dev-shm-usage")
+                chrome_options.add_argument("--disable-gpu")
+                chrome_options.add_argument("--window-size=1920,1080")
+                chrome_options.add_argument(f"--user-agent={self.ua.random}")
+                
+                self.driver = webdriver.Chrome(
+                    service=webdriver.chrome.service.Service(ChromeDriverManager().install()),
+                    options=chrome_options
+                )
+                self.logger.info("LinkedIn Chrome driver initialized successfully with fallback method")
         except Exception as e:
             self.logger.error(f"Failed to setup Chrome driver for LinkedIn: {e}")
+            self.driver = None
+            # Log more details for debugging
+            import traceback
+            self.logger.error(f"LinkedIn WebDriver setup traceback: {traceback.format_exc()}")
     
     def search_jobs(self, keywords: str, location: str, job_limit: int = 20, **filters) -> SearchResult:
         """Search for jobs on LinkedIn."""
@@ -78,7 +89,9 @@ class LinkedInSearcher(JobSearcher):
         )
         
         if not self.driver:
-            search_result.errors.append("Chrome driver not available")
+            error_msg = "Chrome driver not available for LinkedIn search"
+            self.logger.error(error_msg)
+            search_result.errors.append(error_msg)
             return search_result
         
         try:
@@ -97,15 +110,53 @@ class LinkedInSearcher(JobSearcher):
             self.logger.info(f"Searching LinkedIn: {search_url}")
             
             self.driver.get(search_url)
-            time.sleep(3)  # Wait for page load
+            time.sleep(5)  # Longer wait for page load
             
-            # Wait for job cards to load
-            WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, ".job-search-card"))
-            )
+            # Check if we're blocked or redirected
+            current_url = self.driver.current_url
+            if "linkedin.com/jobs" not in current_url:
+                error_msg = f"LinkedIn redirected to: {current_url}"
+                self.logger.warning(error_msg)
+                search_result.errors.append(error_msg)
             
-            # Extract job postings
-            job_cards = self.driver.find_elements(By.CSS_SELECTOR, ".job-search-card")
+            # Check for common blocking patterns
+            page_source = self.driver.page_source.lower()
+            if "blocked" in page_source or "captcha" in page_source or "verification" in page_source:
+                error_msg = "LinkedIn access blocked or verification required"
+                self.logger.warning(error_msg)
+                search_result.errors.append(error_msg)
+            
+            # Wait for job cards to load - try multiple selectors
+            job_cards = []
+            possible_selectors = [
+                ".job-search-card",
+                ".jobs-search-results__list-item", 
+                ".result-card",
+                "[data-entity-urn*='job']",
+                ".jobs-search__results-list li",
+                ".job-result-card"
+            ]
+            
+            for selector in possible_selectors:
+                try:
+                    WebDriverWait(self.driver, 5).until(
+                        EC.presence_of_element_located((By.CSS_SELECTOR, selector))
+                    )
+                    job_cards = self.driver.find_elements(By.CSS_SELECTOR, selector)
+                    if job_cards:
+                        self.logger.info(f"Found {len(job_cards)} job cards using selector: {selector}")
+                        break
+                except Exception as e:
+                    continue
+            
+            if not job_cards:
+                self.logger.warning("No job cards found with any selector")
+                # Take a screenshot for debugging
+                try:
+                    self.driver.save_screenshot("linkedin_debug.png")
+                    self.logger.info("Saved debug screenshot as linkedin_debug.png")
+                except:
+                    pass
             
             for card in job_cards[:job_limit]:  # Limit to specified number of results
                 try:
@@ -135,46 +186,61 @@ class LinkedInSearcher(JobSearcher):
     def _extract_linkedin_job(self, card) -> Optional[JobPosting]:
         """Extract job details from LinkedIn job card."""
         try:
-            # Try multiple selectors for title and URL
+            # Use more robust element finding with multiple fallbacks
+            title = "Unknown Title"
+            url = "https://linkedin.com/jobs"
+            
+            # Try to find title and URL using multiple approaches
             title_selectors = [
+                "h3 a",
+                "a[data-tracking-control-name*='job_card']",
                 ".base-search-card__title a",
                 ".job-search-card__title a", 
                 "[data-entity-urn] h3 a",
                 ".base-card__full-link",
-                "h3 a"
+                "a[href*='/jobs/view/']"
             ]
             
             title_element = None
             for selector in title_selectors:
                 try:
-                    title_element = card.find_element(By.CSS_SELECTOR, selector)
-                    break
-                except NoSuchElementException:
+                    elements = card.find_elements(By.CSS_SELECTOR, selector)
+                    if elements:
+                        title_element = elements[0]
+                        break
+                except Exception as e:
+                    # Log the specific selector that failed for debugging
+                    self.logger.debug(f"Selector '{selector}' failed: {e}")
                     continue
                     
-            if not title_element:
-                self.logger.warning("Could not find title element in LinkedIn job card")
-                return None
-                
-            title = title_element.text.strip()
-            url = title_element.get_attribute("href") or "https://linkedin.com/jobs"
+            if title_element:
+                try:
+                    title = title_element.text.strip() or "Unknown Title"
+                    url = title_element.get_attribute("href") or "https://linkedin.com/jobs"
+                except Exception as e:
+                    self.logger.debug(f"Error extracting title/URL: {e}")
+            else:
+                self.logger.warning("Could not find title element in LinkedIn job card, using fallback")
             
             # Try multiple selectors for company
             company_selectors = [
+                "h4 a",
                 ".base-search-card__subtitle a",
                 ".job-search-card__subtitle-link",
                 ".base-search-card__subtitle",
                 "[data-entity-urn] h4 a",
-                "h4 a"
+                "a[data-tracking-control-name*='company_name']"
             ]
             
             company = "Unknown Company"
             for selector in company_selectors:
                 try:
-                    company_element = card.find_element(By.CSS_SELECTOR, selector)
-                    company = company_element.text.strip()
-                    break
-                except NoSuchElementException:
+                    elements = card.find_elements(By.CSS_SELECTOR, selector)
+                    if elements:
+                        company = elements[0].text.strip() or "Unknown Company"
+                        break
+                except Exception as e:
+                    self.logger.debug(f"Company selector '{selector}' failed: {e}")
                     continue
             
             # Try multiple selectors for location
@@ -188,10 +254,12 @@ class LinkedInSearcher(JobSearcher):
             location = "Remote"
             for selector in location_selectors:
                 try:
-                    location_element = card.find_element(By.CSS_SELECTOR, selector)
-                    location = location_element.text.strip()
-                    break
-                except NoSuchElementException:
+                    elements = card.find_elements(By.CSS_SELECTOR, selector)
+                    if elements:
+                        location = elements[0].text.strip() or "Remote"
+                        break
+                except Exception as e:
+                    self.logger.debug(f"Location selector '{selector}' failed: {e}")
                     continue
             
             # Try to get posting date
@@ -212,6 +280,36 @@ class LinkedInSearcher(JobSearcher):
             
             job_id = self._generate_job_id(title, company, url)
             
+            # Check for Easy Apply button in the job card
+            has_easy_apply = False
+            easy_apply_selectors = [
+                'button[aria-label*="Easy Apply"]',
+                '.jobs-apply-button',
+                '.easy-apply-button',
+                'button[data-control-name="jobdetails_topcard_inapply"]'
+            ]
+            
+            for selector in easy_apply_selectors:
+                try:
+                    elements = card.find_elements(By.CSS_SELECTOR, selector)
+                    if elements:
+                        has_easy_apply = True
+                        break
+                except Exception as e:
+                    self.logger.debug(f"Easy apply selector '{selector}' failed: {e}")
+                    continue
+            
+            # Also check for "Easy Apply" text in buttons using XPath
+            if not has_easy_apply:
+                try:
+                    xpath = ".//button[contains(text(), 'Easy Apply')]"
+                    elements = card.find_elements(By.XPATH, xpath)
+                    if elements:
+                        has_easy_apply = True
+                except Exception as e:
+                    self.logger.debug(f"Easy apply XPath failed: {e}")
+                    pass
+            
             return JobPosting(
                 title=title,
                 company=company,
@@ -219,7 +317,8 @@ class LinkedInSearcher(JobSearcher):
                 posting_date=posting_date,
                 url=url,
                 job_board=JobBoard.LINKEDIN,
-                job_id=job_id
+                job_id=job_id,
+                has_easy_apply=has_easy_apply
             )
             
         except Exception as e:
@@ -309,9 +408,35 @@ class IndeedSearcher(JobSearcher):
                 'Upgrade-Insecure-Requests': '1',
             }
             
-            # Make request with enhanced headers
-            response = self.session.get(search_url, headers=headers, timeout=30)
-            response.raise_for_status()
+            # Make request with enhanced headers and retry logic
+            max_retries = 3
+            base_delay = 2
+            response = None
+            
+            for attempt in range(max_retries):
+                try:
+                    if attempt > 0:
+                        delay = base_delay * (2 ** (attempt - 1))
+                        self.logger.info(f"Retrying Indeed request in {delay} seconds (attempt {attempt + 1}/{max_retries})")
+                        time.sleep(delay)
+                    
+                    response = self.session.get(search_url, headers=headers, timeout=30)
+                    response.raise_for_status()
+                    self.logger.info(f"Successfully accessed Indeed on attempt {attempt + 1}")
+                    break  # Success, exit retry loop
+                    
+                except requests.exceptions.HTTPError as e:
+                    if e.response.status_code == 403 and attempt < max_retries - 1:
+                        self.logger.warning(f"403 error on attempt {attempt + 1}, retrying with delay...")
+                        continue
+                    else:
+                        raise  # Re-raise if it's the last attempt or not a 403
+                except Exception as e:
+                    if attempt < max_retries - 1:
+                        self.logger.warning(f"Request failed on attempt {attempt + 1}: {e}, retrying...")
+                        continue
+                    else:
+                        raise  # Re-raise if it's the last attempt
             
             # Parse HTML
             soup = BeautifulSoup(response.content, 'html.parser')
@@ -454,6 +579,74 @@ class IndeedSearcher(JobSearcher):
             
             job_id = self._generate_job_id(title, company, url)
             
+            # Check for external application indicators
+            has_easy_apply = True  # Default to True for Indeed
+            external_indicators = [
+                'Apply on company site',
+                'Apply on employer site',
+                'Apply on company website', 
+                'Apply directly',
+                'Visit employer site',
+                'Employer site',
+                'Company site',
+                'External site',
+                'Redirects to company site',
+                'Apply at company',
+                'Visit company website'
+            ]
+            
+            # Check the entire card text for external application indicators
+            card_text = card.get_text() if hasattr(card, 'get_text') else str(card)
+            self.logger.debug(f"Indeed job card text for '{title}': {card_text[:200]}...")
+            
+            # Also check for specific CSS classes or attributes that indicate external applications
+            external_selectors = [
+                '.external-apply',
+                '.company-apply',
+                '[data-apply-type="external"]',
+                '.redirect-apply'
+            ]
+            
+            # Check text content
+            for indicator in external_indicators:
+                if indicator.lower() in card_text.lower():
+                    has_easy_apply = False
+                    self.logger.info(f"Indeed job marked as manual apply due to text: '{indicator}'")
+                    break
+            
+            # Additional check: look for external redirect URLs
+            if has_easy_apply and url:
+                # If the URL contains parameters that suggest external redirect
+                external_url_patterns = [
+                    'clk?jk=',  # Indeed's external redirect pattern
+                    'redirect',
+                    'external',
+                    'company.com',
+                    'careers.'
+                ]
+                
+                for pattern in external_url_patterns:
+                    if pattern in url.lower():
+                        # This might be an external application
+                        # But we need to be careful not to mark all Indeed jobs as external
+                        if pattern == 'clk?jk=':
+                            # This is Indeed's redirect pattern, but we need more info
+                            pass  # Don't mark as external just based on this
+                        else:
+                            has_easy_apply = False
+                            self.logger.info(f"Indeed job marked as manual apply due to URL pattern: '{pattern}'")
+                            break
+            
+            # Check for external application CSS selectors
+            if has_easy_apply:  # Only check if we haven't already found external indicators
+                for selector in external_selectors:
+                    if card.select_one(selector):
+                        has_easy_apply = False
+                        self.logger.info(f"Indeed job marked as manual apply due to selector: '{selector}'")
+                        break
+            
+            self.logger.info(f"Indeed job '{title}' classified as: {'Quick Apply' if has_easy_apply else 'Manual Apply'}")
+            
             return JobPosting(
                 title=title,
                 company=company,
@@ -462,7 +655,8 @@ class IndeedSearcher(JobSearcher):
                 url=url,
                 job_board=JobBoard.INDEED,
                 salary_range=salary_range,
-                job_id=job_id
+                job_id=job_id,
+                has_easy_apply=has_easy_apply
             )
             
         except Exception as e:
@@ -517,28 +711,32 @@ class GlassdoorSearcher(JobSearcher):
         try:
             self.rate_limiter.wait_if_needed()
             
-            # Build search parameters
+            # Build search parameters - simplified for better compatibility
             params = {
                 'sc.keyword': keywords,
                 'locT': 'C',
-                'locId': location,
-                'jobType': 'fulltime',
-                'fromAge': '1',  # Last 1 day
-                'minSalary': '0',
+                'locId': location if location.lower() != 'remote' else 'anywhere',
+                'jobType': '',  # Remove restriction
+                'fromAge': '7',  # Last 7 days instead of 1
                 'includeNoSalaryJobs': 'true',
-                'radius': '25'
+                'radius': '100'  # Wider radius
             }
             
             search_url = f"{self.base_url}?{urlencode(params)}"
             self.logger.info(f"Searching Glassdoor: {search_url}")
             
-            # Add specific headers for Glassdoor
+            # Add specific headers for Glassdoor with better compatibility
             headers = {
-                'User-Agent': self.ua.random,
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                'Accept-Language': 'en-US,en;q=0.5',
-                'Accept-Encoding': 'gzip, deflate',
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+                'Accept-Language': 'en-US,en;q=0.9',
+                'Accept-Encoding': 'gzip, deflate, br',
                 'Connection': 'keep-alive',
+                'Upgrade-Insecure-Requests': '1',
+                'Sec-Fetch-Dest': 'document',
+                'Sec-Fetch-Mode': 'navigate',
+                'Sec-Fetch-Site': 'none',
+                'Cache-Control': 'max-age=0'
             }
             
             response = self.session.get(search_url, headers=headers, timeout=30)
@@ -565,11 +763,18 @@ class GlassdoorSearcher(JobSearcher):
             search_result.total_results = 1
             
         except requests.RequestException as e:
-            search_result.errors.append(f"Glassdoor request error: {str(e)}")
-            self.logger.error(f"Glassdoor request error: {e}")
+            error_msg = f"Glassdoor request error: {str(e)}"
+            search_result.errors.append(error_msg)
+            self.logger.error(error_msg)
+            
+            # If it's a 403, log that Glassdoor is blocking us but don't fail completely
+            if "403" in str(e):
+                self.logger.warning("Glassdoor is blocking requests. Consider using their API or focusing on other job boards.")
+                
         except Exception as e:
-            search_result.errors.append(f"Glassdoor search error: {str(e)}")
-            self.logger.error(f"Glassdoor search error: {e}")
+            error_msg = f"Glassdoor search error: {str(e)}"
+            search_result.errors.append(error_msg)
+            self.logger.error(error_msg)
         
         return search_result
 

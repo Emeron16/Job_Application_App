@@ -48,7 +48,7 @@ def setup_database():
     print("🚀 Setting up Job Application Bot Database\n")
     
     # Get database URL
-    database_url = os.environ.get('DATABASE_URL', 'postgresql://localhost/job_application_bot')
+    database_url = os.environ.get('DATABASE_URL', 'postgresql://postgres@localhost:5430/job_application_bot')
     print(f"📊 Database URL: {database_url}")
     
     # Create database if it doesn't exist
@@ -90,7 +90,6 @@ def setup_database():
                     job_types='["full-time", "contract"]',
                     exclude_keywords='["unpaid", "intern"]',
                     date_posted='week',
-                    daily_application_limit=10,
                     auto_apply_enabled=False,
                     apply_to_external_sites=False
                 )

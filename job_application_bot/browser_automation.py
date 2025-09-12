@@ -26,6 +26,7 @@ class BrowserAutomator:
         self.logger = logging.getLogger(__name__)
         self.linkedin_logged_in = False
         self.indeed_logged_in = False
+        self.user_profile = None
         
         # Get credentials from environment
         self.linkedin_email = os.getenv('LINKEDIN_EMAIL')
@@ -35,6 +36,9 @@ class BrowserAutomator:
         self.resume_path = self._find_file('documents', ['resume.pdf', 'Resume.pdf', 'cv.pdf', 'CV.pdf'])
         self.cover_letter_path = self._find_file('documents', ['cover_letter.txt', 'cover_letter.pdf', 'coverletter.txt'])
         
+        # Load user profile for form filling
+        self._load_user_profile()
+        
     def _find_file(self, directory: str, filenames: list) -> Optional[str]:
         """Find the first matching file in directory."""
         for filename in filenames:
@@ -42,6 +46,26 @@ class BrowserAutomator:
             if os.path.exists(filepath):
                 return os.path.abspath(filepath)
         return None
+    
+    def _load_user_profile(self):
+        """Load user profile from database for form filling."""
+        try:
+            # Import here to avoid circular imports
+            from app import UserProfile
+            from flask import current_app
+            
+            with current_app.app_context():
+                self.user_profile = UserProfile.query.first()
+                if self.user_profile:
+                    # Update resume path from profile if available
+                    if self.user_profile.resume_path and os.path.exists(self.user_profile.resume_path):
+                        self.resume_path = self.user_profile.resume_path
+                    self.logger.info("User profile loaded successfully")
+                else:
+                    self.logger.warning("No user profile found in database")
+        except Exception as e:
+            self.logger.error(f"Failed to load user profile: {e}")
+            self.user_profile = None
     
     def setup_driver(self) -> bool:
         """Initialize Chrome WebDriver with optimal settings."""
@@ -56,6 +80,12 @@ class BrowserAutomator:
             chrome_options.add_experimental_option('useAutomationExtension', False)
             chrome_options.add_argument('--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
             
+            # Use a persistent user data directory to maintain Google login session
+            import tempfile
+            user_data_dir = os.path.join(tempfile.gettempdir(), "job_bot_chrome_profile")
+            chrome_options.add_argument(f"--user-data-dir={user_data_dir}")
+            chrome_options.add_argument("--profile-directory=JobBotProfile")
+            
             # Enable file uploads
             prefs = {
                 "profile.default_content_setting_values.notifications": 2,
@@ -63,9 +93,32 @@ class BrowserAutomator:
             }
             chrome_options.add_experimental_option("prefs", prefs)
             
-            # Use ChromeDriverManager to automatically handle driver
-            service = Service(ChromeDriverManager().install())
-            self.driver = webdriver.Chrome(service=service, options=chrome_options)
+            # Try improved WebDriver setup first
+            try:
+                from webdriver_helper import setup_chrome_driver
+                
+                # Extract user data dir for the helper
+                user_data_dir = os.path.join(tempfile.gettempdir(), "job_bot_chrome_profile")
+                self.driver = setup_chrome_driver(headless=False, user_data_dir=user_data_dir)
+                
+                # Apply additional options that the helper doesn't set
+                self.driver.execute_script(f"""
+                    var prefs = {{"profile.default_content_setting_values.notifications": 2, "profile.default_content_settings.popups": 0}};
+                """)
+                
+            except ImportError:
+                # Fallback to original method if webdriver_helper is not available
+                service = Service(ChromeDriverManager().install())
+                self.driver = webdriver.Chrome(service=service, options=chrome_options)
+            except Exception as e:
+                self.logger.warning(f"WebDriver helper failed, using fallback: {e}")
+                try:
+                    # Try system chromedriver
+                    self.driver = webdriver.Chrome(options=chrome_options)
+                except Exception as e2:
+                    # Final fallback with ChromeDriverManager
+                    service = Service(ChromeDriverManager().install())
+                    self.driver = webdriver.Chrome(service=service, options=chrome_options)
             
             # Execute script to hide automation indicators
             self.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
@@ -78,6 +131,87 @@ class BrowserAutomator:
             
         except Exception as e:
             self.logger.error(f"Failed to setup Chrome driver: {e}")
+            return False
+    
+    def ensure_google_login(self) -> bool:
+        """Ensure Google account is logged in for both LinkedIn and Indeed."""
+        try:
+            # Check if already logged into Google
+            self.driver.get("https://accounts.google.com")
+            self.human_delay(2, 3)
+            
+            # Look for signs of being logged in
+            if "myaccount.google.com" in self.driver.current_url or "accounts.google.com/signin" not in self.driver.current_url:
+                self.logger.info("Already logged into Google account")
+                return True
+            
+            self.logger.info("Google login required - please login manually when browser opens")
+            
+            # Wait for manual login (check every 5 seconds for up to 2 minutes)
+            for i in range(24):  # 24 * 5 = 120 seconds
+                time.sleep(5)
+                if "myaccount.google.com" in self.driver.current_url or "accounts.google.com/signin" not in self.driver.current_url:
+                    self.logger.info("Google login detected")
+                    return True
+                    
+            self.logger.warning("Google login timeout - continuing without login")
+            return False
+            
+        except Exception as e:
+            self.logger.error(f"Google login check failed: {e}")
+            return False
+    
+    def login_linkedin_google(self) -> bool:
+        """Login to LinkedIn using Google OAuth."""
+        try:
+            if self.linkedin_logged_in:
+                return True
+                
+            self.logger.info("Attempting LinkedIn login with Google OAuth...")
+            self.driver.get("https://www.linkedin.com/login")
+            self.human_delay(2, 4)
+            
+            # Check if already logged in
+            if self._is_linkedin_logged_in():
+                self.linkedin_logged_in = True
+                self.logger.info("Already logged into LinkedIn")
+                return True
+            
+            # Look for Google login button
+            google_selectors = [
+                'button[aria-label*="Google"]',
+                'button:contains("Continue with Google")',
+                'div[data-test-id="google-auth"] button',
+                'a[href*="google"]',
+                'button[data-provider="google"]',
+                '.google-auth button'
+            ]
+            
+            google_clicked = False
+            for selector in google_selectors:
+                if self.wait_and_click(selector, timeout=3):
+                    self.logger.info("Clicked Google login button")
+                    google_clicked = True
+                    break
+            
+            if not google_clicked:
+                self.logger.info("Google login button not found on LinkedIn")
+                return False
+            
+            # Handle Google OAuth flow
+            self.human_delay(3, 5)
+            
+            # Check if login was successful
+            if self._is_linkedin_logged_in():
+                self.linkedin_logged_in = True
+                self.logger.info("LinkedIn Google OAuth login successful")
+                return True
+            else:
+                self.logger.info("LinkedIn Google OAuth login did not complete")
+                return False
+                
+        except Exception as e:
+            self.logger.error(f"LinkedIn Google OAuth login error: {e}")
             return False
     
     def close_driver(self):
@@ -214,8 +348,11 @@ class BrowserAutomator:
         try:
             self.logger.info(f"Applying to LinkedIn job: {job_url}")
             
-            # Ensure logged in
-            if not self.login_linkedin():
+            # Ensure Google login is available first
+            self.ensure_google_login()
+            
+            # Try Google OAuth login first, fallback to regular login
+            if not self.login_linkedin_google() and not self.login_linkedin():
                 return False
             
             # Navigate to job
@@ -498,12 +635,335 @@ class BrowserAutomator:
             elif 'indeed' in job_board:
                 return self.apply_indeed_job(job_url)
             else:
-                self.logger.warning(f"Unsupported job board: {job_board}")
-                return False
+                # Try external job application for other sites
+                self.logger.info(f"Attempting external application for: {job_board}")
+                return self.apply_to_external_job(job_url)
                 
         except Exception as e:
             self.logger.error(f"Job application error: {e}")
             return False
         finally:
             # Keep browser open for subsequent applications
-            pass 
+            pass
+    
+    def fill_application_form(self, form_data: Dict[str, str] = None) -> bool:
+        """Fill out job application form using user profile data."""
+        try:
+            if not self.user_profile:
+                self.logger.warning("No user profile available for form filling")
+                return False
+            
+            # Use provided form_data or default to empty dict
+            form_data = form_data or {}
+            
+            # Common form field selectors and their corresponding profile data
+            field_mappings = {
+                # Personal Information
+                'first_name': ['input[name*="first"]', 'input[id*="first"]', 'input[placeholder*="First"]'],
+                'last_name': ['input[name*="last"]', 'input[id*="last"]', 'input[placeholder*="Last"]'],
+                'full_name': ['input[name*="name"]', 'input[id*="name"]', 'input[placeholder*="Full name"]'],
+                'email': ['input[type="email"]', 'input[name*="email"]', 'input[id*="email"]'],
+                'phone': ['input[type="tel"]', 'input[name*="phone"]', 'input[id*="phone"]'],
+                'location': ['input[name*="location"]', 'input[name*="city"]', 'input[id*="location"]'],
+                'linkedin': ['input[name*="linkedin"]', 'input[id*="linkedin"]'],
+                
+                # Professional Information
+                'current_company': ['input[name*="company"]', 'input[id*="company"]', 'input[placeholder*="Company"]'],
+                'current_title': ['input[name*="title"]', 'input[id*="title"]', 'input[placeholder*="Title"]'],
+                'years_experience': ['input[name*="experience"]', 'input[id*="experience"]'],
+                
+                # Education
+                'university': ['input[name*="school"]', 'input[name*="university"]', 'input[id*="university"]'],
+                'degree': ['input[name*="degree"]', 'input[id*="degree"]', 'input[placeholder*="Degree"]'],
+                'graduation_year': ['input[name*="graduation"]', 'input[id*="graduation"]']
+            }
+            
+            # Get profile values
+            profile_values = {
+                'first_name': self.user_profile.first_name,
+                'last_name': self.user_profile.last_name,
+                'full_name': self.user_profile.full_name,
+                'email': self.user_profile.email,
+                'phone': self.user_profile.phone,
+                'location': self.user_profile.location,
+                'linkedin': self.user_profile.linkedin_profile,
+                'current_company': self.user_profile.current_company,
+                'current_title': self.user_profile.current_title,
+                'years_experience': str(self.user_profile.years_experience) if self.user_profile.years_experience else '',
+                'university': self.user_profile.university,
+                'degree': self.user_profile.degree,
+                'graduation_year': str(self.user_profile.graduation_year) if self.user_profile.graduation_year else ''
+            }
+            
+            filled_fields = 0
+            
+            # Fill each field type
+            for field_type, selectors in field_mappings.items():
+                value = form_data.get(field_type) or profile_values.get(field_type)
+                if not value:
+                    continue
+                
+                for selector in selectors:
+                    try:
+                        elements = self.driver.find_elements(By.CSS_SELECTOR, selector)
+                        for element in elements:
+                            if element.is_displayed() and element.is_enabled():
+                                # Clear existing text and fill
+                                element.clear()
+                                element.send_keys(value)
+                                filled_fields += 1
+                                self.logger.debug(f"Filled {field_type}: {value}")
+                                break
+                        if filled_fields > 0:
+                            break
+                    except Exception as e:
+                        self.logger.debug(f"Could not fill {field_type} with selector {selector}: {e}")
+                        continue
+            
+            # Handle dropdowns/select fields
+            self._fill_dropdown_fields()
+            
+            # Handle checkboxes for demographics
+            self._fill_checkbox_fields()
+            
+            # Upload resume if file input found
+            self._upload_resume()
+            
+            self.logger.info(f"Filled {filled_fields} form fields")
+            return filled_fields > 0
+            
+        except Exception as e:
+            self.logger.error(f"Form filling error: {e}")
+            return False
+    
+    def _fill_dropdown_fields(self):
+        """Fill dropdown/select fields with profile data."""
+        try:
+            # Gender dropdown
+            if self.user_profile.gender:
+                gender_selectors = ['select[name*="gender"]', 'select[id*="gender"]']
+                for selector in gender_selectors:
+                    try:
+                        select_element = self.driver.find_element(By.CSS_SELECTOR, selector)
+                        if select_element.is_displayed():
+                            from selenium.webdriver.support.ui import Select
+                            select = Select(select_element)
+                            # Try to select by value or text
+                            for option in select.options:
+                                if self.user_profile.gender.lower() in option.text.lower():
+                                    select.select_by_visible_text(option.text)
+                                    break
+                    except Exception:
+                        continue
+            
+            # Race/Ethnicity dropdown
+            if self.user_profile.race_ethnicity:
+                race_selectors = ['select[name*="race"]', 'select[name*="ethnicity"]', 'select[id*="race"]']
+                for selector in race_selectors:
+                    try:
+                        select_element = self.driver.find_element(By.CSS_SELECTOR, selector)
+                        if select_element.is_displayed():
+                            from selenium.webdriver.support.ui import Select
+                            select = Select(select_element)
+                            # Map profile values to common dropdown options
+                            race_mapping = {
+                                'asian': ['Asian', 'Asian American'],
+                                'black': ['Black', 'African American', 'Black or African American'],
+                                'hispanic': ['Hispanic', 'Latino', 'Hispanic or Latino'],
+                                'white': ['White', 'Caucasian'],
+                                'american_indian': ['American Indian', 'Native American'],
+                                'pacific_islander': ['Pacific Islander', 'Native Hawaiian']
+                            }
+                            
+                            if self.user_profile.race_ethnicity in race_mapping:
+                                for option_text in race_mapping[self.user_profile.race_ethnicity]:
+                                    try:
+                                        select.select_by_visible_text(option_text)
+                                        break
+                                    except:
+                                        continue
+                    except Exception:
+                        continue
+            
+            # Veteran status dropdown
+            if self.user_profile.veteran_status:
+                veteran_selectors = ['select[name*="veteran"]', 'select[id*="veteran"]']
+                for selector in veteran_selectors:
+                    try:
+                        select_element = self.driver.find_element(By.CSS_SELECTOR, selector)
+                        if select_element.is_displayed():
+                            from selenium.webdriver.support.ui import Select
+                            select = Select(select_element)
+                            veteran_mapping = {
+                                'not_veteran': ['No', 'Not a veteran', 'I am not a veteran'],
+                                'veteran': ['Yes', 'Veteran', 'I am a veteran'],
+                                'disabled_veteran': ['Disabled veteran', 'I am a disabled veteran']
+                            }
+                            
+                            if self.user_profile.veteran_status in veteran_mapping:
+                                for option_text in veteran_mapping[self.user_profile.veteran_status]:
+                                    try:
+                                        select.select_by_visible_text(option_text)
+                                        break
+                                    except:
+                                        continue
+                    except Exception:
+                        continue
+                        
+        except Exception as e:
+            self.logger.debug(f"Dropdown filling error: {e}")
+    
+    def _fill_checkbox_fields(self):
+        """Fill checkbox fields for demographics and work authorization."""
+        try:
+            # Sponsorship checkbox
+            if self.user_profile.sponsorship_required is not None:
+                sponsorship_selectors = [
+                    'input[name*="sponsor"]', 'input[id*="sponsor"]',
+                    'input[name*="visa"]', 'input[id*="visa"]',
+                    'input[name*="authorization"]', 'input[id*="authorization"]'
+                ]
+                
+                for selector in sponsorship_selectors:
+                    try:
+                        elements = self.driver.find_elements(By.CSS_SELECTOR, selector)
+                        for element in elements:
+                            if element.is_displayed() and element.get_attribute('type') == 'checkbox':
+                                # Check if checkbox should be checked based on profile
+                                if self.user_profile.sponsorship_required and not element.is_selected():
+                                    element.click()
+                                elif not self.user_profile.sponsorship_required and element.is_selected():
+                                    element.click()
+                                break
+                    except Exception:
+                        continue
+            
+            # Disability status checkbox
+            if self.user_profile.disability_status:
+                disability_selectors = ['input[name*="disability"]', 'input[id*="disability"]']
+                for selector in disability_selectors:
+                    try:
+                        elements = self.driver.find_elements(By.CSS_SELECTOR, selector)
+                        for element in elements:
+                            if element.is_displayed() and element.get_attribute('type') == 'checkbox':
+                                has_disability = self.user_profile.disability_status == 'has_disability'
+                                if has_disability and not element.is_selected():
+                                    element.click()
+                                elif not has_disability and element.is_selected():
+                                    element.click()
+                                break
+                    except Exception:
+                        continue
+                        
+        except Exception as e:
+            self.logger.debug(f"Checkbox filling error: {e}")
+    
+    def _upload_resume(self):
+        """Upload resume file if file input is found."""
+        try:
+            if not self.resume_path or not os.path.exists(self.resume_path):
+                self.logger.warning("Resume file not found for upload")
+                return
+            
+            file_input_selectors = [
+                'input[type="file"]',
+                'input[name*="resume"]',
+                'input[name*="cv"]',
+                'input[id*="resume"]',
+                'input[id*="cv"]'
+            ]
+            
+            for selector in file_input_selectors:
+                try:
+                    elements = self.driver.find_elements(By.CSS_SELECTOR, selector)
+                    for element in elements:
+                        if element.is_displayed():
+                            element.send_keys(self.resume_path)
+                            self.logger.info(f"Resume uploaded: {self.resume_path}")
+                            return
+                except Exception:
+                    continue
+                    
+        except Exception as e:
+            self.logger.debug(f"Resume upload error: {e}")
+    
+    def apply_to_external_job(self, job_url: str, company_name: str = "") -> bool:
+        """Apply to external job sites using profile data."""
+        try:
+            self.logger.info(f"Applying to external job: {job_url}")
+            
+            if not self.driver:
+                if not self.setup_driver():
+                    return False
+            
+            # Navigate to job URL
+            self.driver.get(job_url)
+            self.human_delay(3, 5)
+            
+            # Look for apply buttons with various text
+            apply_button_selectors = [
+                'button:contains("Apply")',
+                'a:contains("Apply")',
+                'button[class*="apply"]',
+                'a[class*="apply"]',
+                'input[type="submit"][value*="Apply"]',
+                '.apply-button',
+                '#apply-button',
+                '[data-testid*="apply"]'
+            ]
+            
+            apply_clicked = False
+            for selector in apply_button_selectors:
+                if self.wait_and_click(selector, timeout=3):
+                    apply_clicked = True
+                    self.logger.info("Apply button clicked")
+                    break
+            
+            if not apply_clicked:
+                # Try JavaScript click for hidden buttons
+                try:
+                    apply_buttons = self.driver.find_elements(By.XPATH, "//button[contains(text(), 'Apply')] | //a[contains(text(), 'Apply')]")
+                    if apply_buttons:
+                        self.driver.execute_script("arguments[0].click();", apply_buttons[0])
+                        apply_clicked = True
+                        self.logger.info("Apply button clicked via JavaScript")
+                except Exception:
+                    pass
+            
+            if not apply_clicked:
+                self.logger.warning("No apply button found")
+                return False
+            
+            # Wait for application form to load
+            self.human_delay(2, 4)
+            
+            # Fill out the application form
+            form_filled = self.fill_application_form()
+            
+            if form_filled:
+                # Look for submit button
+                submit_selectors = [
+                    'button[type="submit"]',
+                    'input[type="submit"]',
+                    'button:contains("Submit")',
+                    'button:contains("Send")',
+                    'button:contains("Apply")',
+                    '.submit-button',
+                    '#submit-button'
+                ]
+                
+                for selector in submit_selectors:
+                    if self.wait_and_click(selector, timeout=5):
+                        self.logger.info("Application submitted")
+                        self.human_delay(2, 3)
+                        return True
+                
+                self.logger.warning("Submit button not found")
+                return False
+            else:
+                self.logger.warning("Could not fill application form")
+                return False
+                
+        except Exception as e:
+            self.logger.error(f"External job application error: {e}")
+            return False
