@@ -122,7 +122,7 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="card-title mb-0">
-                    <i class="fas fa-history me-2"></i>Recent Job Postings
+                    <i class="fas fa-briefcase me-2"></i>Applied & Interview Jobs
                 </h5>
                 <a href="{{ url_for('jobs') }}" class="btn btn-sm btn-outline-primary">
                     View All <i class="fas fa-arrow-right ms-1"></i>
@@ -139,16 +139,18 @@
                                     <th>Location</th>
                                     <th>Platform</th>
                                     <th>Status</th>
+                                    <th>Date Applied</th>
                                     <th>Date Added</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for job in recent_jobs %}
-                                <tr>
+                                <tr id="dashboard-job-row-{{ job.id }}">
                                     <td>
                                         <strong>{{ job.title }}</strong>
                                         {% if job.salary_range %}
-                                            <br><small class="text-muted">{{ job.salary_range }}</small>
+                                            <br><small class="text-success">{{ job.salary_range }}</small>
                                         {% endif %}
                                     </td>
                                     <td>{{ job.company }}</td>
@@ -160,18 +162,38 @@
                                         </span>
                                     </td>
                                     <td>
-                                        {% if job.application_status == 'applied' %}
-                                            <span class="badge bg-success">Applied</span>
-                                        {% elif job.application_status == 'failed' %}
-                                            <span class="badge bg-danger">Failed</span>
-                                        {% else %}
-                                            <span class="badge bg-warning">Pending</span>
-                                        {% endif %}
+                                        <select class="form-select form-select-sm" onchange="changeJobStatusFromDashboard({{ job.id }}, this.value)" data-job-id="{{ job.id }}">
+                                            <option value="not_applied" {% if job.application_status == 'not_applied' %}selected{% endif %}>Pending</option>
+                                            <option value="applied" {% if job.application_status == 'applied' %}selected{% endif %}>Applied</option>
+                                            <option value="rejected" {% if job.application_status == 'rejected' %}selected{% endif %}>Rejected</option>
+                                            <option value="interview" {% if job.application_status == 'interview' %}selected{% endif %}>Interview</option>
+                                            <option value="accepted" {% if job.application_status == 'accepted' %}selected{% endif %}>Accepted</option>
+                                            <option value="failed" {% if job.application_status == 'failed' %}selected{% endif %}>Failed</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <small class="text-muted">
+                                            {% if job.applied_date %}
+                                                {{ job.applied_date.strftime('%m/%d/%Y') }}
+                                            {% else %}
+                                                Not Applied
+                                            {% endif %}
+                                        </small>
                                     </td>
                                     <td>
                                         <small class="text-muted">
                                             {{ job.scraped_date.strftime('%m/%d/%Y') if job.scraped_date else 'N/A' }}
                                         </small>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-outline-info btn-sm" onclick="openJobNotesFromDashboard({{ job.id }})" title="View/Edit Notes">
+                                            <i class="fas fa-sticky-note"></i>
+                                        </button>
+                                        {% if job.url %}
+                                        <a href="{{ job.url }}" target="_blank" class="btn btn-outline-primary btn-sm" title="View Job">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                        {% endif %}
                                     </td>
                                 </tr>
                                 {% endfor %}
@@ -180,9 +202,9 @@
                     </div>
                 {% else %}
                     <div class="text-center py-4">
-                        <i class="fas fa-search fa-3x text-muted mb-3"></i>
-                        <h5 class="text-muted">No jobs found</h5>
-                        <p class="text-muted">Start by searching for jobs to see them here.</p>
+                        <i class="fas fa-briefcase fa-3x text-muted mb-3"></i>
+                        <h5 class="text-muted">No applied or interview jobs</h5>
+                        <p class="text-muted">Jobs that you've applied to or have interviews scheduled will appear here.</p>
                         <button class="btn btn-primary" onclick="searchJobs()">
                             <i class="fas fa-search me-1"></i>Search Jobs Now
                         </button>
@@ -252,5 +274,181 @@ const platformChart = new Chart(platformCtx, {
         }
     }
 });
+
+// Dashboard-specific status change function
+function changeJobStatusFromDashboard(jobId, newStatus) {
+    const dropdown = document.querySelector(`select[data-job-id="${jobId}"]`);
+    const originalValue = dropdown.getAttribute('data-original-value') || dropdown.value;
+    
+    // Store original value for rollback if needed
+    dropdown.setAttribute('data-original-value', originalValue);
+    
+    // Show loading state
+    dropdown.disabled = true;
+    
+    fetch(`/api/jobs/${jobId}/change-status`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            status: newStatus
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            // Update original value to new status
+            dropdown.setAttribute('data-original-value', newStatus);
+            
+            // If status changed to something other than applied/interview, hide the row
+            if (!['applied', 'interview'].includes(newStatus)) {
+                const row = document.getElementById(`dashboard-job-row-${jobId}`);
+                row.style.opacity = '0.5';
+                setTimeout(() => {
+                    row.style.display = 'none';
+                }, 500);
+            }
+            
+            showDashboardAlert('success', data.message || `Job status changed successfully`);
+        } else {
+            throw new Error(data.message || 'Failed to change job status');
+        }
+    })
+    .catch(error => {
+        console.error('Change status error:', error);
+        showDashboardAlert('error', 'Failed to change job status: ' + error.message);
+        
+        // Rollback dropdown to original value
+        dropdown.value = originalValue;
+    })
+    .finally(() => {
+        // Re-enable dropdown
+        dropdown.disabled = false;
+    });
+}
+
+// Dashboard-specific notes function
+function openJobNotesFromDashboard(jobId) {
+    // Fetch job details first
+    fetch(`/api/job_details/${jobId}`)
+        .then(response => response.json())
+        .then(job => {
+            // Create modal content
+            const modalContent = `
+                <div class="modal fade" id="dashboardJobNotesModal" tabindex="-1" aria-labelledby="dashboardJobNotesModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="dashboardJobNotesModalLabel">
+                                    <i class="fas fa-sticky-note me-2"></i>Job Notes
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div>
+                                        <h6 class="mb-1">${job.title}</h6>
+                                        <small class="text-muted">${job.company} • ${job.location}</small>
+                                    </div>
+                                </div>
+                                
+                                <form id="dashboardJobNotesForm">
+                                    <input type="hidden" id="dashboard_job_id" value="${jobId}">
+                                    <div class="mb-3">
+                                        <label for="dashboard_application_notes" class="form-label">Application Notes</label>
+                                        <textarea class="form-control" id="dashboard_application_notes" rows="3" 
+                                                placeholder="Notes about your application, follow-ups, etc.">${job.application_notes || ''}</textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="dashboard_recruiter_notes" class="form-label">Recruiter Notes</label>
+                                        <textarea class="form-control" id="dashboard_recruiter_notes" rows="3" 
+                                                placeholder="Notes about recruiter communications, interview details, etc.">${job.recruiter_notes || ''}</textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" onclick="saveDashboardJobNotes()">Save Notes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Remove existing modal if any
+            const existingModal = document.getElementById('dashboardJobNotesModal');
+            if (existingModal) {
+                existingModal.remove();
+            }
+            
+            // Add modal to body
+            document.body.insertAdjacentHTML('beforeend', modalContent);
+            
+            // Show modal
+            const modal = new bootstrap.Modal(document.getElementById('dashboardJobNotesModal'));
+            modal.show();
+        })
+        .catch(error => {
+            console.error('Error loading job details:', error);
+            showDashboardAlert('error', 'Failed to load job details');
+        });
+}
+
+function saveDashboardJobNotes() {
+    const jobId = document.getElementById('dashboard_job_id').value;
+    const applicationNotes = document.getElementById('dashboard_application_notes').value;
+    const recruiterNotes = document.getElementById('dashboard_recruiter_notes').value;
+    
+    fetch(`/api/jobs/${jobId}/notes`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            application_notes: applicationNotes,
+            recruiter_notes: recruiterNotes
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            showDashboardAlert('success', 'Notes saved successfully');
+            
+            // Close modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById('dashboardJobNotesModal'));
+            modal.hide();
+        } else {
+            throw new Error(data.message || 'Failed to save notes');
+        }
+    })
+    .catch(error => {
+        console.error('Save notes error:', error);
+        showDashboardAlert('error', 'Failed to save notes: ' + error.message);
+    });
+}
+
+// Simple alert function for dashboard
+function showDashboardAlert(type, message) {
+    const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+    const alertHtml = `
+        <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    `;
+    
+    // Add alert to top of page
+    const container = document.querySelector('.container-fluid');
+    container.insertAdjacentHTML('afterbegin', alertHtml);
+    
+    // Auto-dismiss after 5 seconds
+    setTimeout(() => {
+        const alert = container.querySelector('.alert');
+        if (alert) {
+            alert.remove();
+        }
+    }, 5000);
+}
 </script>
 {% endblock %}

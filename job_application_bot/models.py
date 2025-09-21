@@ -11,6 +11,7 @@ class JobBoard(Enum):
     LINKEDIN = "linkedin"
     INDEED = "indeed"
     GLASSDOOR = "glassdoor"
+    ZIPRECRUITER = "ziprecruiter"
 
 class ApplicationStatus(Enum):
     """Application status tracking."""

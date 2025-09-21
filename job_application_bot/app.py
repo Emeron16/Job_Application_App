@@ -10,6 +10,7 @@ from flask_socketio import SocketIO, emit
 from datetime import datetime
 import threading
 import json
+import time
 
 # Removed main.py dependency - using web-app-only components
 from models import JobBoard, ApplicationStatus
@@ -62,12 +63,12 @@ class JobPosting(db.Model):
     skills_required = db.Column(db.Text)  # JSON string
     company_size = db.Column(db.String(100))
     industry = db.Column(db.String(100))
-    has_easy_apply = db.Column(db.Boolean, default=False)  # Whether job has Easy Apply option
+    # has_easy_apply = db.Column(db.Boolean, default=False)  # Temporarily disabled due to missing column
     application_status = db.Column(db.String(50), default='not_applied')
     applied_date = db.Column(db.DateTime)
-    status_changed_date = db.Column(db.DateTime, default=datetime.utcnow)  # When status was last changed
+    # status_changed_date = db.Column(db.DateTime, default=datetime.utcnow)  # Temporarily disabled due to missing column
     application_notes = db.Column(db.Text)
-    recruiter_notes = db.Column(db.Text)  # Notes about recruiter communications
+    # recruiter_notes = db.Column(db.Text)  # Temporarily disabled due to missing column
     scraped_date = db.Column(db.DateTime, default=datetime.utcnow)
     
     def to_dict(self):
@@ -87,12 +88,12 @@ class JobPosting(db.Model):
             'skills_required': json.loads(self.skills_required) if self.skills_required else [],
             'company_size': self.company_size,
             'industry': self.industry,
-            'has_easy_apply': self.has_easy_apply,
+            # 'has_easy_apply': self.has_easy_apply,  # Temporarily disabled due to missing column
             'application_status': self.application_status,
             'applied_date': self.applied_date.isoformat() if self.applied_date else None,
-            'status_changed_date': self.status_changed_date.isoformat() if self.status_changed_date else None,
+            # 'status_changed_date': self.status_changed_date.isoformat() if self.status_changed_date else None,  # Temporarily disabled
             'application_notes': self.application_notes,
-            'recruiter_notes': self.recruiter_notes,
+            # 'recruiter_notes': self.recruiter_notes,  # Temporarily disabled
             'scraped_date': self.scraped_date.isoformat() if self.scraped_date else None
         }
 
@@ -102,7 +103,9 @@ class JobPreferences(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     keywords = db.Column(db.Text)  # JSON string
     locations = db.Column(db.Text)  # JSON string
-    experience_levels = db.Column(db.Text)  # JSON string
+    experience_levels = db.Column(db.Text)  # JSON string (deprecated)
+    experience_level = db.Column(db.String(50), default='mid')  # Single experience level
+    job_boards = db.Column(db.Text, default='["linkedin", "indeed"]')  # JSON string
     job_types = db.Column(db.Text)  # JSON string
     exclude_keywords = db.Column(db.Text)  # JSON string
     salary_min = db.Column(db.Integer)
@@ -236,18 +239,21 @@ def dashboard():
         'glassdoor_jobs': glassdoor_jobs
     }
     
-    # Get recent job postings for display
-    recent_postings = JobPosting.query.order_by(JobPosting.scraped_date.desc()).limit(10).all()
+    # Get recent job postings for display - only applied and interview jobs
+    recent_postings = JobPosting.query.filter(
+        JobPosting.application_status.in_(['applied', 'interview'])
+    ).order_by(JobPosting.scraped_date.desc()).limit(10).all()
     
     return render_template('dashboard.html', stats=stats, recent_jobs=recent_postings)
 
 @app.route('/jobs')
 def jobs():
     """Job search and management page"""
-    # Get filter parameters
-    status_filter = request.args.get('status', 'all')
+    # Get filter parameters - default to showing only pending jobs
+    status_filter = request.args.get('status', 'not_applied')
     board_filter = request.args.get('board', 'all')
     apply_type_filter = request.args.get('apply_type', 'all')
+    salary_filter = request.args.get('salary_filter', '')
     search_query = request.args.get('search', '')
     
     # Build query
@@ -259,24 +265,24 @@ def jobs():
     if board_filter != 'all':
         query = query.filter_by(job_board=board_filter)
     
-    # Filter by application type
-    if apply_type_filter == 'quick_apply':
-        # Jobs with Easy Apply (LinkedIn) or Indeed direct apply
-        query = query.filter(
-            db.or_(
-                db.and_(JobPosting.job_board == 'linkedin', JobPosting.has_easy_apply == True),
-                db.and_(JobPosting.job_board == 'indeed', JobPosting.has_easy_apply == True)
-            )
-        )
-    elif apply_type_filter == 'manual_apply':
-        # Jobs without Easy Apply or from other job boards
-        query = query.filter(
-            db.or_(
-                db.and_(JobPosting.job_board == 'linkedin', JobPosting.has_easy_apply == False),
-                db.and_(JobPosting.job_board == 'indeed', JobPosting.has_easy_apply == False),
-                ~JobPosting.job_board.in_(['linkedin', 'indeed'])
-            )
-        )
+    # Filter by application type - temporarily disabled due to missing has_easy_apply column
+    # if apply_type_filter == 'quick_apply':
+    #     # Jobs with Easy Apply (LinkedIn) or Indeed direct apply
+    #     query = query.filter(
+    #         db.or_(
+    #             db.and_(JobPosting.job_board == 'linkedin', JobPosting.has_easy_apply == True),
+    #             db.and_(JobPosting.job_board == 'indeed', JobPosting.has_easy_apply == True)
+    #         )
+    #     )
+    # elif apply_type_filter == 'manual_apply':
+    #     # Jobs without Easy Apply or from other job boards
+    #     query = query.filter(
+    #         db.or_(
+    #             db.and_(JobPosting.job_board == 'linkedin', JobPosting.has_easy_apply == False),
+    #             db.and_(JobPosting.job_board == 'indeed', JobPosting.has_easy_apply == False),
+    #             ~JobPosting.job_board.in_(['linkedin', 'indeed'])
+    #         )
+    #     )
     
     if search_query:
         query = query.filter(
@@ -284,6 +290,24 @@ def jobs():
                 JobPosting.title.ilike(f'%{search_query}%'),
                 JobPosting.company.ilike(f'%{search_query}%'),
                 JobPosting.description.ilike(f'%{search_query}%')
+            )
+        )
+    
+    # Filter by minimum salary
+    if salary_filter:
+        min_salary = int(salary_filter)
+        # Filter jobs that have salary ranges containing numbers >= min_salary
+        # This is a simple approach - for more complex salary parsing, we'd need a more sophisticated method
+        query = query.filter(
+            db.and_(
+                JobPosting.salary_range.isnot(None),
+                JobPosting.salary_range != '',
+                db.or_(
+                    # Match salary ranges like "$80,000 - $120,000"
+                    db.func.regexp_replace(JobPosting.salary_range, r'[^\d]', '', 'g').cast(db.Integer) >= min_salary,
+                    # Match single salaries like "$90,000"
+                    JobPosting.salary_range.ilike(f'%{min_salary:,}%')
+                )
             )
         )
     
@@ -297,6 +321,7 @@ def jobs():
                          status_filter=status_filter, 
                          board_filter=board_filter, 
                          apply_type_filter=apply_type_filter,
+                         salary_filter=salary_filter,
                          search_query=search_query)
 
 @app.route('/preferences')
@@ -348,7 +373,13 @@ def update_preferences():
         # Fallback for old format or direct list
         prefs.locations = json.dumps(request.form.getlist('locations'))
     
-    prefs.experience_levels = json.dumps(request.form.getlist('experience_levels'))
+    # Handle both old and new experience level formats
+    if 'experience_level' in request.form:
+        prefs.experience_level = request.form.get('experience_level', 'mid')
+    else:
+        # Fallback for old format
+        prefs.experience_levels = json.dumps(request.form.getlist('experience_levels'))
+    prefs.job_boards = json.dumps(request.form.getlist('job_boards'))
     prefs.job_types = json.dumps(request.form.getlist('job_types'))
     prefs.exclude_keywords = json.dumps(request.form.getlist('exclude_keywords'))
     
@@ -456,9 +487,11 @@ def api_search_jobs():
         job_boards = data.get('job_boards', ['linkedin', 'indeed', 'glassdoor'])
         collect_screenshots = data.get('collect_screenshots', False)  # New parameter for ML training
         
-        # Get user preferences for job search limit
-        prefs = JobPreferences.query.first()
-        job_limit = prefs.job_search_limit if prefs else 20
+        # Get job limit from request data, fallback to preferences
+        job_limit = data.get('job_limit')
+        if not job_limit:
+            prefs = JobPreferences.query.first()
+            job_limit = prefs.job_search_limit if prefs else 20
         
         # Convert string names to JobBoard enums
         board_enums = []
@@ -469,6 +502,8 @@ def api_search_jobs():
                 board_enums.append(JobBoard.INDEED)
             elif board == 'glassdoor':
                 board_enums.append(JobBoard.GLASSDOOR)
+            elif board == 'ziprecruiter':
+                board_enums.append(JobBoard.ZIPRECRUITER)
         
         # Run job search in background thread with live updates
         def search_jobs_background():
@@ -488,6 +523,10 @@ def api_search_jobs():
                     prefs = JobPreferences.query.first()
                     keywords = json.loads(prefs.keywords) if prefs and prefs.keywords else ['Software Engineer']
                     locations = json.loads(prefs.locations) if prefs and prefs.locations else ['Remote']
+                    experience_level = prefs.experience_level if prefs else 'mid'
+                    
+                    # Set experience level on search manager for optimization
+                    search_manager.experience_level = experience_level
                     
                     print(f"🔍 Searching with keywords: {keywords}, locations: {locations}, boards: {board_enums}, limit: {job_limit}")
                     
@@ -503,6 +542,7 @@ def api_search_jobs():
                             locations=locations, 
                             job_boards=board_enums,
                             job_limit=job_limit,
+                            experience_level=experience_level,
                             progress_callback=progress_callback  # Add the progress callback
                         )
                         print(f"🔍 Search completed, got {len(results)} result objects")
@@ -1158,9 +1198,57 @@ def api_delete_job(job_id):
         db.session.rollback()
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
+@app.route('/api/jobs/<int:job_id>/change-status', methods=['POST'])
+def api_change_job_status(job_id):
+    """API endpoint to change job status"""
+    try:
+        data = request.get_json()
+        new_status = data.get('status')
+        
+        # Validate status
+        valid_statuses = ['not_applied', 'applied', 'rejected', 'interview', 'accepted', 'failed']
+        if new_status not in valid_statuses:
+            return jsonify({'status': 'error', 'message': f'Invalid status: {new_status}'}), 400
+        
+        job = JobPosting.query.get_or_404(job_id)
+        job_title = job.title
+        job_company = job.company
+        old_status = job.application_status
+        
+        # Update job status
+        job.application_status = new_status
+        job.status_changed_date = datetime.utcnow()
+        
+        # Set applied_date if marking as applied
+        if new_status == 'applied' and old_status != 'applied':
+            job.applied_date = datetime.utcnow()
+        elif new_status != 'applied':
+            # Clear applied_date if changing from applied to something else
+            job.applied_date = None
+        
+        db.session.commit()
+        
+        status_labels = {
+            'applied': 'Applied',
+            'rejected': 'Rejected',
+            'interview': 'Interview', 
+            'accepted': 'Accepted',
+            'not_applied': 'Not Applied',
+            'failed': 'Failed'
+        }
+        
+        return jsonify({
+            'status': 'success', 
+            'message': f'Successfully changed status to {status_labels.get(new_status, new_status)}: {job_title} at {job_company}'
+        })
+    
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
 @app.route('/api/jobs/<int:job_id>/mark-applied', methods=['POST'])
 def api_mark_job_applied(job_id):
-    """API endpoint to mark a job as manually applied"""
+    """API endpoint to mark a job as manually applied (backward compatibility)"""
     try:
         job = JobPosting.query.get_or_404(job_id)
         job_title = job.title
@@ -1223,7 +1311,9 @@ def api_get_preferences():
         return jsonify({
             'keywords': json.loads(prefs.keywords) if prefs.keywords else [],
             'locations': json.loads(prefs.locations) if prefs.locations else [],
-            'experience_levels': json.loads(prefs.experience_levels) if prefs.experience_levels else [],
+            'experience_level': prefs.experience_level or 'mid',  # New single experience level
+            'experience_levels': json.loads(prefs.experience_levels) if prefs.experience_levels else [],  # Keep for backward compatibility
+            'job_boards': json.loads(prefs.job_boards) if prefs.job_boards else ['linkedin', 'indeed'],
             'job_types': json.loads(prefs.job_types) if prefs.job_types else [],
             'date_posted': prefs.date_posted,
             'salary_min': prefs.salary_min,
@@ -1251,6 +1341,31 @@ def api_update_job_notes(job_id):
         return jsonify({
             'status': 'success', 
             'message': 'Notes updated successfully'
+        })
+    
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+@app.route('/api/clear_pending_jobs', methods=['POST'])
+def api_clear_pending_jobs():
+    """API endpoint to clear all pending job postings"""
+    try:
+        # Delete all jobs with 'not_applied' or 'ready_to_apply' status
+        pending_jobs = JobPosting.query.filter(
+            JobPosting.application_status.in_(['not_applied', 'ready_to_apply'])
+        ).all()
+        
+        deleted_count = len(pending_jobs)
+        
+        for job in pending_jobs:
+            db.session.delete(job)
+        
+        db.session.commit()
+        
+        return jsonify({
+            'status': 'success', 
+            'message': f'Successfully cleared {deleted_count} pending job postings'
         })
     
     except Exception as e:

@@ -26744,3 +26744,1072 @@ Stacktrace:
 2025-09-12 13:03:37,288 - JobApplicationBot - INFO - Created Indeed search redirect for: machine learning engineer in new york
 2025-09-12 13:03:39,304 - JobApplicationBot - INFO - Connected to Flask database
 2025-09-12 13:03:39,418 - JobApplicationBot - INFO - Saved 84 new jobs to Flask database
+2025-09-16 07:33:44,637 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-16 07:33:44,680 - JobApplicationBot - INFO - Searching linkedin for 'machine learning engineer' in 'remote' (limit: 10)
+2025-09-16 07:33:44,680 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=machine+learning+engineer&location=remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-16 07:33:50,931 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-16 07:33:50,943 - JobApplicationBot - INFO - Found 59 job cards using selector: .job-search-card
+2025-09-16 07:33:51,370 - JobApplicationBot - INFO - Found 10 jobs on LinkedIn
+2025-09-16 07:33:53,370 - JobApplicationBot - INFO - Searching indeed for 'machine learning engineer' in 'remote' (limit: 10)
+2025-09-16 07:33:53,371 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=machine+learning+engineer&l=remote&fromage=1&sort=date&start=0
+2025-09-16 07:33:54,780 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-16 07:33:54,842 - JobApplicationBot - INFO - Indeed job 'Software Engineer, Infrastructure' classified as: Quick Apply
+2025-09-16 07:33:54,844 - JobApplicationBot - INFO - Indeed job 'Principal Engineer - Smart TV Applications' classified as: Quick Apply
+2025-09-16 07:33:54,845 - JobApplicationBot - INFO - Indeed job 'Manager - Data Engineering' classified as: Quick Apply
+2025-09-16 07:33:54,847 - JobApplicationBot - INFO - Indeed job 'Data Engineer' classified as: Quick Apply
+2025-09-16 07:33:54,848 - JobApplicationBot - INFO - Indeed job 'Fall 2025, Co-op: Machine Learning Researcher' classified as: Quick Apply
+2025-09-16 07:33:54,850 - JobApplicationBot - INFO - Indeed job 'Microsoft Platform Automation Engineer' classified as: Quick Apply
+2025-09-16 07:33:54,851 - JobApplicationBot - INFO - Indeed job 'Data Scientist' classified as: Quick Apply
+2025-09-16 07:33:54,852 - JobApplicationBot - INFO - Indeed job 'Senior Cloud Engineer' classified as: Quick Apply
+2025-09-16 07:33:54,853 - JobApplicationBot - INFO - Indeed job 'AI Developer' classified as: Quick Apply
+2025-09-16 07:33:54,854 - JobApplicationBot - INFO - Indeed job 'Solutions Architect' classified as: Quick Apply
+2025-09-16 07:33:54,854 - JobApplicationBot - INFO - Found 10 jobs on Indeed
+2025-09-16 07:33:56,860 - JobApplicationBot - INFO - Searching glassdoor for 'machine learning engineer' in 'remote' (limit: 10)
+2025-09-16 07:33:56,860 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=anywhere&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-16 07:33:56,938 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=anywhere&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-16 07:33:56,939 - JobApplicationBot - WARNING - Glassdoor is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-16 07:33:58,944 - JobApplicationBot - INFO - Searching linkedin for 'machine learning engineer' in 'new york' (limit: 10)
+2025-09-16 07:33:58,945 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=machine+learning+engineer&location=new+york&f_TPR=r86400&f_JT=F&start=0
+2025-09-16 07:34:04,819 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-16 07:34:04,824 - JobApplicationBot - INFO - Found 59 job cards using selector: .job-search-card
+2025-09-16 07:34:05,222 - JobApplicationBot - INFO - Found 10 jobs on LinkedIn
+2025-09-16 07:34:07,228 - JobApplicationBot - INFO - Searching indeed for 'machine learning engineer' in 'new york' (limit: 10)
+2025-09-16 07:34:07,228 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=machine+learning+engineer&l=new+york&fromage=1&sort=date&start=0
+2025-09-16 07:34:08,391 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-16 07:34:08,424 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer - Personalization' classified as: Quick Apply
+2025-09-16 07:34:08,426 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer, Generative AI Innovation Center' classified as: Quick Apply
+2025-09-16 07:34:08,427 - JobApplicationBot - INFO - Indeed job 'Delivery Consultant - Machine Learning Engineer, AWS Professional Services' classified as: Quick Apply
+2025-09-16 07:34:08,429 - JobApplicationBot - INFO - Indeed job 'Software Engineer III - AWS' classified as: Quick Apply
+2025-09-16 07:34:08,430 - JobApplicationBot - INFO - Indeed job 'Sr. Research Engineer, Machine Learning, AGI Foundations' classified as: Quick Apply
+2025-09-16 07:34:08,431 - JobApplicationBot - INFO - Indeed job 'Senior Delivery Consultant - Senior Machine Learning Engineer, AWS Professional Services, AWS Professional Services' classified as: Quick Apply
+2025-09-16 07:34:08,432 - JobApplicationBot - INFO - Indeed job 'Senior Hardware Development Engineer, Design Engineering, North American Sort Center Engineering' classified as: Quick Apply
+2025-09-16 07:34:08,434 - JobApplicationBot - INFO - Indeed job 'Program Manager, Elevated Shopping' classified as: Quick Apply
+2025-09-16 07:34:08,435 - JobApplicationBot - INFO - Indeed job 'Security Engineer II, Stores Application Security' classified as: Quick Apply
+2025-09-16 07:34:08,436 - JobApplicationBot - INFO - Indeed job 'Sr. Business Intelligence Engineer, APM Product Finance' classified as: Quick Apply
+2025-09-16 07:34:08,436 - JobApplicationBot - INFO - Found 10 jobs on Indeed
+2025-09-16 07:34:10,439 - JobApplicationBot - INFO - Searching glassdoor for 'machine learning engineer' in 'new york' (limit: 10)
+2025-09-16 07:34:10,440 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=new+york&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-16 07:34:10,521 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=new+york&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-16 07:34:10,521 - JobApplicationBot - WARNING - Glassdoor is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-16 07:34:12,538 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-16 07:34:12,594 - JobApplicationBot - INFO - Saved 40 new jobs to Flask database
+2025-09-17 08:33:58,276 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-17 08:33:58,324 - JobApplicationBot - INFO - Searching linkedin for 'machine learning engineer' in 'remote' (limit: 10)
+2025-09-17 08:33:58,324 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=machine+learning+engineer&location=remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-17 08:34:04,475 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-17 08:34:04,486 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-17 08:34:05,220 - JobApplicationBot - INFO - Found 10 jobs on LinkedIn
+2025-09-17 08:34:07,225 - JobApplicationBot - INFO - Searching indeed for 'machine learning engineer' in 'remote' (limit: 10)
+2025-09-17 08:34:07,225 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=machine+learning+engineer&l=remote&fromage=1&sort=date&start=0
+2025-09-17 08:34:08,634 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-17 08:34:08,674 - JobApplicationBot - INFO - Indeed job 'Full-Stack Software Engineer' classified as: Quick Apply
+2025-09-17 08:34:08,676 - JobApplicationBot - INFO - Indeed job 'Data Engineer (REMOTE)' classified as: Quick Apply
+2025-09-17 08:34:08,677 - JobApplicationBot - INFO - Indeed job 'Head of Data Engineering' classified as: Quick Apply
+2025-09-17 08:34:08,678 - JobApplicationBot - INFO - Indeed job 'Senior Machine Learning Ops Engineer' classified as: Quick Apply
+2025-09-17 08:34:08,679 - JobApplicationBot - INFO - Indeed job 'AI/ML Engineer (Remote)' classified as: Quick Apply
+2025-09-17 08:34:08,680 - JobApplicationBot - INFO - Indeed job 'AI Engineer' classified as: Quick Apply
+2025-09-17 08:34:08,681 - JobApplicationBot - INFO - Indeed job 'Database Pipeline Engineer' classified as: Quick Apply
+2025-09-17 08:34:08,682 - JobApplicationBot - INFO - Indeed job 'Applied AI Engineer, Sr' classified as: Quick Apply
+2025-09-17 08:34:08,684 - JobApplicationBot - INFO - Indeed job 'AI/ML Engineer' classified as: Quick Apply
+2025-09-17 08:34:08,685 - JobApplicationBot - INFO - Indeed job 'Product Leader' classified as: Quick Apply
+2025-09-17 08:34:08,685 - JobApplicationBot - INFO - Found 10 jobs on Indeed
+2025-09-17 08:34:10,690 - JobApplicationBot - INFO - Searching linkedin for 'machine learning engineer' in 'new york' (limit: 10)
+2025-09-17 08:34:10,691 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=machine+learning+engineer&location=new+york&f_TPR=r86400&f_JT=F&start=0
+2025-09-17 08:34:16,641 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-17 08:34:16,649 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-17 08:34:17,414 - JobApplicationBot - INFO - Found 10 jobs on LinkedIn
+2025-09-17 08:34:19,420 - JobApplicationBot - INFO - Searching indeed for 'machine learning engineer' in 'new york' (limit: 10)
+2025-09-17 08:34:19,420 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=machine+learning+engineer&l=new+york&fromage=1&sort=date&start=0
+2025-09-17 08:34:20,166 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-17 08:34:20,195 - JobApplicationBot - INFO - Indeed job 'Senior Machine Learning Engineer, AI for Drug Discovery (Lab in the Loop)' classified as: Quick Apply
+2025-09-17 08:34:20,196 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer - Personalization' classified as: Quick Apply
+2025-09-17 08:34:20,197 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer - Personalization' classified as: Quick Apply
+2025-09-17 08:34:20,198 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer, Generative AI Innovation Center' classified as: Quick Apply
+2025-09-17 08:34:20,199 - JobApplicationBot - INFO - Indeed job 'Sr. Research Engineer, Machine Learning, AGI Foundations' classified as: Quick Apply
+2025-09-17 08:34:20,200 - JobApplicationBot - INFO - Indeed job 'Delivery Consultant - Machine Learning Engineer, AWS Professional Services' classified as: Quick Apply
+2025-09-17 08:34:20,201 - JobApplicationBot - INFO - Indeed job 'Applied Scientist - Search' classified as: Quick Apply
+2025-09-17 08:34:20,202 - JobApplicationBot - INFO - Indeed job 'Program Manager, Elevated Shopping' classified as: Quick Apply
+2025-09-17 08:34:20,203 - JobApplicationBot - INFO - Indeed job 'Software Development Engineer, Search - Prime Video' classified as: Quick Apply
+2025-09-17 08:34:20,204 - JobApplicationBot - INFO - Indeed job 'Applied AI/ML Engineer-Vice President' classified as: Quick Apply
+2025-09-17 08:34:20,204 - JobApplicationBot - INFO - Found 10 jobs on Indeed
+2025-09-17 08:34:22,222 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-17 08:34:22,334 - JobApplicationBot - INFO - Saved 40 new jobs to Flask database
+2025-09-17 09:01:00,404 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-17 09:01:00,437 - JobApplicationBot - INFO - Searching linkedin for 'machine learning engineer' in 'remote' (limit: 10)
+2025-09-17 09:01:00,437 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=machine+learning+engineer&location=remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-17 09:01:06,712 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-17 09:01:06,728 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-17 09:01:07,760 - JobApplicationBot - INFO - Found 5 jobs on LinkedIn
+2025-09-17 09:01:09,765 - JobApplicationBot - INFO - Searching indeed for 'machine learning engineer' in 'remote' (limit: 10)
+2025-09-17 09:01:09,767 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=machine+learning+engineer&l=remote&fromage=1&sort=date&start=0
+2025-09-17 09:01:10,440 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-17 09:01:10,459 - JobApplicationBot - INFO - Indeed job 'AI/ML Engineer (Remote)' classified as: Quick Apply
+2025-09-17 09:01:10,461 - JobApplicationBot - INFO - Indeed job 'Software Engineer, Infrastructure' classified as: Quick Apply
+2025-09-17 09:01:10,462 - JobApplicationBot - INFO - Indeed job 'Software Engineer, Infrastructure' classified as: Quick Apply
+2025-09-17 09:01:10,462 - JobApplicationBot - INFO - Found 3 jobs on Indeed
+2025-09-17 09:01:12,467 - JobApplicationBot - INFO - Searching glassdoor for 'machine learning engineer' in 'remote' (limit: 10)
+2025-09-17 09:01:12,468 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=anywhere&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-17 09:01:12,614 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=anywhere&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-17 09:01:12,614 - JobApplicationBot - WARNING - Glassdoor is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-17 09:01:14,620 - JobApplicationBot - INFO - Searching linkedin for 'machine learning engineer' in 'new york' (limit: 10)
+2025-09-17 09:01:14,621 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=machine+learning+engineer&location=new+york&f_TPR=r86400&f_JT=F&start=0
+2025-09-17 09:01:20,503 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-17 09:01:20,510 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-17 09:01:21,493 - JobApplicationBot - INFO - Found 5 jobs on LinkedIn
+2025-09-17 09:01:23,498 - JobApplicationBot - INFO - Searching indeed for 'machine learning engineer' in 'new york' (limit: 10)
+2025-09-17 09:01:23,498 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=machine+learning+engineer&l=new+york&fromage=1&sort=date&start=0
+2025-09-17 09:01:24,269 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-17 09:01:24,314 - JobApplicationBot - INFO - Indeed job 'Senior Machine Learning Engineer, AI for Drug Discovery (Lab in the Loop)' classified as: Quick Apply
+2025-09-17 09:01:24,316 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer - Personalization' classified as: Quick Apply
+2025-09-17 09:01:24,320 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer, Generative AI Innovation Center' classified as: Quick Apply
+2025-09-17 09:01:24,327 - JobApplicationBot - INFO - Indeed job 'Sr. Research Engineer, Machine Learning, AGI Foundations' classified as: Quick Apply
+2025-09-17 09:01:24,331 - JobApplicationBot - INFO - Indeed job 'Delivery Consultant - Machine Learning Engineer, AWS Professional Services' classified as: Quick Apply
+2025-09-17 09:01:24,335 - JobApplicationBot - INFO - Indeed job 'Applied Scientist - Search' classified as: Quick Apply
+2025-09-17 09:01:24,337 - JobApplicationBot - INFO - Indeed job 'Applied Scientist II, Prime Video - Personalization and Discovery Science, Personalization and Discovery Science' classified as: Quick Apply
+2025-09-17 09:01:24,339 - JobApplicationBot - INFO - Indeed job 'Program Manager, Elevated Shopping' classified as: Quick Apply
+2025-09-17 09:01:24,341 - JobApplicationBot - INFO - Indeed job 'Applied Scientist II, Prime Video Personalization and Discovery Science' classified as: Quick Apply
+2025-09-17 09:01:24,343 - JobApplicationBot - INFO - Indeed job 'Software Development Engineer - Amazon Just Walk Out, Sessions and Tracking of People' classified as: Quick Apply
+2025-09-17 09:01:24,343 - JobApplicationBot - INFO - Found 10 jobs on Indeed
+2025-09-17 09:01:26,344 - JobApplicationBot - INFO - Searching glassdoor for 'machine learning engineer' in 'new york' (limit: 10)
+2025-09-17 09:01:26,345 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=new+york&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-17 09:01:26,409 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=new+york&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-17 09:01:26,409 - JobApplicationBot - WARNING - Glassdoor is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-17 09:01:28,424 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-17 09:01:28,485 - JobApplicationBot - INFO - Saved 23 new jobs to Flask database
+2025-09-17 09:27:44,041 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-17 09:27:44,091 - JobApplicationBot - INFO - Searching indeed for 'machine learning engineer' in 'remote' (collecting: 50)
+2025-09-17 09:27:44,091 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=machine+learning+engineer&l=remote&fromage=1&sort=date&start=0
+2025-09-17 09:27:44,924 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-17 09:27:44,962 - JobApplicationBot - INFO - Indeed job 'Full-Stack Software Engineer' classified as: Quick Apply
+2025-09-17 09:27:44,965 - JobApplicationBot - INFO - Indeed job 'Bioinformatics Scientist' classified as: Quick Apply
+2025-09-17 09:27:44,967 - JobApplicationBot - INFO - Indeed job 'Senior Machine Learning Ops Engineer' classified as: Quick Apply
+2025-09-17 09:27:44,970 - JobApplicationBot - INFO - Indeed job 'AI/ML Engineer (Remote)' classified as: Quick Apply
+2025-09-17 09:27:44,972 - JobApplicationBot - INFO - Indeed job 'Database Pipeline Engineer' classified as: Quick Apply
+2025-09-17 09:27:44,975 - JobApplicationBot - INFO - Indeed job 'Data Engineer (REMOTE)' classified as: Quick Apply
+2025-09-17 09:27:44,977 - JobApplicationBot - INFO - Indeed job 'Applied AI Engineer, Sr' classified as: Quick Apply
+2025-09-17 09:27:44,980 - JobApplicationBot - INFO - Indeed job 'AI/ML Engineer' classified as: Quick Apply
+2025-09-17 09:27:44,983 - JobApplicationBot - INFO - Indeed job 'Product Leader' classified as: Quick Apply
+2025-09-17 09:27:44,985 - JobApplicationBot - INFO - Indeed job 'Sr Data Engineer' classified as: Quick Apply
+2025-09-17 09:27:44,988 - JobApplicationBot - INFO - Indeed job 'Sr Data Engineer' classified as: Quick Apply
+2025-09-17 09:27:44,989 - JobApplicationBot - INFO - Indeed job 'Lead AI/ML Engineer - Remote' classified as: Quick Apply
+2025-09-17 09:27:44,991 - JobApplicationBot - INFO - Indeed job 'Sr AI/ML Engineer - Remote' classified as: Quick Apply
+2025-09-17 09:27:44,993 - JobApplicationBot - INFO - Indeed job 'AI Solutions Engineer' classified as: Quick Apply
+2025-09-17 09:27:44,994 - JobApplicationBot - INFO - Indeed job 'Data Architect' classified as: Quick Apply
+2025-09-17 09:27:44,996 - JobApplicationBot - INFO - Indeed job 'Head of Data Engineering' classified as: Quick Apply
+2025-09-17 09:27:44,997 - JobApplicationBot - INFO - Indeed job 'Machine Learning(LLM) with UI Development engineer' classified as: Quick Apply
+2025-09-17 09:27:44,999 - JobApplicationBot - INFO - Indeed job 'Staff Machine Learning Engineer' classified as: Quick Apply
+2025-09-17 09:27:45,001 - JobApplicationBot - INFO - Indeed job 'AI Engineer' classified as: Quick Apply
+2025-09-17 09:27:45,003 - JobApplicationBot - INFO - Indeed job 'Plant Process Engineer' classified as: Quick Apply
+2025-09-17 09:27:45,004 - JobApplicationBot - INFO - Indeed job 'Enterprise Data Architect (Remote/Texas Resident) - Clinical Data Management' classified as: Quick Apply
+2025-09-17 09:27:45,007 - JobApplicationBot - INFO - Indeed job 'Senior Data Engineer' classified as: Quick Apply
+2025-09-17 09:27:45,009 - JobApplicationBot - INFO - Indeed job 'Senior Software Engineer, Artificial Intelligence' classified as: Quick Apply
+2025-09-17 09:27:45,010 - JobApplicationBot - INFO - Indeed job 'Senior ML Engineer' classified as: Quick Apply
+2025-09-17 09:27:45,012 - JobApplicationBot - INFO - Indeed job 'Senior Architect & Engineer' classified as: Quick Apply
+2025-09-17 09:27:45,013 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer AI/ML - US Remote' classified as: Quick Apply
+2025-09-17 09:27:45,013 - JobApplicationBot - INFO - Found 26 jobs on Indeed
+2025-09-17 09:27:47,019 - JobApplicationBot - INFO - Searching indeed for 'machine learning engineer' in 'new york' (collecting: 50)
+2025-09-17 09:27:47,019 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=machine+learning+engineer&l=new+york&fromage=1&sort=date&start=0
+2025-09-17 09:27:48,026 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-17 09:27:48,051 - JobApplicationBot - INFO - Indeed job 'Senior Machine Learning Engineer, AI for Drug Discovery (Lab in the Loop)' classified as: Quick Apply
+2025-09-17 09:27:48,052 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer - Personalization' classified as: Quick Apply
+2025-09-17 09:27:48,054 - JobApplicationBot - INFO - Indeed job 'Engineer Imaging' classified as: Quick Apply
+2025-09-17 09:27:48,056 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer, Generative AI Innovation Center' classified as: Quick Apply
+2025-09-17 09:27:48,057 - JobApplicationBot - INFO - Indeed job 'Sr. Research Engineer, Machine Learning, AGI Foundations' classified as: Quick Apply
+2025-09-17 09:27:48,060 - JobApplicationBot - INFO - Indeed job 'AI Data Engineer - Manager' classified as: Quick Apply
+2025-09-17 09:27:48,061 - JobApplicationBot - INFO - Indeed job 'Delivery Consultant - Machine Learning Engineer, AWS Professional Services' classified as: Quick Apply
+2025-09-17 09:27:48,064 - JobApplicationBot - INFO - Indeed job 'AI Data Engineer - Senior Associate' classified as: Quick Apply
+2025-09-17 09:27:48,065 - JobApplicationBot - INFO - Indeed job 'Applied Scientist - Search' classified as: Quick Apply
+2025-09-17 09:27:48,067 - JobApplicationBot - INFO - Indeed job 'Program Manager, Elevated Shopping' classified as: Quick Apply
+2025-09-17 09:27:48,069 - JobApplicationBot - INFO - Indeed job 'Program Manager, Elevated Shopping' classified as: Quick Apply
+2025-09-17 09:27:48,070 - JobApplicationBot - INFO - Indeed job 'Software Development Engineer, Search - Prime Video' classified as: Quick Apply
+2025-09-17 09:27:48,072 - JobApplicationBot - INFO - Indeed job 'Applied Scientist II, Prime Video - Personalization and Discovery Science, Personalization and Discovery Science' classified as: Quick Apply
+2025-09-17 09:27:48,074 - JobApplicationBot - INFO - Indeed job 'Senior Delivery Consultant - Senior Machine Learning Engineer, AWS Professional Services, AWS Professional Services' classified as: Quick Apply
+2025-09-17 09:27:48,075 - JobApplicationBot - INFO - Indeed job 'Applied Scientist, Creators' classified as: Quick Apply
+2025-09-17 09:27:48,076 - JobApplicationBot - INFO - Indeed job 'Applied Scientist II, Prime Video Personalization and Discovery Science' classified as: Quick Apply
+2025-09-17 09:27:48,076 - JobApplicationBot - INFO - Found 16 jobs on Indeed
+2025-09-17 09:27:50,082 - JobApplicationBot - INFO - Removed 1 duplicate jobs
+2025-09-17 09:27:50,083 - JobApplicationBot - INFO - Optimized job selection: 41 candidates -> 10 selected
+2025-09-17 09:27:50,101 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-17 09:27:50,147 - JobApplicationBot - INFO - Saved 7 new jobs to Flask database
+2025-09-18 07:55:07,633 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-18 07:55:07,679 - JobApplicationBot - INFO - Searching linkedin for 'machine learning engineer' in 'remote' (collecting: 50)
+2025-09-18 07:55:07,679 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=machine+learning+engineer&location=remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-18 07:55:13,941 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-18 07:55:13,951 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-18 07:55:23,451 - JobApplicationBot - INFO - Found 6 jobs on LinkedIn
+2025-09-18 07:55:25,452 - JobApplicationBot - INFO - Searching indeed for 'machine learning engineer' in 'remote' (collecting: 50)
+2025-09-18 07:55:25,452 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=machine+learning+engineer&l=remote&fromage=1&sort=date&start=0
+2025-09-18 07:55:26,392 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-18 07:55:26,424 - JobApplicationBot - INFO - Indeed job 'Senior AI/ML Engineer - Remote' classified as: Quick Apply
+2025-09-18 07:55:26,426 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer' classified as: Quick Apply
+2025-09-18 07:55:26,428 - JobApplicationBot - INFO - Indeed job 'Senior Machine Learning Engineer' classified as: Quick Apply
+2025-09-18 07:55:26,430 - JobApplicationBot - INFO - Indeed job 'Applied Mach Learning Engineer Senior Expert - Arity' classified as: Quick Apply
+2025-09-18 07:55:26,432 - JobApplicationBot - INFO - Indeed job 'Data Scientist - Marketing Analytics' classified as: Quick Apply
+2025-09-18 07:55:26,434 - JobApplicationBot - INFO - Indeed job 'Arity - Senior Data Scientist - Arity' classified as: Quick Apply
+2025-09-18 07:55:26,436 - JobApplicationBot - INFO - Indeed job 'Arity - Lead Data Scientist - AdTech/RTB - Arity' classified as: Quick Apply
+2025-09-18 07:55:26,438 - JobApplicationBot - INFO - Indeed job 'Data Product Engineer I' classified as: Quick Apply
+2025-09-18 07:55:26,441 - JobApplicationBot - INFO - Indeed job 'Software Engineer II, Verifications' classified as: Quick Apply
+2025-09-18 07:55:26,443 - JobApplicationBot - INFO - Indeed job 'Forward Deployed, Implementation Engineer (Bilingual Spanish/English)' classified as: Quick Apply
+2025-09-18 07:55:26,445 - JobApplicationBot - INFO - Indeed job 'Staff Product Manager, Partnerships & Integrations' classified as: Quick Apply
+2025-09-18 07:55:26,447 - JobApplicationBot - INFO - Indeed job 'Lead Corporate Systems Engineer' classified as: Quick Apply
+2025-09-18 07:55:26,450 - JobApplicationBot - INFO - Indeed job 'Sr Data Scientist, Marketing (Remote)' classified as: Quick Apply
+2025-09-18 07:55:26,452 - JobApplicationBot - INFO - Indeed job 'Generative AI Consultant (AWS Bedrock)' classified as: Quick Apply
+2025-09-18 07:55:26,454 - JobApplicationBot - INFO - Indeed job 'Lead Fraud Technology Engineer - AI & Decision Systems (Remote)' classified as: Quick Apply
+2025-09-18 07:55:26,457 - JobApplicationBot - INFO - Indeed job 'Staff Software Development Engineer - Full Stack' classified as: Quick Apply
+2025-09-18 07:55:26,459 - JobApplicationBot - INFO - Indeed job 'Enterprise Systems Engineer II' classified as: Quick Apply
+2025-09-18 07:55:26,462 - JobApplicationBot - INFO - Indeed job 'Principal Software Engineer, Endpoint AI Framework (Remote)' classified as: Quick Apply
+2025-09-18 07:55:26,464 - JobApplicationBot - INFO - Indeed job 'Senior Engineer I: Fleet Kernel New' classified as: Quick Apply
+2025-09-18 07:55:26,467 - JobApplicationBot - INFO - Indeed job 'Senior Engineer I: Fleet Kernel New' classified as: Quick Apply
+2025-09-18 07:55:26,469 - JobApplicationBot - INFO - Indeed job 'Senior Performance Engineer I: Fleet Performance New' classified as: Quick Apply
+2025-09-18 07:55:26,471 - JobApplicationBot - INFO - Indeed job 'Sr. Director Identity Security' classified as: Quick Apply
+2025-09-18 07:55:26,474 - JobApplicationBot - INFO - Indeed job 'System Safety Engineer- Contract' classified as: Quick Apply
+2025-09-18 07:55:26,476 - JobApplicationBot - INFO - Indeed job 'Senior AI/ML Engineer - Remote' classified as: Quick Apply
+2025-09-18 07:55:26,479 - JobApplicationBot - INFO - Indeed job 'Director, Data Engineer' classified as: Quick Apply
+2025-09-18 07:55:26,481 - JobApplicationBot - INFO - Indeed job 'Data Product Engineer II' classified as: Quick Apply
+2025-09-18 07:55:26,481 - JobApplicationBot - INFO - Found 26 jobs on Indeed
+2025-09-18 07:55:28,483 - JobApplicationBot - INFO - Searching glassdoor for 'machine learning engineer' in 'remote' (collecting: 50)
+2025-09-18 07:55:28,483 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=anywhere&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-18 07:55:28,560 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=anywhere&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-18 07:55:28,560 - JobApplicationBot - WARNING - Glassdoor is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-18 07:55:30,565 - JobApplicationBot - INFO - Searching ziprecruiter for 'machine learning engineer' in 'remote' (collecting: 50)
+2025-09-18 07:55:30,566 - JobApplicationBot - INFO - Searching ZipRecruiter: https://www.ziprecruiter.com/jobs/search?search=machine+learning+engineer&location=remote&days=7&radius=50
+2025-09-18 07:55:30,645 - JobApplicationBot - ERROR - ZipRecruiter request error: 403 Client Error: Forbidden for url: https://www.ziprecruiter.com/jobs/search?search=machine+learning+engineer&location=remote&days=7&radius=50
+2025-09-18 07:55:30,645 - JobApplicationBot - WARNING - ZipRecruiter is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-18 07:55:32,650 - JobApplicationBot - INFO - Searching linkedin for 'machine learning engineer' in 'new york' (collecting: 50)
+2025-09-18 07:55:32,650 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=machine+learning+engineer&location=new+york&f_TPR=r86400&f_JT=F&start=0
+2025-09-18 07:55:38,671 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-18 07:55:38,681 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-18 07:55:47,738 - JobApplicationBot - INFO - Found 5 jobs on LinkedIn
+2025-09-18 07:55:49,738 - JobApplicationBot - INFO - Searching indeed for 'machine learning engineer' in 'new york' (collecting: 50)
+2025-09-18 07:55:49,739 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=machine+learning+engineer&l=new+york&fromage=1&sort=date&start=0
+2025-09-18 07:55:50,527 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-18 07:55:50,578 - JobApplicationBot - INFO - Indeed job 'Senior AI/ML Engineer - Remote' classified as: Quick Apply
+2025-09-18 07:55:50,580 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer - Personalization' classified as: Quick Apply
+2025-09-18 07:55:50,582 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer, Generative AI Innovation Center' classified as: Quick Apply
+2025-09-18 07:55:50,584 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer, Generative AI Innovation Center' classified as: Quick Apply
+2025-09-18 07:55:50,586 - JobApplicationBot - INFO - Indeed job 'Sr. Research Engineer, Machine Learning, AGI Foundations' classified as: Quick Apply
+2025-09-18 07:55:50,588 - JobApplicationBot - INFO - Indeed job 'Delivery Consultant - Machine Learning Engineer, AWS Professional Services' classified as: Quick Apply
+2025-09-18 07:55:50,590 - JobApplicationBot - INFO - Indeed job 'Applied Scientist - Search' classified as: Quick Apply
+2025-09-18 07:55:50,591 - JobApplicationBot - INFO - Indeed job 'Applied Scientist II, Prime Video - Personalization and Discovery Science, Personalization and Discovery Science' classified as: Quick Apply
+2025-09-18 07:55:50,593 - JobApplicationBot - INFO - Indeed job 'Applied Scientist II, Prime Video Personalization and Discovery Science' classified as: Quick Apply
+2025-09-18 07:55:50,595 - JobApplicationBot - INFO - Indeed job 'Program Manager, Elevated Shopping' classified as: Quick Apply
+2025-09-18 07:55:50,597 - JobApplicationBot - INFO - Indeed job 'Software Development Engineer - Amazon Just Walk Out, Sessions and Tracking of People' classified as: Quick Apply
+2025-09-18 07:55:50,599 - JobApplicationBot - INFO - Indeed job 'Senior Delivery Consultant - Senior Machine Learning Engineer, AWS Professional Services, AWS Professional Services' classified as: Quick Apply
+2025-09-18 07:55:50,600 - JobApplicationBot - INFO - Indeed job 'Deep Learning Architect, Generative AI Innovation Center' classified as: Quick Apply
+2025-09-18 07:55:50,602 - JobApplicationBot - INFO - Indeed job 'Security Engineer II, Stores Application Security' classified as: Quick Apply
+2025-09-18 07:55:50,604 - JobApplicationBot - INFO - Indeed job 'Sr. Program Manager, Elevated Shopping' classified as: Quick Apply
+2025-09-18 07:55:50,605 - JobApplicationBot - INFO - Indeed job 'Applied Scientist, Creators' classified as: Quick Apply
+2025-09-18 07:55:50,607 - JobApplicationBot - INFO - Indeed job 'Senior Applied Scientist, Artificial General Intelligence' classified as: Quick Apply
+2025-09-18 07:55:50,609 - JobApplicationBot - INFO - Indeed job 'Senior Software Engineer (SDEIII), Amazon Ads' classified as: Quick Apply
+2025-09-18 07:55:50,610 - JobApplicationBot - INFO - Indeed job 'Data Scientist, Generative AI Innovation Center' classified as: Quick Apply
+2025-09-18 07:55:50,612 - JobApplicationBot - INFO - Indeed job 'Applied Scientist, AGIF' classified as: Quick Apply
+2025-09-18 07:55:50,614 - JobApplicationBot - INFO - Indeed job 'Principal Economist, Stores Economics and Science' classified as: Quick Apply
+2025-09-18 07:55:50,615 - JobApplicationBot - INFO - Indeed job 'Senior Hardware Development Engineer, Design Engineering, North American Sort Center Engineering' classified as: Quick Apply
+2025-09-18 07:55:50,617 - JobApplicationBot - INFO - Indeed job 'Sr. MLE, Prime Video - Personalization and Discovery' classified as: Quick Apply
+2025-09-18 07:55:50,618 - JobApplicationBot - INFO - Indeed job 'Senior Innovation Engineer, WW Innovation Engineering' classified as: Quick Apply
+2025-09-18 07:55:50,620 - JobApplicationBot - INFO - Indeed job 'Applied Scientist, Agentic AI Professional Services' classified as: Quick Apply
+2025-09-18 07:55:50,622 - JobApplicationBot - INFO - Indeed job 'Applied Scientist, Generative AI Innovation Center' classified as: Quick Apply
+2025-09-18 07:55:50,622 - JobApplicationBot - INFO - Found 26 jobs on Indeed
+2025-09-18 07:55:52,628 - JobApplicationBot - INFO - Searching glassdoor for 'machine learning engineer' in 'new york' (collecting: 50)
+2025-09-18 07:55:52,628 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=new+york&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-18 07:55:52,700 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=new+york&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-18 07:55:52,700 - JobApplicationBot - WARNING - Glassdoor is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-18 07:55:54,704 - JobApplicationBot - INFO - Searching ziprecruiter for 'machine learning engineer' in 'new york' (collecting: 50)
+2025-09-18 07:55:54,704 - JobApplicationBot - INFO - Searching ZipRecruiter: https://www.ziprecruiter.com/jobs/search?search=machine+learning+engineer&location=new+york&days=7&radius=50
+2025-09-18 07:55:54,752 - JobApplicationBot - ERROR - ZipRecruiter request error: 403 Client Error: Forbidden for url: https://www.ziprecruiter.com/jobs/search?search=machine+learning+engineer&location=new+york&days=7&radius=50
+2025-09-18 07:55:54,752 - JobApplicationBot - WARNING - ZipRecruiter is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-18 07:55:56,757 - JobApplicationBot - INFO - Removed 5 duplicate jobs
+2025-09-18 07:55:56,757 - JobApplicationBot - INFO - Optimized job selection: 58 candidates -> 10 selected
+2025-09-18 07:55:56,773 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-18 07:55:56,826 - JobApplicationBot - INFO - Saved 10 new jobs to Flask database
+2025-09-18 08:24:12,559 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-18 08:24:12,592 - JobApplicationBot - INFO - Searching linkedin for 'machine learning engineer' in 'remote' (collecting: 50)
+2025-09-18 08:24:12,592 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=machine+learning+engineer&location=remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-18 08:24:18,743 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-18 08:24:18,755 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-18 08:24:27,048 - JobApplicationBot - INFO - Found 5 jobs on LinkedIn
+2025-09-18 08:24:29,053 - JobApplicationBot - INFO - Searching indeed for 'machine learning engineer' in 'remote' (collecting: 50)
+2025-09-18 08:24:29,054 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=machine+learning+engineer&l=remote&fromage=1&sort=date&start=0
+2025-09-18 08:24:30,207 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-18 08:24:30,233 - JobApplicationBot - INFO - Indeed job 'Senior AI/ML Engineer - Remote' classified as: Quick Apply
+2025-09-18 08:24:30,235 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer' classified as: Quick Apply
+2025-09-18 08:24:30,236 - JobApplicationBot - INFO - Indeed job 'Senior Machine Learning Engineer' classified as: Quick Apply
+2025-09-18 08:24:30,238 - JobApplicationBot - INFO - Indeed job 'Applied Mach Learning Engineer Senior Expert - Arity' classified as: Quick Apply
+2025-09-18 08:24:30,239 - JobApplicationBot - INFO - Indeed job 'Data Scientist - Marketing Analytics' classified as: Quick Apply
+2025-09-18 08:24:30,241 - JobApplicationBot - INFO - Indeed job 'Arity - Senior Data Scientist - Arity' classified as: Quick Apply
+2025-09-18 08:24:30,242 - JobApplicationBot - INFO - Indeed job 'Arity - Lead Data Scientist - AdTech/RTB - Arity' classified as: Quick Apply
+2025-09-18 08:24:30,244 - JobApplicationBot - INFO - Indeed job 'Data Product Engineer I' classified as: Quick Apply
+2025-09-18 08:24:30,246 - JobApplicationBot - INFO - Indeed job 'Software Engineer II, Verifications' classified as: Quick Apply
+2025-09-18 08:24:30,248 - JobApplicationBot - INFO - Indeed job 'Sr Data Scientist, Marketing (Remote)' classified as: Quick Apply
+2025-09-18 08:24:30,250 - JobApplicationBot - INFO - Indeed job 'Generative AI Consultant (AWS Bedrock)' classified as: Quick Apply
+2025-09-18 08:24:30,252 - JobApplicationBot - INFO - Indeed job 'Senior Engineer I: Fleet Kernel New' classified as: Quick Apply
+2025-09-18 08:24:30,254 - JobApplicationBot - INFO - Indeed job 'Senior AI/ML Engineer - Remote' classified as: Quick Apply
+2025-09-18 08:24:30,257 - JobApplicationBot - INFO - Indeed job 'Director, Data Engineer' classified as: Quick Apply
+2025-09-18 08:24:30,258 - JobApplicationBot - INFO - Indeed job 'Data Product Engineer II' classified as: Quick Apply
+2025-09-18 08:24:30,260 - JobApplicationBot - INFO - Indeed job 'Full Stack AI/UX Engineer II' classified as: Quick Apply
+2025-09-18 08:24:30,263 - JobApplicationBot - INFO - Indeed job 'Senior Manager, Data Science' classified as: Quick Apply
+2025-09-18 08:24:30,265 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer' classified as: Quick Apply
+2025-09-18 08:24:30,266 - JobApplicationBot - INFO - Indeed job 'Data Engineering (Supply Chain AI) Co-Op' classified as: Quick Apply
+2025-09-18 08:24:30,269 - JobApplicationBot - INFO - Indeed job 'AI Engineer' classified as: Quick Apply
+2025-09-18 08:24:30,271 - JobApplicationBot - INFO - Indeed job 'Staff Software Development Engineer - Full Stack' classified as: Quick Apply
+2025-09-18 08:24:30,273 - JobApplicationBot - INFO - Indeed job 'Senior Data Scientist - Veterans Evaluation Services' classified as: Quick Apply
+2025-09-18 08:24:30,275 - JobApplicationBot - INFO - Indeed job 'Senior Data Scientist - Veterans Evaluation Services' classified as: Quick Apply
+2025-09-18 08:24:30,277 - JobApplicationBot - INFO - Indeed job 'Google DialogFlow Lead with AI' classified as: Quick Apply
+2025-09-18 08:24:30,279 - JobApplicationBot - INFO - Indeed job 'Manager, Data Engineering [Remote-US]' classified as: Quick Apply
+2025-09-18 08:24:30,281 - JobApplicationBot - INFO - Indeed job 'Sr. SAP ETL Developer' classified as: Quick Apply
+2025-09-18 08:24:30,281 - JobApplicationBot - INFO - Found 26 jobs on Indeed
+2025-09-18 08:24:32,286 - JobApplicationBot - INFO - Searching glassdoor for 'machine learning engineer' in 'remote' (collecting: 50)
+2025-09-18 08:24:32,287 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=anywhere&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-18 08:24:32,354 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=anywhere&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-18 08:24:32,355 - JobApplicationBot - WARNING - Glassdoor is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-18 08:24:34,358 - JobApplicationBot - INFO - Searching ziprecruiter for 'machine learning engineer' in 'remote' (collecting: 50)
+2025-09-18 08:24:34,358 - JobApplicationBot - INFO - Searching ZipRecruiter: https://www.ziprecruiter.com/jobs/search?search=machine+learning+engineer&location=remote&days=7&radius=50
+2025-09-18 08:24:34,449 - JobApplicationBot - ERROR - ZipRecruiter request error: 403 Client Error: Forbidden for url: https://www.ziprecruiter.com/jobs/search?search=machine+learning+engineer&location=remote&days=7&radius=50
+2025-09-18 08:24:34,450 - JobApplicationBot - WARNING - ZipRecruiter is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-18 08:24:36,455 - JobApplicationBot - INFO - Searching linkedin for 'machine learning engineer' in 'new york' (collecting: 50)
+2025-09-18 08:24:36,455 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=machine+learning+engineer&location=new+york&f_TPR=r86400&f_JT=F&start=0
+2025-09-18 08:24:42,473 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-18 08:24:42,485 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-18 08:24:50,814 - JobApplicationBot - INFO - Found 5 jobs on LinkedIn
+2025-09-18 08:24:52,819 - JobApplicationBot - INFO - Searching indeed for 'machine learning engineer' in 'new york' (collecting: 50)
+2025-09-18 08:24:52,821 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=machine+learning+engineer&l=new+york&fromage=1&sort=date&start=0
+2025-09-18 08:24:53,656 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-18 08:24:53,690 - JobApplicationBot - INFO - Indeed job 'Senior AI/ML Engineer - Remote' classified as: Quick Apply
+2025-09-18 08:24:53,692 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer - Personalization' classified as: Quick Apply
+2025-09-18 08:24:53,694 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer, Generative AI Innovation Center' classified as: Quick Apply
+2025-09-18 08:24:53,696 - JobApplicationBot - INFO - Indeed job 'Sr. Research Engineer, Machine Learning, AGI Foundations' classified as: Quick Apply
+2025-09-18 08:24:53,698 - JobApplicationBot - INFO - Indeed job 'Delivery Consultant - Machine Learning Engineer, AWS Professional Services' classified as: Quick Apply
+2025-09-18 08:24:53,700 - JobApplicationBot - INFO - Indeed job 'Software Development Engineer - Amazon Just Walk Out, Sessions and Tracking of People' classified as: Quick Apply
+2025-09-18 08:24:53,703 - JobApplicationBot - INFO - Indeed job 'Senior Delivery Consultant - Senior Machine Learning Engineer, AWS Professional Services, AWS Professional Services' classified as: Quick Apply
+2025-09-18 08:24:53,704 - JobApplicationBot - INFO - Indeed job 'Deep Learning Architect, Generative AI Innovation Center' classified as: Quick Apply
+2025-09-18 08:24:53,706 - JobApplicationBot - INFO - Indeed job 'Applied Scientist, Creators' classified as: Quick Apply
+2025-09-18 08:24:53,708 - JobApplicationBot - INFO - Indeed job 'Senior Software Engineer (SDEIII), Amazon Ads' classified as: Quick Apply
+2025-09-18 08:24:53,710 - JobApplicationBot - INFO - Indeed job 'Data Scientist, Generative AI Innovation Center' classified as: Quick Apply
+2025-09-18 08:24:53,714 - JobApplicationBot - INFO - Indeed job 'Applied Scientist, Generative AI Innovation Center' classified as: Quick Apply
+2025-09-18 08:24:53,716 - JobApplicationBot - INFO - Indeed job 'Sr Deep Learning Architect, Generative AI Innovation Center' classified as: Quick Apply
+2025-09-18 08:24:53,718 - JobApplicationBot - INFO - Indeed job 'Sr. Business Intelligence Engineer, APM Product Finance' classified as: Quick Apply
+2025-09-18 08:24:53,720 - JobApplicationBot - INFO - Indeed job 'Sr. Applied Scientist, Sales AI' classified as: Quick Apply
+2025-09-18 08:24:53,722 - JobApplicationBot - INFO - Indeed job 'Delivery Consultant- GenAI/ML & Data Science, Professional Services, AWS Industries' classified as: Quick Apply
+2025-09-18 08:24:53,724 - JobApplicationBot - INFO - Indeed job 'Delivery Consultant- GenAI/ML, AWS, Industries' classified as: Quick Apply
+2025-09-18 08:24:53,726 - JobApplicationBot - INFO - Indeed job 'Senior Data Scientist, Generative AI Innovation Center, Model Customization' classified as: Quick Apply
+2025-09-18 08:24:53,727 - JobApplicationBot - INFO - Indeed job 'Delivery Consultant AI/ML, AWS, Industries' classified as: Quick Apply
+2025-09-18 08:24:53,729 - JobApplicationBot - INFO - Indeed job 'Senior Delivery Consultant- GenAI/ML, AWS, Industries' classified as: Quick Apply
+2025-09-18 08:24:53,731 - JobApplicationBot - INFO - Indeed job 'Principal Applied Scientist, Gen AI' classified as: Quick Apply
+2025-09-18 08:24:53,732 - JobApplicationBot - INFO - Indeed job 'Senior Data Scientist, Media & Entertainment' classified as: Quick Apply
+2025-09-18 08:24:53,734 - JobApplicationBot - INFO - Indeed job 'Lead AI/ML Engineer, Recommendation Systems' classified as: Quick Apply
+2025-09-18 08:24:53,735 - JobApplicationBot - INFO - Indeed job 'Senior Applied Scientist, Agentic AI, AWS Agentic AI' classified as: Quick Apply
+2025-09-18 08:24:53,737 - JobApplicationBot - INFO - Indeed job 'Senior Applied Scientist, Agentic AI, AWS Agentic AI' classified as: Quick Apply
+2025-09-18 08:24:53,739 - JobApplicationBot - INFO - Indeed job 'Senior Delivery Consultant AI/ML, AWS Professional Services' classified as: Quick Apply
+2025-09-18 08:24:53,739 - JobApplicationBot - INFO - Found 26 jobs on Indeed
+2025-09-18 08:24:55,740 - JobApplicationBot - INFO - Searching glassdoor for 'machine learning engineer' in 'new york' (collecting: 50)
+2025-09-18 08:24:55,740 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=new+york&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-18 08:24:55,792 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=new+york&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-18 08:24:55,792 - JobApplicationBot - WARNING - Glassdoor is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-18 08:24:57,796 - JobApplicationBot - INFO - Searching ziprecruiter for 'machine learning engineer' in 'new york' (collecting: 50)
+2025-09-18 08:24:57,797 - JobApplicationBot - INFO - Searching ZipRecruiter: https://www.ziprecruiter.com/jobs/search?search=machine+learning+engineer&location=new+york&days=7&radius=50
+2025-09-18 08:24:57,859 - JobApplicationBot - ERROR - ZipRecruiter request error: 403 Client Error: Forbidden for url: https://www.ziprecruiter.com/jobs/search?search=machine+learning+engineer&location=new+york&days=7&radius=50
+2025-09-18 08:24:57,859 - JobApplicationBot - WARNING - ZipRecruiter is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-18 08:24:59,864 - JobApplicationBot - INFO - Removed 5 duplicate jobs
+2025-09-18 08:24:59,864 - JobApplicationBot - INFO - Optimized job selection: 57 candidates -> 10 selected
+2025-09-18 08:24:59,880 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-18 08:24:59,935 - JobApplicationBot - INFO - Saved 9 new jobs to Flask database
+2025-09-18 08:53:33,680 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-18 08:53:33,712 - JobApplicationBot - INFO - Searching glassdoor for 'machine learning engineer' in 'remote' (limit: 10)
+2025-09-18 08:53:33,713 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=anywhere&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-18 08:53:33,785 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=anywhere&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-18 08:53:33,785 - JobApplicationBot - WARNING - Glassdoor is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-18 08:53:35,791 - JobApplicationBot - INFO - Searching glassdoor for 'machine learning engineer' in 'new york' (limit: 10)
+2025-09-18 08:53:35,791 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=new+york&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-18 08:53:35,874 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=new+york&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-18 08:53:35,874 - JobApplicationBot - WARNING - Glassdoor is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-18 08:54:15,437 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-18 08:54:15,469 - JobApplicationBot - INFO - Searching linkedin for 'machine learning engineer' in 'remote' (limit: 10)
+2025-09-18 08:54:15,469 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=machine+learning+engineer&location=remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-18 08:54:21,662 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-18 08:54:21,673 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-18 08:54:22,084 - JobApplicationBot - INFO - Found 10 jobs on LinkedIn
+2025-09-18 08:54:24,089 - JobApplicationBot - INFO - Searching linkedin for 'machine learning engineer' in 'new york' (limit: 10)
+2025-09-18 08:54:24,090 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=machine+learning+engineer&location=new+york&f_TPR=r86400&f_JT=F&start=0
+2025-09-18 08:54:30,175 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-18 08:54:30,181 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-18 08:54:30,567 - JobApplicationBot - INFO - Found 10 jobs on LinkedIn
+2025-09-18 08:54:32,606 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-18 08:54:32,661 - JobApplicationBot - INFO - Saved 20 new jobs to Flask database
+2025-09-18 08:56:02,718 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-18 08:56:02,751 - JobApplicationBot - INFO - Searching indeed for 'machine learning engineer' in 'remote' (limit: 10)
+2025-09-18 08:56:02,751 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=machine+learning+engineer&l=remote&fromage=1&sort=date&start=0
+2025-09-18 08:56:03,755 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-18 08:56:03,817 - JobApplicationBot - INFO - Indeed job 'Senior AI/ML Engineer - Remote' classified as: Quick Apply
+2025-09-18 08:56:03,818 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer' classified as: Quick Apply
+2025-09-18 08:56:03,819 - JobApplicationBot - INFO - Indeed job 'Senior Machine Learning Engineer' classified as: Quick Apply
+2025-09-18 08:56:03,820 - JobApplicationBot - INFO - Indeed job 'Applied Mach Learning Engineer Senior Expert - Arity' classified as: Quick Apply
+2025-09-18 08:56:03,821 - JobApplicationBot - INFO - Indeed job 'Data Scientist - Marketing Analytics' classified as: Quick Apply
+2025-09-18 08:56:03,822 - JobApplicationBot - INFO - Indeed job 'Arity - Senior Data Scientist - Arity' classified as: Quick Apply
+2025-09-18 08:56:03,823 - JobApplicationBot - INFO - Indeed job 'Arity - Senior Data Scientist - Arity' classified as: Quick Apply
+2025-09-18 08:56:03,824 - JobApplicationBot - INFO - Indeed job 'Arity - Lead Data Scientist - AdTech/RTB - Arity' classified as: Quick Apply
+2025-09-18 08:56:03,826 - JobApplicationBot - INFO - Indeed job 'Data Product Engineer I' classified as: Quick Apply
+2025-09-18 08:56:03,827 - JobApplicationBot - INFO - Indeed job 'Software Engineer II, Verifications' classified as: Quick Apply
+2025-09-18 08:56:03,827 - JobApplicationBot - INFO - Found 10 jobs on Indeed
+2025-09-18 08:56:05,832 - JobApplicationBot - INFO - Searching indeed for 'machine learning engineer' in 'new york' (limit: 10)
+2025-09-18 08:56:05,832 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=machine+learning+engineer&l=new+york&fromage=1&sort=date&start=0
+2025-09-18 08:56:06,772 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-18 08:56:06,808 - JobApplicationBot - INFO - Indeed job 'Senior AI/ML Engineer - Remote' classified as: Quick Apply
+2025-09-18 08:56:06,810 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer - Personalization' classified as: Quick Apply
+2025-09-18 08:56:06,811 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer, Generative AI Innovation Center' classified as: Quick Apply
+2025-09-18 08:56:06,812 - JobApplicationBot - INFO - Indeed job 'Sr. Research Engineer, Machine Learning, AGI Foundations' classified as: Quick Apply
+2025-09-18 08:56:06,813 - JobApplicationBot - INFO - Indeed job 'Delivery Consultant - Machine Learning Engineer, AWS Professional Services' classified as: Quick Apply
+2025-09-18 08:56:06,815 - JobApplicationBot - INFO - Indeed job 'Applied Scientist - Search' classified as: Quick Apply
+2025-09-18 08:56:06,816 - JobApplicationBot - INFO - Indeed job 'Program Manager, Elevated Shopping' classified as: Quick Apply
+2025-09-18 08:56:06,817 - JobApplicationBot - INFO - Indeed job 'Software Development Engineer, Search - Prime Video' classified as: Quick Apply
+2025-09-18 08:56:06,818 - JobApplicationBot - INFO - Indeed job 'Senior Delivery Consultant - Senior Machine Learning Engineer, AWS Professional Services, AWS Professional Services' classified as: Quick Apply
+2025-09-18 08:56:06,820 - JobApplicationBot - INFO - Indeed job 'Applied Scientist II, Prime Video - Personalization and Discovery Science, Personalization and Discovery Science' classified as: Quick Apply
+2025-09-18 08:56:06,820 - JobApplicationBot - INFO - Found 10 jobs on Indeed
+2025-09-18 08:56:08,827 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-18 08:56:08,855 - JobApplicationBot - INFO - Saved 9 new jobs to Flask database
+2025-09-18 09:12:20,301 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-18 09:12:20,335 - JobApplicationBot - INFO - Searching glassdoor for 'machine learning engineer' in 'remote' (limit: 10)
+2025-09-18 09:12:20,335 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=anywhere&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-18 09:12:20,404 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=anywhere&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-18 09:12:20,404 - JobApplicationBot - WARNING - Glassdoor is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-18 09:12:22,410 - JobApplicationBot - INFO - Searching ziprecruiter for 'machine learning engineer' in 'remote' (limit: 10)
+2025-09-18 09:12:22,410 - JobApplicationBot - INFO - Searching ZipRecruiter: https://www.ziprecruiter.com/jobs/search?search=machine+learning+engineer&location=remote&days=7&radius=50
+2025-09-18 09:12:22,488 - JobApplicationBot - ERROR - ZipRecruiter request error: 403 Client Error: Forbidden for url: https://www.ziprecruiter.com/jobs/search?search=machine+learning+engineer&location=remote&days=7&radius=50
+2025-09-18 09:12:22,488 - JobApplicationBot - WARNING - ZipRecruiter is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-18 09:12:24,493 - JobApplicationBot - INFO - Searching glassdoor for 'machine learning engineer' in 'new york' (limit: 10)
+2025-09-18 09:12:24,493 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=new+york&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-18 09:12:24,552 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=new+york&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-18 09:12:24,553 - JobApplicationBot - WARNING - Glassdoor is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-18 09:12:26,554 - JobApplicationBot - INFO - Searching ziprecruiter for 'machine learning engineer' in 'new york' (limit: 10)
+2025-09-18 09:12:26,555 - JobApplicationBot - INFO - Searching ZipRecruiter: https://www.ziprecruiter.com/jobs/search?search=machine+learning+engineer&location=new+york&days=7&radius=50
+2025-09-18 09:12:26,615 - JobApplicationBot - ERROR - ZipRecruiter request error: 403 Client Error: Forbidden for url: https://www.ziprecruiter.com/jobs/search?search=machine+learning+engineer&location=new+york&days=7&radius=50
+2025-09-18 09:12:26,615 - JobApplicationBot - WARNING - ZipRecruiter is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-18 09:13:12,190 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-18 09:13:12,222 - JobApplicationBot - INFO - Searching linkedin for 'machine learning engineer' in 'remote' (limit: 10)
+2025-09-18 09:13:12,222 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=machine+learning+engineer&location=remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-18 09:13:18,391 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-18 09:13:18,404 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-18 09:13:18,825 - JobApplicationBot - INFO - Found 5 jobs on LinkedIn
+2025-09-18 09:13:20,830 - JobApplicationBot - INFO - Searching linkedin for 'machine learning engineer' in 'new york' (limit: 10)
+2025-09-18 09:13:20,831 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=machine+learning+engineer&location=new+york&f_TPR=r86400&f_JT=F&start=0
+2025-09-18 09:13:26,740 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-18 09:13:26,748 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-18 09:13:27,170 - JobApplicationBot - INFO - Found 5 jobs on LinkedIn
+2025-09-18 09:13:29,193 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-18 09:13:29,234 - JobApplicationBot - INFO - Saved 10 new jobs to Flask database
+2025-09-18 09:17:06,245 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-18 09:17:06,277 - JobApplicationBot - INFO - Searching indeed for 'machine learning engineer' in 'remote' (limit: 10)
+2025-09-18 09:17:06,277 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=machine+learning+engineer&l=remote&fromage=1&sort=date&start=0
+2025-09-18 09:17:07,528 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-18 09:17:07,555 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer' classified as: Quick Apply
+2025-09-18 09:17:07,558 - JobApplicationBot - INFO - Indeed job 'Senior AI/ML Engineer - Remote' classified as: Quick Apply
+2025-09-18 09:17:07,559 - JobApplicationBot - INFO - Indeed job 'Senior Machine Learning Engineer' classified as: Quick Apply
+2025-09-18 09:17:07,561 - JobApplicationBot - INFO - Indeed job 'AI Platform Engineer' classified as: Quick Apply
+2025-09-18 09:17:07,563 - JobApplicationBot - INFO - Indeed job 'Applied Mach Learning Engineer Senior Expert - Arity' classified as: Quick Apply
+2025-09-18 09:17:07,564 - JobApplicationBot - INFO - Indeed job 'Applied Mach Learning Engineer Senior Expert - Arity' classified as: Quick Apply
+2025-09-18 09:17:07,566 - JobApplicationBot - INFO - Indeed job 'Data Scientist - Marketing Analytics' classified as: Quick Apply
+2025-09-18 09:17:07,567 - JobApplicationBot - INFO - Indeed job 'Arity - Senior Data Scientist - Arity' classified as: Quick Apply
+2025-09-18 09:17:07,569 - JobApplicationBot - INFO - Indeed job 'Arity - Lead Data Scientist - AdTech/RTB - Arity' classified as: Quick Apply
+2025-09-18 09:17:07,569 - JobApplicationBot - INFO - Found 9 jobs on Indeed
+2025-09-18 09:17:09,570 - JobApplicationBot - INFO - Searching indeed for 'machine learning engineer' in 'new york' (limit: 10)
+2025-09-18 09:17:09,570 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=machine+learning+engineer&l=new+york&fromage=1&sort=date&start=0
+2025-09-18 09:17:10,475 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-18 09:17:10,529 - JobApplicationBot - INFO - Indeed job 'Senior AI/ML Engineer - Remote' classified as: Quick Apply
+2025-09-18 09:17:10,530 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer - Personalization' classified as: Quick Apply
+2025-09-18 09:17:10,531 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer, Generative AI Innovation Center' classified as: Quick Apply
+2025-09-18 09:17:10,533 - JobApplicationBot - INFO - Indeed job 'Sr. Research Engineer, Machine Learning, AGI Foundations' classified as: Quick Apply
+2025-09-18 09:17:10,534 - JobApplicationBot - INFO - Indeed job 'Delivery Consultant - Machine Learning Engineer, AWS Professional Services' classified as: Quick Apply
+2025-09-18 09:17:10,536 - JobApplicationBot - INFO - Indeed job 'Software Development Engineer, Search - Prime Video' classified as: Quick Apply
+2025-09-18 09:17:10,537 - JobApplicationBot - INFO - Indeed job 'Senior Delivery Consultant - Senior Machine Learning Engineer, AWS Professional Services, AWS Professional Services' classified as: Quick Apply
+2025-09-18 09:17:10,538 - JobApplicationBot - INFO - Indeed job 'Deep Learning Architect, Generative AI Innovation Center' classified as: Quick Apply
+2025-09-18 09:17:10,539 - JobApplicationBot - INFO - Indeed job 'Applied Scientist, Creators' classified as: Quick Apply
+2025-09-18 09:17:10,541 - JobApplicationBot - INFO - Indeed job 'Senior Software Engineer (SDEIII), Amazon Ads' classified as: Quick Apply
+2025-09-18 09:17:10,541 - JobApplicationBot - INFO - Found 10 jobs on Indeed
+2025-09-18 09:17:12,546 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-18 09:17:12,557 - JobApplicationBot - INFO - Saved 8 new jobs to Flask database
+2025-09-19 07:41:35,651 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-19 07:41:35,685 - JobApplicationBot - INFO - Searching glassdoor for 'machine learning engineer' in 'remote' (limit: 20)
+2025-09-19 07:41:35,685 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=anywhere&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-19 07:41:35,745 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=anywhere&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-19 07:41:35,745 - JobApplicationBot - WARNING - Glassdoor is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-19 07:41:37,750 - JobApplicationBot - INFO - Searching ziprecruiter for 'machine learning engineer' in 'remote' (limit: 20)
+2025-09-19 07:41:37,751 - JobApplicationBot - INFO - Searching ZipRecruiter: https://www.ziprecruiter.com/jobs/search?search=machine+learning+engineer&location=remote&days=7&radius=50
+2025-09-19 07:41:37,845 - JobApplicationBot - ERROR - ZipRecruiter request error: 403 Client Error: Forbidden for url: https://www.ziprecruiter.com/jobs/search?search=machine+learning+engineer&location=remote&days=7&radius=50
+2025-09-19 07:41:37,846 - JobApplicationBot - WARNING - ZipRecruiter is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-19 07:41:39,850 - JobApplicationBot - INFO - Searching glassdoor for 'machine learning engineer' in 'new york' (limit: 20)
+2025-09-19 07:41:39,850 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=new+york&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-19 07:41:39,899 - JobApplicationBot - ERROR - Glassdoor request error: 403 Client Error: Forbidden for url: https://www.glassdoor.com/Job/jobs.htm?sc.keyword=machine+learning+engineer&locT=C&locId=new+york&jobType=&fromAge=7&includeNoSalaryJobs=true&radius=100
+2025-09-19 07:41:39,899 - JobApplicationBot - WARNING - Glassdoor is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-19 07:41:41,904 - JobApplicationBot - INFO - Searching ziprecruiter for 'machine learning engineer' in 'new york' (limit: 20)
+2025-09-19 07:41:41,905 - JobApplicationBot - INFO - Searching ZipRecruiter: https://www.ziprecruiter.com/jobs/search?search=machine+learning+engineer&location=new+york&days=7&radius=50
+2025-09-19 07:41:41,958 - JobApplicationBot - ERROR - ZipRecruiter request error: 403 Client Error: Forbidden for url: https://www.ziprecruiter.com/jobs/search?search=machine+learning+engineer&location=new+york&days=7&radius=50
+2025-09-19 07:41:41,958 - JobApplicationBot - WARNING - ZipRecruiter is blocking requests. Consider using their API or focusing on other job boards.
+2025-09-19 07:54:45,280 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-19 07:54:45,314 - JobApplicationBot - INFO - Searching glassdoor for 'machine learning engineer' in 'remote' (limit: 20)
+2025-09-19 07:54:46,319 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/remote-machine-learning-engineer-jobs-SRCH_IL.0,13_KC14,22_KO23,48.htm?sc.keyword=machine%252520learning%252520engineer&locT=C&locId=remote
+2025-09-19 07:54:46,858 - JobApplicationBot - INFO - Found 0 job cards on Glassdoor
+2025-09-19 07:54:46,858 - JobApplicationBot - WARNING - No job cards found - Glassdoor may be showing CAPTCHA or blocking content
+2025-09-19 07:54:48,863 - JobApplicationBot - INFO - Searching ziprecruiter for 'machine learning engineer' in 'remote' (limit: 20)
+2025-09-19 07:54:49,869 - JobApplicationBot - INFO - Searching ZipRecruiter: https://www.ziprecruiter.com/jobs-search?search=machine+learning+engineer&location=remote&page=1
+2025-09-19 07:54:49,923 - JobApplicationBot - ERROR - ZipRecruiter request error: 403 Client Error: Forbidden for url: https://www.ziprecruiter.com/jobs-search?search=machine+learning+engineer&location=remote&page=1
+2025-09-19 07:54:49,923 - JobApplicationBot - WARNING - ZipRecruiter is blocking requests. Creating redirect job for manual search.
+2025-09-19 07:54:49,923 - JobApplicationBot - INFO - Created ZipRecruiter search redirect for: machine learning engineer in remote
+2025-09-19 07:54:51,925 - JobApplicationBot - INFO - Searching glassdoor for 'machine learning engineer' in 'new york' (limit: 20)
+2025-09-19 07:54:52,930 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/united-states-new-york-machine-learning-engineer-jobs-SRCH_IL.0,13_KC14,22_KO23,48.htm?sc.keyword=machine%252520learning%252520engineer&locT=C&locId=new%252520york
+2025-09-19 07:54:55,171 - JobApplicationBot - INFO - Found 30 job cards on Glassdoor
+2025-09-19 07:54:55,189 - JobApplicationBot - INFO - Found 20 jobs on Glassdoor
+2025-09-19 07:54:57,194 - JobApplicationBot - INFO - Searching ziprecruiter for 'machine learning engineer' in 'new york' (limit: 20)
+2025-09-19 07:54:58,200 - JobApplicationBot - INFO - Searching ZipRecruiter: https://www.ziprecruiter.com/jobs-search?search=machine+learning+engineer&location=New+York%2C+NY&page=1
+2025-09-19 07:54:58,261 - JobApplicationBot - ERROR - ZipRecruiter request error: 403 Client Error: Forbidden for url: https://www.ziprecruiter.com/jobs-search?search=machine+learning+engineer&location=New+York%2C+NY&page=1
+2025-09-19 07:54:58,261 - JobApplicationBot - WARNING - ZipRecruiter is blocking requests. Creating redirect job for manual search.
+2025-09-19 07:54:58,261 - JobApplicationBot - INFO - Created ZipRecruiter search redirect for: machine learning engineer in new york
+2025-09-19 07:55:00,293 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-19 07:55:00,346 - JobApplicationBot - INFO - Saved 20 new jobs to Flask database
+2025-09-19 08:14:50,002 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-19 08:14:50,033 - JobApplicationBot - INFO - Searching glassdoor for 'it technician' in 'remote' (limit: 20)
+2025-09-19 08:14:51,038 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/remote-it-technician-jobs-SRCH_IL.0,13_KC14,22_KO23,48.htm?sc.keyword=it%252520technician&locT=C&locId=remote
+2025-09-19 08:14:51,873 - JobApplicationBot - INFO - Found 0 job cards on Glassdoor
+2025-09-19 08:14:51,873 - JobApplicationBot - WARNING - No job cards found - Glassdoor may be showing CAPTCHA or blocking content
+2025-09-19 08:14:53,877 - JobApplicationBot - INFO - Searching ziprecruiter for 'it technician' in 'remote' (limit: 20)
+2025-09-19 08:14:54,585 - JobApplicationBot - INFO - ZipRecruiter Chrome driver initialized successfully with webdriver_helper
+2025-09-19 08:14:54,585 - JobApplicationBot - INFO - Searching ZipRecruiter with WebDriver: https://www.ziprecruiter.com/jobs-search?search=it+technician&location=remote&page=1
+2025-09-19 08:14:54,837 - JobApplicationBot - WARNING - No job cards found on ZipRecruiter - page might be showing CAPTCHA or different layout
+2025-09-19 08:14:54,838 - JobApplicationBot - WARNING - ZipRecruiter scraping failed. Creating redirect job for manual search.
+2025-09-19 08:14:54,838 - JobApplicationBot - INFO - Created ZipRecruiter search redirect for: it technician in remote
+2025-09-19 08:14:56,911 - JobApplicationBot - INFO - Searching glassdoor for 'it technician' in 'new york' (limit: 20)
+2025-09-19 08:14:57,914 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/united-states-new-york-it-technician-jobs-SRCH_IL.0,13_KC14,22_KO23,48.htm?sc.keyword=it%252520technician&locT=C&locId=new%252520york
+2025-09-19 08:14:58,527 - JobApplicationBot - INFO - Found 0 job cards on Glassdoor
+2025-09-19 08:14:58,527 - JobApplicationBot - WARNING - No job cards found - Glassdoor may be showing CAPTCHA or blocking content
+2025-09-19 08:15:00,532 - JobApplicationBot - INFO - Searching ziprecruiter for 'it technician' in 'new york' (limit: 20)
+2025-09-19 08:15:01,232 - JobApplicationBot - INFO - ZipRecruiter Chrome driver initialized successfully with webdriver_helper
+2025-09-19 08:15:01,232 - JobApplicationBot - INFO - Searching ZipRecruiter with WebDriver: https://www.ziprecruiter.com/jobs-search?search=it+technician&location=New+York%2C+NY&page=1
+2025-09-19 08:15:01,479 - JobApplicationBot - WARNING - No job cards found on ZipRecruiter - page might be showing CAPTCHA or different layout
+2025-09-19 08:15:01,479 - JobApplicationBot - WARNING - ZipRecruiter scraping failed. Creating redirect job for manual search.
+2025-09-19 08:15:01,479 - JobApplicationBot - INFO - Created ZipRecruiter search redirect for: it technician in new york
+2025-09-19 08:15:03,571 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-19 08:15:03,614 - JobApplicationBot - INFO - Saved 2 new jobs to Flask database
+2025-09-19 08:26:22,735 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-19 08:26:22,767 - JobApplicationBot - INFO - Searching glassdoor for 'it technician' in 'remote' (limit: 20)
+2025-09-19 08:26:23,772 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/remote-it-technician-jobs-SRCH_IL.0,6_IC1147401_KO7,20.htm
+2025-09-19 08:26:26,615 - JobApplicationBot - INFO - Found 30 job cards on Glassdoor
+2025-09-19 08:26:26,627 - JobApplicationBot - INFO - Found 20 jobs on Glassdoor
+2025-09-19 08:26:28,631 - JobApplicationBot - INFO - Searching ziprecruiter for 'it technician' in 'remote' (limit: 20)
+2025-09-19 08:26:29,389 - JobApplicationBot - INFO - ZipRecruiter Chrome driver initialized successfully with webdriver_helper
+2025-09-19 08:26:29,389 - JobApplicationBot - INFO - Searching ZipRecruiter with WebDriver: https://www.ziprecruiter.com/jobs-search?search=it+technician&location=remote&page=1
+2025-09-19 08:26:29,641 - JobApplicationBot - WARNING - No job cards found on ZipRecruiter - page might be showing CAPTCHA or different layout
+2025-09-19 08:26:29,641 - JobApplicationBot - WARNING - ZipRecruiter scraping failed. Creating redirect job for manual search.
+2025-09-19 08:26:29,642 - JobApplicationBot - INFO - Created ZipRecruiter search redirect for: it technician in remote
+2025-09-19 08:26:31,709 - JobApplicationBot - INFO - Searching glassdoor for 'it technician' in 'new york' (limit: 20)
+2025-09-19 08:26:32,714 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/new-york-ny-us-it-technician-jobs-SRCH_IL.0,14_IC1132348_KO15,28.htm
+2025-09-19 08:26:36,158 - JobApplicationBot - INFO - Found 30 job cards on Glassdoor
+2025-09-19 08:26:36,168 - JobApplicationBot - INFO - Found 20 jobs on Glassdoor
+2025-09-19 08:26:38,174 - JobApplicationBot - INFO - Searching ziprecruiter for 'it technician' in 'new york' (limit: 20)
+2025-09-19 08:26:38,880 - JobApplicationBot - INFO - ZipRecruiter Chrome driver initialized successfully with webdriver_helper
+2025-09-19 08:26:38,880 - JobApplicationBot - INFO - Searching ZipRecruiter with WebDriver: https://www.ziprecruiter.com/jobs-search?search=it+technician&location=New+York%2C+NY&page=1
+2025-09-19 08:26:39,125 - JobApplicationBot - WARNING - No job cards found on ZipRecruiter - page might be showing CAPTCHA or different layout
+2025-09-19 08:26:39,125 - JobApplicationBot - WARNING - ZipRecruiter scraping failed. Creating redirect job for manual search.
+2025-09-19 08:26:39,125 - JobApplicationBot - INFO - Created ZipRecruiter search redirect for: it technician in new york
+2025-09-19 08:26:41,221 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-19 08:26:41,283 - JobApplicationBot - INFO - Saved 40 new jobs to Flask database
+2025-09-20 08:27:52,498 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-20 08:27:52,529 - JobApplicationBot - INFO - Searching linkedin for 'desktop support technician' in 'remote' (limit: 10)
+2025-09-20 08:27:52,529 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=desktop+support+technician&location=remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-20 08:27:58,538 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-20 08:27:58,548 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-20 08:27:58,954 - JobApplicationBot - INFO - Found 5 jobs on LinkedIn
+2025-09-20 08:28:00,958 - JobApplicationBot - INFO - Searching indeed for 'desktop support technician' in 'remote' (limit: 10)
+2025-09-20 08:28:00,959 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=desktop+support+technician&l=remote&fromage=1&sort=date&start=0
+2025-09-20 08:28:01,930 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-20 08:28:01,942 - JobApplicationBot - INFO - Found 0 jobs on Indeed
+2025-09-20 08:28:01,942 - JobApplicationBot - WARNING - No jobs found for Indeed search: desktop support technician in remote
+2025-09-20 08:28:03,946 - JobApplicationBot - INFO - Searching glassdoor for 'desktop support technician' in 'remote' (limit: 10)
+2025-09-20 08:28:04,952 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/remote-desktop-support-technician-jobs-SRCH_IL.0,6_IC1147401_KO7,33.htm
+2025-09-20 08:28:06,100 - JobApplicationBot - INFO - Found 30 job cards on Glassdoor
+2025-09-20 08:28:06,106 - JobApplicationBot - INFO - Found 10 jobs on Glassdoor
+2025-09-20 08:28:08,108 - JobApplicationBot - INFO - Searching ziprecruiter for 'desktop support technician' in 'remote' (limit: 10)
+2025-09-20 08:28:08,816 - JobApplicationBot - INFO - ZipRecruiter Chrome driver initialized successfully with webdriver_helper
+2025-09-20 08:28:08,817 - JobApplicationBot - INFO - Searching ZipRecruiter with WebDriver: https://www.ziprecruiter.com/jobs-search?search=desktop+support+technician&location=remote&page=1
+2025-09-20 08:28:09,065 - JobApplicationBot - WARNING - No job cards found on ZipRecruiter - page might be showing CAPTCHA or different layout
+2025-09-20 08:28:09,065 - JobApplicationBot - WARNING - ZipRecruiter scraping failed. Creating redirect job for manual search.
+2025-09-20 08:28:09,065 - JobApplicationBot - INFO - Created ZipRecruiter search redirect for: desktop support technician in remote
+2025-09-20 08:28:11,155 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-20 08:28:11,212 - JobApplicationBot - INFO - Saved 16 new jobs to Flask database
+2025-09-20 08:45:45,820 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-20 08:45:45,849 - JobApplicationBot - INFO - Searching linkedin for 'desktop support technician' in 'remote' (limit: 10)
+2025-09-20 08:45:45,850 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=desktop+support+technician&location=remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-20 08:45:52,007 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-20 08:45:52,020 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-20 08:45:52,433 - JobApplicationBot - INFO - Found 5 jobs on LinkedIn
+2025-09-20 08:45:54,439 - JobApplicationBot - INFO - Searching indeed for 'desktop support technician' in 'remote' (limit: 10)
+2025-09-20 08:45:54,439 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=desktop+support+technician&l=remote&fromage=1&sort=date&start=0
+2025-09-20 08:45:55,235 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-20 08:45:55,248 - JobApplicationBot - INFO - Found 0 jobs on Indeed
+2025-09-20 08:45:55,248 - JobApplicationBot - WARNING - No jobs found for Indeed search: desktop support technician in remote
+2025-09-20 08:45:57,253 - JobApplicationBot - INFO - Searching glassdoor for 'desktop support technician' in 'remote' (limit: 10)
+2025-09-20 08:45:58,258 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/remote-desktop-support-technician-jobs-SRCH_IL.0,6_IC1147401_KO7,33.htm
+2025-09-20 08:46:00,898 - JobApplicationBot - INFO - Found 30 job cards on Glassdoor
+2025-09-20 08:46:00,904 - JobApplicationBot - INFO - Found 10 jobs on Glassdoor
+2025-09-20 08:46:02,909 - JobApplicationBot - INFO - Searching ziprecruiter for 'desktop support technician' in 'remote' (limit: 10)
+2025-09-20 08:46:03,653 - JobApplicationBot - INFO - ZipRecruiter Chrome driver initialized successfully with webdriver_helper
+2025-09-20 08:46:03,654 - JobApplicationBot - INFO - Searching ZipRecruiter with WebDriver: https://www.ziprecruiter.com/jobs-search?search=desktop+support+technician&location=remote&page=1
+2025-09-20 08:46:03,900 - JobApplicationBot - WARNING - No job cards found on ZipRecruiter - page might be showing CAPTCHA or different layout
+2025-09-20 08:46:03,900 - JobApplicationBot - WARNING - ZipRecruiter scraping failed. Creating redirect job for manual search.
+2025-09-20 08:46:03,900 - JobApplicationBot - INFO - Created ZipRecruiter search redirect for: desktop support technician in remote
+2025-09-20 08:46:05,978 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-20 08:46:05,993 - JobApplicationBot - INFO - Saved 15 new jobs to Flask database
+2025-09-20 08:54:06,859 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-20 08:54:06,889 - JobApplicationBot - INFO - Searching linkedin for 'director of it' in 'remote' (limit: 20)
+2025-09-20 08:54:06,889 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=director+of+it&location=remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-20 08:54:12,938 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-20 08:54:12,948 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-20 08:54:13,709 - JobApplicationBot - INFO - Found 5 jobs on LinkedIn
+2025-09-20 08:54:15,714 - JobApplicationBot - INFO - Searching indeed for 'director of it' in 'remote' (limit: 20)
+2025-09-20 08:54:15,714 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=director+of+it&l=remote&fromage=1&sort=date&start=0
+2025-09-20 08:54:16,599 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-20 08:54:16,645 - JobApplicationBot - INFO - Indeed job 'Sr. Director, Product Management - Platelet Portfolio' classified as: Quick Apply
+2025-09-20 08:54:16,647 - JobApplicationBot - INFO - Indeed job 'Sr. Director Product Mgmt - Healthcare Benchmarking' classified as: Quick Apply
+2025-09-20 08:54:16,650 - JobApplicationBot - INFO - Indeed job 'Oracle Cloud Program Director - HCM' classified as: Quick Apply
+2025-09-20 08:54:16,651 - JobApplicationBot - INFO - Indeed job 'Director of Engineering' classified as: Quick Apply
+2025-09-20 08:54:16,654 - JobApplicationBot - INFO - Indeed job 'Director of Contact Center Engineering' classified as: Quick Apply
+2025-09-20 08:54:16,656 - JobApplicationBot - INFO - Indeed job 'Director of Contact Center Engineering' classified as: Quick Apply
+2025-09-20 08:54:16,659 - JobApplicationBot - INFO - Indeed job 'Director of Gen AI & Agentic AI Engineering' classified as: Quick Apply
+2025-09-20 08:54:16,661 - JobApplicationBot - INFO - Indeed job 'Director of AI Documentation Intelligence & Automation' classified as: Quick Apply
+2025-09-20 08:54:16,664 - JobApplicationBot - INFO - Indeed job 'Director of Service Delivery' classified as: Quick Apply
+2025-09-20 08:54:16,666 - JobApplicationBot - INFO - Indeed job 'VP of Engineering - Spree' classified as: Quick Apply
+2025-09-20 08:54:16,667 - JobApplicationBot - INFO - Indeed job 'Director of IT for M&As and DeNovos' classified as: Quick Apply
+2025-09-20 08:54:16,670 - JobApplicationBot - INFO - Indeed job 'Director of Engineering - SDK' classified as: Quick Apply
+2025-09-20 08:54:16,672 - JobApplicationBot - INFO - Indeed job 'Director of Product Management' classified as: Quick Apply
+2025-09-20 08:54:16,673 - JobApplicationBot - INFO - Indeed job 'Associate Director - Integrated Healthcare Solutions - Technology' classified as: Quick Apply
+2025-09-20 08:54:16,675 - JobApplicationBot - INFO - Indeed job 'Solutions Director, HPE' classified as: Quick Apply
+2025-09-20 08:54:16,677 - JobApplicationBot - INFO - Indeed job 'Director, Financial Information Systems' classified as: Quick Apply
+2025-09-20 08:54:16,677 - JobApplicationBot - INFO - Found 16 jobs on Indeed
+2025-09-20 08:54:18,679 - JobApplicationBot - INFO - Searching glassdoor for 'director of it' in 'remote' (limit: 20)
+2025-09-20 08:54:19,685 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/remote-director-of-it-jobs-SRCH_IL.0,6_IC1147401_KO7,21.htm
+2025-09-20 08:54:22,150 - JobApplicationBot - INFO - Found 30 job cards on Glassdoor
+2025-09-20 08:54:22,160 - JobApplicationBot - INFO - Found 20 jobs on Glassdoor
+2025-09-20 08:54:24,164 - JobApplicationBot - INFO - Searching ziprecruiter for 'director of it' in 'remote' (limit: 20)
+2025-09-20 08:54:24,817 - JobApplicationBot - INFO - ZipRecruiter Chrome driver initialized successfully with webdriver_helper
+2025-09-20 08:54:24,817 - JobApplicationBot - INFO - Searching ZipRecruiter with WebDriver: https://www.ziprecruiter.com/jobs-search?search=director+of+it&location=remote&page=1
+2025-09-20 08:54:25,020 - JobApplicationBot - WARNING - No job cards found on ZipRecruiter - page might be showing CAPTCHA or different layout
+2025-09-20 08:54:25,020 - JobApplicationBot - WARNING - ZipRecruiter scraping failed. Creating redirect job for manual search.
+2025-09-20 08:54:25,020 - JobApplicationBot - INFO - Created ZipRecruiter search redirect for: director of it in remote
+2025-09-20 08:54:27,087 - JobApplicationBot - INFO - Searching linkedin for 'director of it' in 'new york' (limit: 20)
+2025-09-20 08:54:27,088 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=director+of+it&location=new+york&f_TPR=r86400&f_JT=F&start=0
+2025-09-20 08:54:33,009 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-20 08:54:33,016 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-20 08:54:33,760 - JobApplicationBot - INFO - Found 5 jobs on LinkedIn
+2025-09-20 08:54:35,765 - JobApplicationBot - INFO - Searching indeed for 'director of it' in 'new york' (limit: 20)
+2025-09-20 08:54:35,766 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=director+of+it&l=new+york&fromage=1&sort=date&start=0
+2025-09-20 08:54:36,550 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-20 08:54:36,617 - JobApplicationBot - INFO - Indeed job 'Investment Banking Executive Director, Media & Telecom - New York' classified as: Quick Apply
+2025-09-20 08:54:36,620 - JobApplicationBot - INFO - Indeed job 'Product Director' classified as: Quick Apply
+2025-09-20 08:54:36,621 - JobApplicationBot - INFO - Indeed job 'VP, Product, Streaming Hub' classified as: Quick Apply
+2025-09-20 08:54:36,622 - JobApplicationBot - INFO - Indeed job 'Sr. Principal/Director PMT, Secure Work Enablement' classified as: Quick Apply
+2025-09-20 08:54:36,623 - JobApplicationBot - INFO - Indeed job 'Director SA - NAMER Startups , AWS Startups' classified as: Quick Apply
+2025-09-20 08:54:36,625 - JobApplicationBot - INFO - Indeed job 'Director SA Retail CPG, AGS Technology' classified as: Quick Apply
+2025-09-20 08:54:36,626 - JobApplicationBot - INFO - Indeed job 'Principal Delivery Consultant, Advisory' classified as: Quick Apply
+2025-09-20 08:54:36,627 - JobApplicationBot - INFO - Indeed job 'Director, Sponsored Products Detail Page Experience, Monetization and Marketplace Intelligence , Amazon Advertising' classified as: Quick Apply
+2025-09-20 08:54:36,628 - JobApplicationBot - INFO - Indeed job 'Sr. Consultant Marketing Technology & Customer Experience Transformation, Advisory' classified as: Quick Apply
+2025-09-20 08:54:36,630 - JobApplicationBot - INFO - Indeed job 'Head of Engineering' classified as: Quick Apply
+2025-09-20 08:54:36,632 - JobApplicationBot - INFO - Indeed job 'Sr. Director, IT' classified as: Quick Apply
+2025-09-20 08:54:36,633 - JobApplicationBot - INFO - Indeed job 'Director of Data Engineering, Employee Benefits DSAIA' classified as: Quick Apply
+2025-09-20 08:54:36,635 - JobApplicationBot - INFO - Indeed job 'Engineering Director – Marketer Experience' classified as: Quick Apply
+2025-09-20 08:54:36,637 - JobApplicationBot - INFO - Indeed job 'US Reinsurance Broking - Associate Director' classified as: Quick Apply
+2025-09-20 08:54:36,639 - JobApplicationBot - INFO - Indeed job 'Director of Network Operations and Security (Req 101000)' classified as: Quick Apply
+2025-09-20 08:54:36,641 - JobApplicationBot - INFO - Indeed job 'Director, Financial Information Systems' classified as: Quick Apply
+2025-09-20 08:54:36,643 - JobApplicationBot - INFO - Indeed job 'Director, DoorDash for Business Growth Strategy & Operations' classified as: Quick Apply
+2025-09-20 08:54:36,644 - JobApplicationBot - INFO - Indeed job 'Director, Engineering' classified as: Quick Apply
+2025-09-20 08:54:36,646 - JobApplicationBot - INFO - Indeed job 'SENIOR DIRECTOR, HARDWARE AND VIRTUALIZATION ADMINISTRATION' classified as: Quick Apply
+2025-09-20 08:54:36,648 - JobApplicationBot - INFO - Indeed job 'SENIOR DIRECTOR, HARDWARE AND VIRTUALIZATION ADMINISTRATION' classified as: Quick Apply
+2025-09-20 08:54:36,648 - JobApplicationBot - INFO - Found 20 jobs on Indeed
+2025-09-20 08:54:38,651 - JobApplicationBot - INFO - Searching glassdoor for 'director of it' in 'new york' (limit: 20)
+2025-09-20 08:54:39,652 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/new-york-ny-us-director-of-it-jobs-SRCH_IL.0,14_IC1132348_KO15,29.htm
+2025-09-20 08:54:42,390 - JobApplicationBot - INFO - Found 30 job cards on Glassdoor
+2025-09-20 08:54:42,399 - JobApplicationBot - INFO - Found 20 jobs on Glassdoor
+2025-09-20 08:54:44,403 - JobApplicationBot - INFO - Searching ziprecruiter for 'director of it' in 'new york' (limit: 20)
+2025-09-20 08:54:45,207 - JobApplicationBot - INFO - ZipRecruiter Chrome driver initialized successfully with webdriver_helper
+2025-09-20 08:54:45,207 - JobApplicationBot - INFO - Searching ZipRecruiter with WebDriver: https://www.ziprecruiter.com/jobs-search?search=director+of+it&location=New+York%2C+NY&page=1
+2025-09-20 08:54:45,428 - JobApplicationBot - WARNING - No job cards found on ZipRecruiter - page might be showing CAPTCHA or different layout
+2025-09-20 08:54:45,429 - JobApplicationBot - WARNING - ZipRecruiter scraping failed. Creating redirect job for manual search.
+2025-09-20 08:54:45,429 - JobApplicationBot - INFO - Created ZipRecruiter search redirect for: director of it in new york
+2025-09-20 08:54:47,505 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-20 08:54:47,587 - JobApplicationBot - INFO - Saved 85 new jobs to Flask database
+2025-09-20 09:04:08,550 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-20 09:04:08,582 - JobApplicationBot - INFO - Searching linkedin for 'director of it' in 'remote' (limit: 20)
+2025-09-20 09:04:08,582 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=director+of+it&location=remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-20 09:04:14,621 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-20 09:04:14,633 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-20 09:04:15,419 - JobApplicationBot - INFO - Found 5 jobs on LinkedIn
+2025-09-20 09:04:17,424 - JobApplicationBot - INFO - Searching indeed for 'director of it' in 'remote' (limit: 20)
+2025-09-20 09:04:17,425 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=director+of+it&l=remote&fromage=1&sort=date&start=0
+2025-09-20 09:04:17,511 - JobApplicationBot - WARNING - 403 error on attempt 1, retrying with delay...
+2025-09-20 09:04:17,511 - JobApplicationBot - INFO - Retrying Indeed request in 2 seconds (attempt 2/3)
+2025-09-20 09:04:20,388 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 2
+2025-09-20 09:04:20,421 - JobApplicationBot - INFO - Indeed job 'Sr. Director, Product Management - Platelet Portfolio' classified as: Quick Apply
+2025-09-20 09:04:20,423 - JobApplicationBot - INFO - Indeed job 'VP of Product Analytics, Product Risk & Compliance' classified as: Quick Apply
+2025-09-20 09:04:20,424 - JobApplicationBot - INFO - Indeed job 'Sr. Director Product Mgmt - Healthcare Benchmarking' classified as: Quick Apply
+2025-09-20 09:04:20,427 - JobApplicationBot - INFO - Indeed job 'Oracle Cloud Program Director - HCM' classified as: Quick Apply
+2025-09-20 09:04:20,429 - JobApplicationBot - INFO - Indeed job 'Director of Contact Center Engineering' classified as: Quick Apply
+2025-09-20 09:04:20,431 - JobApplicationBot - INFO - Indeed job 'Director of Service Delivery' classified as: Quick Apply
+2025-09-20 09:04:20,433 - JobApplicationBot - INFO - Indeed job 'Director of Engineering' classified as: Quick Apply
+2025-09-20 09:04:20,435 - JobApplicationBot - INFO - Indeed job 'Director of Gen AI & Agentic AI Engineering' classified as: Quick Apply
+2025-09-20 09:04:20,437 - JobApplicationBot - INFO - Indeed job 'Director of AI Documentation Intelligence & Automation' classified as: Quick Apply
+2025-09-20 09:04:20,440 - JobApplicationBot - INFO - Indeed job 'Director of AI Documentation Intelligence & Automation' classified as: Quick Apply
+2025-09-20 09:04:20,441 - JobApplicationBot - INFO - Indeed job 'Director of IT for M&As and DeNovos' classified as: Quick Apply
+2025-09-20 09:04:20,443 - JobApplicationBot - INFO - Indeed job 'Director of Engineering - SDK' classified as: Quick Apply
+2025-09-20 09:04:20,445 - JobApplicationBot - INFO - Indeed job 'Associate Director - Integrated Healthcare Solutions - Technology' classified as: Quick Apply
+2025-09-20 09:04:20,447 - JobApplicationBot - INFO - Indeed job 'Director of Product Management' classified as: Quick Apply
+2025-09-20 09:04:20,448 - JobApplicationBot - INFO - Indeed job 'Solutions Director, HPE' classified as: Quick Apply
+2025-09-20 09:04:20,449 - JobApplicationBot - INFO - Indeed job 'Director, Clinical Strategy & Operations' classified as: Quick Apply
+2025-09-20 09:04:20,451 - JobApplicationBot - INFO - Indeed job 'VP of Engineering - Spree' classified as: Quick Apply
+2025-09-20 09:04:20,453 - JobApplicationBot - INFO - Indeed job 'VP, Head of AI' classified as: Quick Apply
+2025-09-20 09:04:20,455 - JobApplicationBot - INFO - Indeed job 'Director, Financial Information Systems' classified as: Quick Apply
+2025-09-20 09:04:20,456 - JobApplicationBot - INFO - Indeed job 'Director, Systems Technology Advisory Consulting - Remote' classified as: Quick Apply
+2025-09-20 09:04:20,456 - JobApplicationBot - INFO - Found 20 jobs on Indeed
+2025-09-20 09:04:22,460 - JobApplicationBot - INFO - Searching glassdoor for 'director of it' in 'remote' (limit: 20)
+2025-09-20 09:04:23,465 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/remote-director-of-it-jobs-SRCH_IL.0,6_IC1147401_KO7,21.htm
+2025-09-20 09:04:26,811 - JobApplicationBot - INFO - Found 30 job cards on Glassdoor
+2025-09-20 09:04:26,823 - JobApplicationBot - INFO - Found 20 jobs on Glassdoor
+2025-09-20 09:04:28,827 - JobApplicationBot - INFO - Searching ziprecruiter for 'director of it' in 'remote' (limit: 20)
+2025-09-20 09:04:29,727 - JobApplicationBot - INFO - ZipRecruiter Chrome driver initialized successfully with webdriver_helper
+2025-09-20 09:04:29,727 - JobApplicationBot - INFO - Searching ZipRecruiter with WebDriver: https://www.ziprecruiter.com/jobs-search?search=director+of+it&location=remote&page=1
+2025-09-20 09:04:30,021 - JobApplicationBot - WARNING - No job cards found on ZipRecruiter - page might be showing CAPTCHA or different layout
+2025-09-20 09:04:30,021 - JobApplicationBot - WARNING - ZipRecruiter scraping failed. Creating redirect job for manual search.
+2025-09-20 09:04:30,021 - JobApplicationBot - INFO - Created ZipRecruiter search redirect for: director of it in remote
+2025-09-20 09:04:32,095 - JobApplicationBot - INFO - Searching linkedin for 'director of it' in 'new york' (limit: 20)
+2025-09-20 09:04:32,096 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=director+of+it&location=new+york&f_TPR=r86400&f_JT=F&start=0
+2025-09-20 09:04:38,033 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-20 09:04:38,040 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-20 09:04:38,809 - JobApplicationBot - INFO - Found 5 jobs on LinkedIn
+2025-09-20 09:04:40,813 - JobApplicationBot - INFO - Searching indeed for 'director of it' in 'new york' (limit: 20)
+2025-09-20 09:04:40,814 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=director+of+it&l=new+york&fromage=1&sort=date&start=0
+2025-09-20 09:04:41,581 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-20 09:04:41,623 - JobApplicationBot - INFO - Indeed job 'Investment Banking Executive Director, Media & Telecom - New York' classified as: Quick Apply
+2025-09-20 09:04:41,625 - JobApplicationBot - INFO - Indeed job 'VP of Product Analytics, Product Risk & Compliance' classified as: Quick Apply
+2025-09-20 09:04:41,628 - JobApplicationBot - INFO - Indeed job 'Product Director' classified as: Quick Apply
+2025-09-20 09:04:41,629 - JobApplicationBot - INFO - Indeed job 'VP, Product, Streaming Hub' classified as: Quick Apply
+2025-09-20 09:04:41,631 - JobApplicationBot - INFO - Indeed job 'VP, Product, Streaming Hub' classified as: Quick Apply
+2025-09-20 09:04:41,633 - JobApplicationBot - INFO - Indeed job 'Sr. Principal/Director PMT, Secure Work Enablement' classified as: Quick Apply
+2025-09-20 09:04:41,634 - JobApplicationBot - INFO - Indeed job 'Director SA - NAMER Startups , AWS Startups' classified as: Quick Apply
+2025-09-20 09:04:41,636 - JobApplicationBot - INFO - Indeed job 'Director SA Retail CPG, AGS Technology' classified as: Quick Apply
+2025-09-20 09:04:41,637 - JobApplicationBot - INFO - Indeed job 'Principal Delivery Consultant, Advisory' classified as: Quick Apply
+2025-09-20 09:04:41,639 - JobApplicationBot - INFO - Indeed job 'Director, Sponsored Products Detail Page Experience, Monetization and Marketplace Intelligence , Amazon Advertising' classified as: Quick Apply
+2025-09-20 09:04:41,640 - JobApplicationBot - INFO - Indeed job 'Sr. Consultant Marketing Technology & Customer Experience Transformation, Advisory' classified as: Quick Apply
+2025-09-20 09:04:41,642 - JobApplicationBot - INFO - Indeed job 'Sr. Director, IT' classified as: Quick Apply
+2025-09-20 09:04:41,644 - JobApplicationBot - INFO - Indeed job 'Head of Engineering' classified as: Quick Apply
+2025-09-20 09:04:41,646 - JobApplicationBot - INFO - Indeed job 'Director of Data Engineering, Employee Benefits DSAIA' classified as: Quick Apply
+2025-09-20 09:04:41,648 - JobApplicationBot - INFO - Indeed job 'Engineering Director – Marketer Experience' classified as: Quick Apply
+2025-09-20 09:04:41,650 - JobApplicationBot - INFO - Indeed job 'US Reinsurance Broking - Associate Director' classified as: Quick Apply
+2025-09-20 09:04:41,650 - JobApplicationBot - INFO - Found 16 jobs on Indeed
+2025-09-20 09:04:43,655 - JobApplicationBot - INFO - Searching glassdoor for 'director of it' in 'new york' (limit: 20)
+2025-09-20 09:04:44,659 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/new-york-ny-us-director-of-it-jobs-SRCH_IL.0,14_IC1132348_KO15,29.htm
+2025-09-20 09:04:46,711 - JobApplicationBot - INFO - Found 30 job cards on Glassdoor
+2025-09-20 09:04:46,720 - JobApplicationBot - INFO - Found 20 jobs on Glassdoor
+2025-09-20 09:04:48,724 - JobApplicationBot - INFO - Searching ziprecruiter for 'director of it' in 'new york' (limit: 20)
+2025-09-20 09:04:49,443 - JobApplicationBot - INFO - ZipRecruiter Chrome driver initialized successfully with webdriver_helper
+2025-09-20 09:04:49,443 - JobApplicationBot - INFO - Searching ZipRecruiter with WebDriver: https://www.ziprecruiter.com/jobs-search?search=director+of+it&location=New+York%2C+NY&page=1
+2025-09-20 09:04:49,801 - JobApplicationBot - WARNING - No job cards found on ZipRecruiter - page might be showing CAPTCHA or different layout
+2025-09-20 09:04:49,801 - JobApplicationBot - WARNING - ZipRecruiter scraping failed. Creating redirect job for manual search.
+2025-09-20 09:04:49,801 - JobApplicationBot - INFO - Created ZipRecruiter search redirect for: director of it in new york
+2025-09-20 09:04:51,898 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-20 09:04:51,951 - JobApplicationBot - INFO - Saved 14 new jobs to Flask database
+2025-09-20 09:33:24,649 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-20 09:33:24,682 - JobApplicationBot - INFO - Total search combinations: 8, per-search limit: 1, global limit: 10
+2025-09-20 09:33:24,682 - JobApplicationBot - INFO - Searching linkedin for 'director of it' in 'remote' (limit: 1, remaining global: 10)
+2025-09-20 09:33:24,682 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=director+of+it&location=remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-20 09:33:30,635 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-20 09:33:30,647 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-20 09:33:30,719 - JobApplicationBot - INFO - Found 1 jobs on LinkedIn
+2025-09-20 09:33:30,719 - JobApplicationBot - INFO - Found 1 jobs from linkedin, total so far: 1
+2025-09-20 09:33:32,722 - JobApplicationBot - INFO - Searching indeed for 'director of it' in 'remote' (limit: 1, remaining global: 9)
+2025-09-20 09:33:32,722 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=director+of+it&l=remote&fromage=1&sort=date&start=0
+2025-09-20 09:33:33,630 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-20 09:33:33,670 - JobApplicationBot - INFO - Indeed job 'Sr. Director Product Mgmt - Healthcare Benchmarking' classified as: Quick Apply
+2025-09-20 09:33:33,670 - JobApplicationBot - INFO - Found 1 jobs on Indeed
+2025-09-20 09:33:33,670 - JobApplicationBot - INFO - Found 1 jobs from indeed, total so far: 2
+2025-09-20 09:33:35,671 - JobApplicationBot - INFO - Searching glassdoor for 'director of it' in 'remote' (limit: 1, remaining global: 8)
+2025-09-20 09:33:36,677 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/remote-director-of-it-jobs-SRCH_IL.0,6_IC1147401_KO7,21.htm
+2025-09-20 09:33:40,200 - JobApplicationBot - INFO - Found 30 job cards on Glassdoor
+2025-09-20 09:33:40,201 - JobApplicationBot - INFO - Found 1 jobs on Glassdoor
+2025-09-20 09:33:40,201 - JobApplicationBot - INFO - Found 1 jobs from glassdoor, total so far: 3
+2025-09-20 09:33:42,203 - JobApplicationBot - INFO - Searching ziprecruiter for 'director of it' in 'remote' (limit: 1, remaining global: 7)
+2025-09-20 09:33:42,918 - JobApplicationBot - INFO - ZipRecruiter Chrome driver initialized successfully with webdriver_helper
+2025-09-20 09:33:42,919 - JobApplicationBot - INFO - Searching ZipRecruiter with WebDriver: https://www.ziprecruiter.com/jobs-search?search=director+of+it&location=remote&page=1
+2025-09-20 09:33:43,170 - JobApplicationBot - WARNING - No job cards found on ZipRecruiter - page might be showing CAPTCHA or different layout
+2025-09-20 09:33:43,170 - JobApplicationBot - WARNING - ZipRecruiter scraping failed. Creating redirect job for manual search.
+2025-09-20 09:33:43,170 - JobApplicationBot - INFO - Created ZipRecruiter search redirect for: director of it in remote
+2025-09-20 09:33:43,239 - JobApplicationBot - INFO - Found 1 jobs from ziprecruiter, total so far: 4
+2025-09-20 09:33:45,243 - JobApplicationBot - INFO - Searching linkedin for 'director of it' in 'new york' (limit: 1, remaining global: 6)
+2025-09-20 09:33:45,244 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=director+of+it&location=new+york&f_TPR=r86400&f_JT=F&start=0
+2025-09-20 09:33:51,217 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-20 09:33:51,225 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-20 09:33:51,274 - JobApplicationBot - INFO - Found 1 jobs on LinkedIn
+2025-09-20 09:33:51,274 - JobApplicationBot - INFO - Found 1 jobs from linkedin, total so far: 5
+2025-09-20 09:33:53,279 - JobApplicationBot - INFO - Searching indeed for 'director of it' in 'new york' (limit: 5, remaining global: 5)
+2025-09-20 09:33:53,280 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=director+of+it&l=new+york&fromage=1&sort=date&start=0
+2025-09-20 09:33:54,141 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-20 09:33:54,159 - JobApplicationBot - INFO - Indeed job 'Sr. Principal/Director PMT, Secure Work Enablement' classified as: Quick Apply
+2025-09-20 09:33:54,161 - JobApplicationBot - INFO - Indeed job 'Director SA - NAMER Startups , AWS Startups' classified as: Quick Apply
+2025-09-20 09:33:54,163 - JobApplicationBot - INFO - Indeed job 'Sr. Director, IT' classified as: Quick Apply
+2025-09-20 09:33:54,164 - JobApplicationBot - INFO - Indeed job 'Engineering Director – Marketer Experience' classified as: Quick Apply
+2025-09-20 09:33:54,166 - JobApplicationBot - INFO - Indeed job 'Director of Data Engineering, Employee Benefits DSAIA' classified as: Quick Apply
+2025-09-20 09:33:54,166 - JobApplicationBot - INFO - Found 5 jobs on Indeed
+2025-09-20 09:33:54,166 - JobApplicationBot - INFO - Found 5 jobs from indeed, total so far: 10
+2025-09-20 09:33:56,170 - JobApplicationBot - INFO - Reached global job limit of 10, stopping search
+2025-09-20 09:40:14,310 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-20 09:40:14,341 - JobApplicationBot - INFO - Total search combinations: 8, per-search limit: 1, global limit: 10
+2025-09-20 09:40:14,341 - JobApplicationBot - INFO - Searching linkedin for 'director of it' in 'remote' (limit: 1, remaining global: 10)
+2025-09-20 09:40:14,341 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=director+of+it&location=remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-20 09:40:20,468 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-20 09:40:20,481 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-20 09:40:20,551 - JobApplicationBot - INFO - Found 1 jobs on LinkedIn
+2025-09-20 09:40:20,551 - JobApplicationBot - INFO - Found 1 jobs from linkedin, total so far: 1
+2025-09-20 09:40:22,554 - JobApplicationBot - INFO - Searching indeed for 'director of it' in 'remote' (limit: 1, remaining global: 9)
+2025-09-20 09:40:22,555 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=director+of+it&l=remote&fromage=1&sort=date&start=0
+2025-09-20 09:40:24,847 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-20 09:40:24,869 - JobApplicationBot - INFO - Indeed job 'Sr. Director Product Mgmt - Healthcare Benchmarking' classified as: Quick Apply
+2025-09-20 09:40:24,869 - JobApplicationBot - INFO - Found 1 jobs on Indeed
+2025-09-20 09:40:24,869 - JobApplicationBot - INFO - Found 1 jobs from indeed, total so far: 2
+2025-09-20 09:40:26,872 - JobApplicationBot - INFO - Searching glassdoor for 'director of it' in 'remote' (limit: 1, remaining global: 8)
+2025-09-20 09:40:27,876 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/remote-director-of-it-jobs-SRCH_IL.0,6_IC1147401_KO7,21.htm
+2025-09-20 09:40:29,988 - JobApplicationBot - INFO - Found 30 job cards on Glassdoor
+2025-09-20 09:40:29,989 - JobApplicationBot - INFO - Found 1 jobs on Glassdoor
+2025-09-20 09:40:29,989 - JobApplicationBot - INFO - Found 1 jobs from glassdoor, total so far: 3
+2025-09-20 09:40:31,994 - JobApplicationBot - INFO - Searching ziprecruiter for 'director of it' in 'remote' (limit: 1, remaining global: 7)
+2025-09-20 09:40:32,749 - JobApplicationBot - INFO - ZipRecruiter Chrome driver initialized successfully with webdriver_helper
+2025-09-20 09:40:32,749 - JobApplicationBot - INFO - Searching ZipRecruiter with WebDriver: https://www.ziprecruiter.com/jobs-search?search=director+of+it&location=remote&page=1
+2025-09-20 09:40:33,132 - JobApplicationBot - WARNING - No job cards found on ZipRecruiter - page might be showing CAPTCHA or different layout
+2025-09-20 09:40:33,132 - JobApplicationBot - WARNING - ZipRecruiter scraping failed. Creating redirect job for manual search.
+2025-09-20 09:40:33,132 - JobApplicationBot - INFO - Created ZipRecruiter search redirect for: director of it in remote
+2025-09-20 09:40:33,200 - JobApplicationBot - INFO - Found 1 jobs from ziprecruiter, total so far: 4
+2025-09-20 09:40:35,204 - JobApplicationBot - INFO - Searching linkedin for 'director of it' in 'new york' (limit: 1, remaining global: 6)
+2025-09-20 09:40:35,205 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=director+of+it&location=new+york&f_TPR=r86400&f_JT=F&start=0
+2025-09-20 09:40:41,207 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-20 09:40:41,217 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-20 09:40:41,268 - JobApplicationBot - INFO - Found 1 jobs on LinkedIn
+2025-09-20 09:40:41,268 - JobApplicationBot - INFO - Found 1 jobs from linkedin, total so far: 5
+2025-09-20 09:40:43,269 - JobApplicationBot - INFO - Searching indeed for 'director of it' in 'new york' (limit: 5, remaining global: 5)
+2025-09-20 09:40:43,269 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=director+of+it&l=new+york&fromage=1&sort=date&start=0
+2025-09-20 09:40:44,075 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-20 09:40:44,099 - JobApplicationBot - INFO - Indeed job 'Sr. Principal/Director PMT, Secure Work Enablement' classified as: Quick Apply
+2025-09-20 09:40:44,100 - JobApplicationBot - INFO - Indeed job 'Director SA - NAMER Startups , AWS Startups' classified as: Quick Apply
+2025-09-20 09:40:44,103 - JobApplicationBot - INFO - Indeed job 'Sr. Director, IT' classified as: Quick Apply
+2025-09-20 09:40:44,105 - JobApplicationBot - INFO - Indeed job 'Engineering Director – Marketer Experience' classified as: Quick Apply
+2025-09-20 09:40:44,107 - JobApplicationBot - INFO - Indeed job 'Director of Data Engineering, Employee Benefits DSAIA' classified as: Quick Apply
+2025-09-20 09:40:44,107 - JobApplicationBot - INFO - Found 5 jobs on Indeed
+2025-09-20 09:40:44,107 - JobApplicationBot - INFO - Found 5 jobs from indeed, total so far: 10
+2025-09-20 09:40:46,110 - JobApplicationBot - INFO - Reached global job limit of 10, stopping search
+2025-09-20 09:42:43,695 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-20 09:42:43,725 - JobApplicationBot - INFO - Total search combinations: 1, per-search limit: 2, global limit: 2
+2025-09-20 09:42:43,725 - JobApplicationBot - INFO - Searching linkedin for 'software engineer' in 'remote' (limit: 2, remaining global: 2)
+2025-09-20 09:42:43,725 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=software+engineer&location=remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-20 09:42:49,981 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-20 09:42:49,992 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-20 09:42:50,117 - JobApplicationBot - INFO - Found 2 jobs on LinkedIn
+2025-09-20 09:42:50,117 - JobApplicationBot - INFO - Found 2 jobs from linkedin, total so far: 2
+2025-09-20 09:42:52,123 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-20 09:42:52,172 - JobApplicationBot - ERROR - Error saving jobs to Flask database: (psycopg2.errors.UndefinedColumn) column job_postings.has_easy_apply does not exist
+LINE 1: ..., job_postings.industry AS job_postings_industry, job_postin...
+                                                             ^
+
+[SQL: SELECT job_postings.id AS job_postings_id, job_postings.job_id AS job_postings_job_id, job_postings.title AS job_postings_title, job_postings.company AS job_postings_company, job_postings.location AS job_postings_location, job_postings.posting_date AS job_postings_posting_date, job_postings.url AS job_postings_url, job_postings.job_board AS job_postings_job_board, job_postings.description AS job_postings_description, job_postings.salary_range AS job_postings_salary_range, job_postings.job_type AS job_postings_job_type, job_postings.experience_level AS job_postings_experience_level, job_postings.skills_required AS job_postings_skills_required, job_postings.company_size AS job_postings_company_size, job_postings.industry AS job_postings_industry, job_postings.has_easy_apply AS job_postings_has_easy_apply, job_postings.application_status AS job_postings_application_status, job_postings.applied_date AS job_postings_applied_date, job_postings.status_changed_date AS job_postings_status_changed_date, job_postings.application_notes AS job_postings_application_notes, job_postings.recruiter_notes AS job_postings_recruiter_notes, job_postings.scraped_date AS job_postings_scraped_date 
+FROM job_postings 
+WHERE job_postings.job_id = %(job_id_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'job_id_1': 'd219740b5152', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-09-20 09:43:52,336 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-20 09:43:52,364 - JobApplicationBot - INFO - Total search combinations: 1, per-search limit: 3, global limit: 3
+2025-09-20 09:43:52,364 - JobApplicationBot - INFO - Searching linkedin for 'software engineer' in 'remote' (limit: 3, remaining global: 3)
+2025-09-20 09:43:52,364 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=software+engineer&location=remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-20 09:43:58,628 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-20 09:43:58,639 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-20 09:43:58,786 - JobApplicationBot - INFO - Found 3 jobs on LinkedIn
+2025-09-20 09:43:58,786 - JobApplicationBot - INFO - Found 3 jobs from linkedin, total so far: 3
+2025-09-20 09:44:00,791 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-20 09:44:00,798 - JobApplicationBot - ERROR - Error saving jobs to Flask database: (psycopg2.errors.UndefinedColumn) column job_postings.has_easy_apply does not exist
+LINE 1: ..., job_postings.industry AS job_postings_industry, job_postin...
+                                                             ^
+
+[SQL: SELECT job_postings.id AS job_postings_id, job_postings.job_id AS job_postings_job_id, job_postings.title AS job_postings_title, job_postings.company AS job_postings_company, job_postings.location AS job_postings_location, job_postings.posting_date AS job_postings_posting_date, job_postings.url AS job_postings_url, job_postings.job_board AS job_postings_job_board, job_postings.description AS job_postings_description, job_postings.salary_range AS job_postings_salary_range, job_postings.job_type AS job_postings_job_type, job_postings.experience_level AS job_postings_experience_level, job_postings.skills_required AS job_postings_skills_required, job_postings.company_size AS job_postings_company_size, job_postings.industry AS job_postings_industry, job_postings.has_easy_apply AS job_postings_has_easy_apply, job_postings.application_status AS job_postings_application_status, job_postings.applied_date AS job_postings_applied_date, job_postings.status_changed_date AS job_postings_status_changed_date, job_postings.application_notes AS job_postings_application_notes, job_postings.recruiter_notes AS job_postings_recruiter_notes, job_postings.scraped_date AS job_postings_scraped_date 
+FROM job_postings 
+WHERE job_postings.job_id = %(job_id_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'job_id_1': 'efabc56781bd', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-09-20 09:44:21,963 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-20 09:44:21,992 - JobApplicationBot - INFO - Total search combinations: 1, per-search limit: 2, global limit: 2
+2025-09-20 09:44:21,992 - JobApplicationBot - INFO - Searching linkedin for 'python developer' in 'remote' (limit: 2, remaining global: 2)
+2025-09-20 09:44:21,992 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=python+developer&location=remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-20 09:44:28,151 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-20 09:44:28,163 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-20 09:44:28,275 - JobApplicationBot - INFO - Found 2 jobs on LinkedIn
+2025-09-20 09:44:28,275 - JobApplicationBot - INFO - Found 2 jobs from linkedin, total so far: 2
+2025-09-20 09:44:30,280 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-20 09:44:30,343 - JobApplicationBot - ERROR - Error saving jobs to Flask database: (psycopg2.errors.UndefinedColumn) column job_postings.status_changed_date does not exist
+LINE 1: ...stings.applied_date AS job_postings_applied_date, job_postin...
+                                                             ^
+
+[SQL: SELECT job_postings.id AS job_postings_id, job_postings.job_id AS job_postings_job_id, job_postings.title AS job_postings_title, job_postings.company AS job_postings_company, job_postings.location AS job_postings_location, job_postings.posting_date AS job_postings_posting_date, job_postings.url AS job_postings_url, job_postings.job_board AS job_postings_job_board, job_postings.description AS job_postings_description, job_postings.salary_range AS job_postings_salary_range, job_postings.job_type AS job_postings_job_type, job_postings.experience_level AS job_postings_experience_level, job_postings.skills_required AS job_postings_skills_required, job_postings.company_size AS job_postings_company_size, job_postings.industry AS job_postings_industry, job_postings.application_status AS job_postings_application_status, job_postings.applied_date AS job_postings_applied_date, job_postings.status_changed_date AS job_postings_status_changed_date, job_postings.application_notes AS job_postings_application_notes, job_postings.recruiter_notes AS job_postings_recruiter_notes, job_postings.scraped_date AS job_postings_scraped_date 
+FROM job_postings 
+WHERE job_postings.job_id = %(job_id_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'job_id_1': 'c919862186e2', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-09-20 09:45:36,900 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-20 09:45:36,931 - JobApplicationBot - INFO - Total search combinations: 1, per-search limit: 2, global limit: 2
+2025-09-20 09:45:36,931 - JobApplicationBot - INFO - Searching linkedin for 'data analyst' in 'remote' (limit: 2, remaining global: 2)
+2025-09-20 09:45:36,931 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=data+analyst&location=remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-20 09:45:43,140 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-20 09:45:43,152 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-20 09:45:43,264 - JobApplicationBot - INFO - Found 2 jobs on LinkedIn
+2025-09-20 09:45:43,265 - JobApplicationBot - INFO - Found 2 jobs from linkedin, total so far: 2
+2025-09-20 09:45:45,270 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-20 09:45:45,292 - JobApplicationBot - INFO - Saved 2 new jobs to Flask database
+2025-09-21 08:20:45,345 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-21 08:20:45,380 - JobApplicationBot - INFO - Total search combinations: 12, per-search limit: 1, global limit: 20
+2025-09-21 08:20:45,380 - JobApplicationBot - INFO - Searching linkedin for 'director of IT' in 'remote' (limit: 1, remaining global: 20)
+2025-09-21 08:20:45,380 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=director+of+IT&location=remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-21 08:20:51,476 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-21 08:20:51,488 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-21 08:20:51,563 - JobApplicationBot - INFO - Found 1 jobs on LinkedIn
+2025-09-21 08:20:51,563 - JobApplicationBot - INFO - Found 1 jobs from linkedin, total so far: 1
+2025-09-21 08:20:53,564 - JobApplicationBot - INFO - Searching indeed for 'director of IT' in 'remote' (limit: 1, remaining global: 19)
+2025-09-21 08:20:53,564 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=director+of+IT&l=remote&fromage=1&sort=date&start=0
+2025-09-21 08:20:54,224 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-21 08:20:54,265 - JobApplicationBot - INFO - Indeed job 'Director of Cybersecurity' classified as: Quick Apply
+2025-09-21 08:20:54,266 - JobApplicationBot - INFO - Found 1 jobs on Indeed
+2025-09-21 08:20:54,266 - JobApplicationBot - INFO - Found 1 jobs from indeed, total so far: 2
+2025-09-21 08:20:56,271 - JobApplicationBot - INFO - Searching glassdoor for 'director of IT' in 'remote' (limit: 1, remaining global: 18)
+2025-09-21 08:20:57,273 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/remote-director-of-it-jobs-SRCH_IL.0,6_IC1147401_KO7,21.htm
+2025-09-21 08:20:58,634 - JobApplicationBot - INFO - Found 30 job cards on Glassdoor
+2025-09-21 08:20:58,635 - JobApplicationBot - INFO - Found 1 jobs on Glassdoor
+2025-09-21 08:20:58,635 - JobApplicationBot - INFO - Found 1 jobs from glassdoor, total so far: 3
+2025-09-21 08:21:00,640 - JobApplicationBot - INFO - Searching ziprecruiter for 'director of IT' in 'remote' (limit: 1, remaining global: 17)
+2025-09-21 08:21:01,394 - JobApplicationBot - INFO - ZipRecruiter Chrome driver initialized successfully with webdriver_helper
+2025-09-21 08:21:01,395 - JobApplicationBot - INFO - Searching ZipRecruiter with WebDriver: https://www.ziprecruiter.com/jobs-search?search=director+of+IT&location=remote&page=1
+2025-09-21 08:21:01,608 - JobApplicationBot - WARNING - No job cards found on ZipRecruiter - page might be showing CAPTCHA or different layout
+2025-09-21 08:21:01,608 - JobApplicationBot - WARNING - ZipRecruiter scraping failed. Creating redirect job for manual search.
+2025-09-21 08:21:01,608 - JobApplicationBot - INFO - Created ZipRecruiter search redirect for: director of IT in remote
+2025-09-21 08:21:01,673 - JobApplicationBot - INFO - Found 1 jobs from ziprecruiter, total so far: 4
+2025-09-21 08:21:03,678 - JobApplicationBot - INFO - Searching linkedin for 'director of IT' in 'new york' (limit: 1, remaining global: 16)
+2025-09-21 08:21:03,678 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=director+of+IT&location=new+york&f_TPR=r86400&f_JT=F&start=0
+2025-09-21 08:21:09,236 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-21 08:21:09,245 - JobApplicationBot - INFO - Found 14 job cards using selector: .job-search-card
+2025-09-21 08:21:09,298 - JobApplicationBot - INFO - Found 1 jobs on LinkedIn
+2025-09-21 08:21:09,299 - JobApplicationBot - INFO - Found 1 jobs from linkedin, total so far: 5
+2025-09-21 08:21:11,304 - JobApplicationBot - INFO - Searching indeed for 'director of IT' in 'new york' (limit: 1, remaining global: 15)
+2025-09-21 08:21:11,304 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=director+of+IT&l=new+york&fromage=1&sort=date&start=0
+2025-09-21 08:21:12,244 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-21 08:21:12,273 - JobApplicationBot - INFO - Indeed job 'Director SA - NAMER Startups , AWS Startups' classified as: Quick Apply
+2025-09-21 08:21:12,273 - JobApplicationBot - INFO - Found 1 jobs on Indeed
+2025-09-21 08:21:12,273 - JobApplicationBot - INFO - Found 1 jobs from indeed, total so far: 6
+2025-09-21 08:21:14,278 - JobApplicationBot - INFO - Searching glassdoor for 'director of IT' in 'new york' (limit: 1, remaining global: 14)
+2025-09-21 08:21:15,283 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/new-york-ny-us-director-of-it-jobs-SRCH_IL.0,14_IC1132348_KO15,29.htm
+2025-09-21 08:21:16,659 - JobApplicationBot - INFO - Found 30 job cards on Glassdoor
+2025-09-21 08:21:16,660 - JobApplicationBot - INFO - Found 1 jobs on Glassdoor
+2025-09-21 08:21:16,660 - JobApplicationBot - INFO - Found 1 jobs from glassdoor, total so far: 7
+2025-09-21 08:21:18,665 - JobApplicationBot - INFO - Searching ziprecruiter for 'director of IT' in 'new york' (limit: 1, remaining global: 13)
+2025-09-21 08:21:19,443 - JobApplicationBot - INFO - ZipRecruiter Chrome driver initialized successfully with webdriver_helper
+2025-09-21 08:21:19,444 - JobApplicationBot - INFO - Searching ZipRecruiter with WebDriver: https://www.ziprecruiter.com/jobs-search?search=director+of+IT&location=New+York%2C+NY&page=1
+2025-09-21 08:21:19,699 - JobApplicationBot - WARNING - No job cards found on ZipRecruiter - page might be showing CAPTCHA or different layout
+2025-09-21 08:21:19,699 - JobApplicationBot - WARNING - ZipRecruiter scraping failed. Creating redirect job for manual search.
+2025-09-21 08:21:19,699 - JobApplicationBot - INFO - Created ZipRecruiter search redirect for: director of IT in new york
+2025-09-21 08:21:19,768 - JobApplicationBot - INFO - Found 1 jobs from ziprecruiter, total so far: 8
+2025-09-21 08:21:21,773 - JobApplicationBot - INFO - Searching linkedin for 'director of IT' in 'hybrid' (limit: 1, remaining global: 12)
+2025-09-21 08:21:21,774 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=director+of+IT&location=hybrid&f_TPR=r86400&f_JT=F&start=0
+2025-09-21 08:21:27,688 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-21 08:21:27,697 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-21 08:21:27,748 - JobApplicationBot - INFO - Found 1 jobs on LinkedIn
+2025-09-21 08:21:27,748 - JobApplicationBot - INFO - Found 1 jobs from linkedin, total so far: 9
+2025-09-21 08:21:29,752 - JobApplicationBot - INFO - Searching indeed for 'director of IT' in 'hybrid' (limit: 11, remaining global: 11)
+2025-09-21 08:21:29,753 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=director+of+IT&l=hybrid&fromage=1&sort=date&start=0
+2025-09-21 08:21:30,447 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-21 08:21:30,459 - JobApplicationBot - INFO - Found 0 jobs on Indeed
+2025-09-21 08:21:30,459 - JobApplicationBot - WARNING - No jobs found for Indeed search: director of IT in hybrid
+2025-09-21 08:21:30,459 - JobApplicationBot - INFO - Found 0 jobs from indeed, total so far: 9
+2025-09-21 08:21:32,464 - JobApplicationBot - INFO - Searching glassdoor for 'director of IT' in 'hybrid' (limit: 11, remaining global: 11)
+2025-09-21 08:21:33,470 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/hybrid-us-director-of-it-jobs-SRCH_IL.0,9_IC1132348_KO10,24.htm
+2025-09-21 08:21:34,745 - JobApplicationBot - INFO - Found 30 job cards on Glassdoor
+2025-09-21 08:21:34,750 - JobApplicationBot - INFO - Found 11 jobs on Glassdoor
+2025-09-21 08:21:34,750 - JobApplicationBot - INFO - Found 11 jobs from glassdoor, total so far: 20
+2025-09-21 08:21:36,755 - JobApplicationBot - INFO - Reached global job limit of 20, stopping search
+2025-09-21 08:21:36,781 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-21 08:21:36,824 - JobApplicationBot - INFO - Saved 4 new jobs to Flask database
+2025-09-21 08:28:16,516 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-21 08:28:16,548 - JobApplicationBot - INFO - Total search combinations: 4, per-search limit: 5, global limit: 20
+2025-09-21 08:28:16,548 - JobApplicationBot - INFO - Searching linkedin for 'Help desk engineer' in 'remote' (limit: 5, remaining global: 20)
+2025-09-21 08:28:16,548 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=Help+desk+engineer&location=remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-21 08:28:22,610 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-21 08:28:22,624 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-21 08:28:22,858 - JobApplicationBot - INFO - Found 5 jobs on LinkedIn
+2025-09-21 08:28:22,859 - JobApplicationBot - INFO - Found 5 jobs from linkedin, total so far: 5
+2025-09-21 08:28:24,863 - JobApplicationBot - INFO - Searching indeed for 'Help desk engineer' in 'remote' (limit: 15, remaining global: 15)
+2025-09-21 08:28:24,864 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=Help+desk+engineer&l=remote&fromage=1&sort=date&start=0
+2025-09-21 08:28:24,931 - JobApplicationBot - WARNING - 403 error on attempt 1, retrying with delay...
+2025-09-21 08:28:24,931 - JobApplicationBot - INFO - Retrying Indeed request in 2 seconds (attempt 2/3)
+2025-09-21 08:28:28,810 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 2
+2025-09-21 08:28:28,819 - JobApplicationBot - INFO - Found 0 jobs on Indeed
+2025-09-21 08:28:28,819 - JobApplicationBot - WARNING - No jobs found for Indeed search: Help desk engineer in remote
+2025-09-21 08:28:28,819 - JobApplicationBot - INFO - Found 0 jobs from indeed, total so far: 5
+2025-09-21 08:28:30,825 - JobApplicationBot - INFO - Searching glassdoor for 'Help desk engineer' in 'remote' (limit: 15, remaining global: 15)
+2025-09-21 08:28:31,830 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/remote-help-desk-engineer-jobs-SRCH_IL.0,6_IC1147401_KO7,25.htm
+2025-09-21 08:28:33,369 - JobApplicationBot - INFO - Found 30 job cards on Glassdoor
+2025-09-21 08:28:33,379 - JobApplicationBot - INFO - Found 15 jobs on Glassdoor
+2025-09-21 08:28:33,379 - JobApplicationBot - INFO - Found 15 jobs from glassdoor, total so far: 20
+2025-09-21 08:28:35,384 - JobApplicationBot - INFO - Reached global job limit of 20, stopping search
+2025-09-21 08:28:35,385 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-21 08:28:35,401 - JobApplicationBot - INFO - Saved 19 new jobs to Flask database
+2025-09-21 08:55:31,987 - JobApplicationBot - INFO - LinkedIn Chrome driver initialized successfully with webdriver_helper
+2025-09-21 08:55:32,019 - JobApplicationBot - INFO - Total search combinations: 8, per-search limit: 2, global limit: 20
+2025-09-21 08:55:32,019 - JobApplicationBot - INFO - Searching linkedin for 'machine learning engineer' in 'remote' (limit: 2, remaining global: 20)
+2025-09-21 08:55:32,019 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=machine+learning+engineer&location=remote&f_TPR=r86400&f_JT=F&start=0
+2025-09-21 08:55:38,135 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-21 08:55:38,148 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-21 08:55:38,262 - JobApplicationBot - INFO - Found 2 jobs on LinkedIn
+2025-09-21 08:55:38,262 - JobApplicationBot - INFO - Found 2 jobs from linkedin, total so far: 2
+2025-09-21 08:55:40,267 - JobApplicationBot - INFO - Searching indeed for 'machine learning engineer' in 'remote' (limit: 2, remaining global: 18)
+2025-09-21 08:55:40,268 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=machine+learning+engineer&l=remote&fromage=1&sort=date&start=0
+2025-09-21 08:55:40,352 - JobApplicationBot - WARNING - 403 error on attempt 1, retrying with delay...
+2025-09-21 08:55:40,353 - JobApplicationBot - INFO - Retrying Indeed request in 2 seconds (attempt 2/3)
+2025-09-21 08:55:43,428 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 2
+2025-09-21 08:55:43,479 - JobApplicationBot - INFO - Indeed job 'Senior Machine Learning Engineer' classified as: Quick Apply
+2025-09-21 08:55:43,480 - JobApplicationBot - INFO - Indeed job 'Staff Engineer' classified as: Quick Apply
+2025-09-21 08:55:43,480 - JobApplicationBot - INFO - Found 2 jobs on Indeed
+2025-09-21 08:55:43,480 - JobApplicationBot - INFO - Found 2 jobs from indeed, total so far: 4
+2025-09-21 08:55:45,486 - JobApplicationBot - INFO - Searching glassdoor for 'machine learning engineer' in 'remote' (limit: 2, remaining global: 16)
+2025-09-21 08:55:46,491 - JobApplicationBot - INFO - Searching Glassdoor: https://www.glassdoor.com/Job/remote-machine-learning-engineer-jobs-SRCH_IL.0,6_IC1147401_KO7,32.htm
+2025-09-21 08:55:48,412 - JobApplicationBot - INFO - Found 30 job cards on Glassdoor
+2025-09-21 08:55:48,413 - JobApplicationBot - INFO - Found 2 jobs on Glassdoor
+2025-09-21 08:55:48,413 - JobApplicationBot - INFO - Found 2 jobs from glassdoor, total so far: 6
+2025-09-21 08:55:50,416 - JobApplicationBot - INFO - Searching ziprecruiter for 'machine learning engineer' in 'remote' (limit: 2, remaining global: 14)
+2025-09-21 08:55:51,072 - JobApplicationBot - INFO - ZipRecruiter Chrome driver initialized successfully with webdriver_helper
+2025-09-21 08:55:51,072 - JobApplicationBot - INFO - Searching ZipRecruiter with WebDriver: https://www.ziprecruiter.com/jobs-search?search=machine+learning+engineer&location=remote&page=1
+2025-09-21 08:55:51,311 - JobApplicationBot - WARNING - No job cards found on ZipRecruiter - page might be showing CAPTCHA or different layout
+2025-09-21 08:55:51,311 - JobApplicationBot - WARNING - ZipRecruiter scraping failed. Creating redirect job for manual search.
+2025-09-21 08:55:51,311 - JobApplicationBot - INFO - Created ZipRecruiter search redirect for: machine learning engineer in remote
+2025-09-21 08:55:51,380 - JobApplicationBot - INFO - Found 1 jobs from ziprecruiter, total so far: 7
+2025-09-21 08:55:53,384 - JobApplicationBot - INFO - Searching linkedin for 'machine learning engineer' in 'new york' (limit: 2, remaining global: 13)
+2025-09-21 08:55:53,384 - JobApplicationBot - INFO - Searching LinkedIn: https://www.linkedin.com/jobs/search?keywords=machine+learning+engineer&location=new+york&f_TPR=r86400&f_JT=F&start=0
+2025-09-21 08:55:59,272 - JobApplicationBot - WARNING - LinkedIn access blocked or verification required
+2025-09-21 08:55:59,280 - JobApplicationBot - INFO - Found 60 job cards using selector: .job-search-card
+2025-09-21 08:55:59,369 - JobApplicationBot - INFO - Found 2 jobs on LinkedIn
+2025-09-21 08:55:59,369 - JobApplicationBot - INFO - Found 2 jobs from linkedin, total so far: 9
+2025-09-21 08:56:01,372 - JobApplicationBot - INFO - Searching indeed for 'machine learning engineer' in 'new york' (limit: 11, remaining global: 11)
+2025-09-21 08:56:01,373 - JobApplicationBot - INFO - Searching Indeed: https://www.indeed.com/jobs?q=machine+learning+engineer&l=new+york&fromage=1&sort=date&start=0
+2025-09-21 08:56:02,257 - JobApplicationBot - INFO - Successfully accessed Indeed on attempt 1
+2025-09-21 08:56:02,279 - JobApplicationBot - INFO - Indeed job 'Senior Machine Learning Engineer' classified as: Quick Apply
+2025-09-21 08:56:02,280 - JobApplicationBot - INFO - Indeed job 'Delivery Consultant - Machine Learning Engineer, AWS Professional Services' classified as: Quick Apply
+2025-09-21 08:56:02,282 - JobApplicationBot - INFO - Indeed job 'Senior Associate - AI Full Stack Engineer' classified as: Quick Apply
+2025-09-21 08:56:02,283 - JobApplicationBot - INFO - Indeed job 'Senior Delivery Consultant - Senior Machine Learning Engineer, AWS Professional Services, AWS Professional Services' classified as: Quick Apply
+2025-09-21 08:56:02,285 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer - Personalization' classified as: Quick Apply
+2025-09-21 08:56:02,286 - JobApplicationBot - INFO - Indeed job 'Senior Data Scientist' classified as: Quick Apply
+2025-09-21 08:56:02,288 - JobApplicationBot - INFO - Indeed job 'Machine Learning Engineer, Generative AI Innovation Center' classified as: Quick Apply
+2025-09-21 08:56:02,289 - JobApplicationBot - INFO - Indeed job 'Sr. Research Engineer, Machine Learning, AGI Foundations' classified as: Quick Apply
+2025-09-21 08:56:02,290 - JobApplicationBot - INFO - Indeed job 'Sr. Research Engineer, Machine Learning, AGI Foundations' classified as: Quick Apply
+2025-09-21 08:56:02,292 - JobApplicationBot - INFO - Indeed job 'Software Engineer, Prime Video' classified as: Quick Apply
+2025-09-21 08:56:02,293 - JobApplicationBot - INFO - Indeed job 'Delivery Consultant- GenAI/ML, AWS, Industries' classified as: Quick Apply
+2025-09-21 08:56:02,293 - JobApplicationBot - INFO - Found 11 jobs on Indeed
+2025-09-21 08:56:02,293 - JobApplicationBot - INFO - Found 11 jobs from indeed, total so far: 20
+2025-09-21 08:56:04,297 - JobApplicationBot - INFO - Reached global job limit of 20, stopping search
+2025-09-21 08:56:04,298 - JobApplicationBot - INFO - Connected to Flask database
+2025-09-21 08:56:04,311 - JobApplicationBot - INFO - Saved 13 new jobs to Flask database

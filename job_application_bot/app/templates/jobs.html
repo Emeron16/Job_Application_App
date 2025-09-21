@@ -3,7 +3,133 @@
 {% block title %}Jobs - Job Application Bot{% endblock %}
 
 {% block content %}
+<!-- Override container with container-fluid for wider table display -->
+</div> <!-- Close base template container -->
+<div class="container-fluid" style="padding-left: 5px; padding-right: 5px; max-width: none; width: 100vw; margin: 0;">
 <style>
+/* Override ALL base template containers to match wider content */
+.navbar {
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.navbar .container {
+    max-width: none !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    width: 100vw !important;
+    margin: 0 !important;
+}
+
+/* Also override any container-fluid in navbar */
+.navbar .container-fluid {
+    max-width: none !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    width: 100vw !important;
+    margin: 0 !important;
+}
+
+/* Override flash messages container */
+.container.mt-3 {
+    max-width: none !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    width: 100vw !important;
+    margin: 0 !important;
+    margin-top: 1rem !important;
+}
+
+/* Override main content container */
+main.container {
+    max-width: none !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    width: 100vw !important;
+    margin: 0 !important;
+    margin-top: 1.5rem !important;
+}
+
+/* Force maximum width usage */
+.card {
+    width: 100%;
+    margin: 0;
+}
+
+/* Wider table layout improvements - force maximum width */
+.table-responsive {
+    overflow-x: visible;
+    min-height: 400px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Ensure table takes full available width */
+.table {
+    table-layout: fixed;
+    width: 100%;
+    margin-bottom: 0;
+    font-size: 0.9rem; /* Slightly smaller font to fit more content */
+}
+
+/* Ensure table cells don't wrap unnecessarily */
+.table td, .table th {
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 8px 6px; /* Reduced padding for more space */
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* Allow job details column to wrap since it contains more content */
+.table td:nth-child(2) {
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+/* Company column styling */
+.table td:nth-child(3), .table th:nth-child(3) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Location column styling */
+.table td:nth-child(4), .table th:nth-child(4) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Status dropdown styling */
+.status-dropdown {
+    min-width: 130px;
+    width: 100%;
+    font-size: 0.875rem;
+    padding: 4px 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+/* Actions column buttons spacing */
+.btn-group .btn {
+    margin: 0 1px;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+}
+
+/* Platform badges */
+.badge {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+}
+
+/* Improve checkbox alignment */
+input[type="checkbox"] {
+    transform: scale(1.1);
+}
 .quick-apply-indicator {
     color: #28a745;
     font-weight: 500;
@@ -16,6 +142,21 @@
     font-size: 0.75em;
     padding: 0.25em 0.5em;
     border-radius: 0.375rem;
+}
+
+/* Sortable table headers */
+.sortable {
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+.sortable:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+.sortable i {
+    margin-left: 5px;
+    font-size: 0.8em;
 }
 
 /* Keywords and Locations Bubble Styles */
@@ -129,35 +270,39 @@
         </h5>
     </div>
     <div class="card-body">
-        <form method="GET" class="row g-3">
-            <div class="col-md-3">
+        <form method="GET" class="row g-2">
+            <div class="col-lg-3 col-md-4">
                 <label for="search" class="form-label">Search</label>
                 <input type="text" class="form-control" id="search" name="search" 
                        value="{{ search_query }}" placeholder="Job title, company...">
             </div>
             
-            <div class="col-md-3">
+            <div class="col-lg-2 col-md-3">
                 <label for="status" class="form-label">Status</label>
                 <select class="form-select" id="status" name="status">
                     <option value="all" {% if status_filter == 'all' %}selected{% endif %}>All Status</option>
                     <option value="not_applied" {% if status_filter == 'not_applied' %}selected{% endif %}>Not Applied</option>
                     <option value="applied" {% if status_filter == 'applied' %}selected{% endif %}>Applied</option>
+                    <option value="rejected" {% if status_filter == 'rejected' %}selected{% endif %}>Rejected</option>
+                    <option value="interview" {% if status_filter == 'interview' %}selected{% endif %}>Interview</option>
+                    <option value="accepted" {% if status_filter == 'accepted' %}selected{% endif %}>Accepted</option>
                     <option value="ready_to_apply" {% if status_filter == 'ready_to_apply' %}selected{% endif %}>Ready to Apply</option>
                     <option value="failed" {% if status_filter == 'failed' %}selected{% endif %}>Failed</option>
                 </select>
             </div>
             
-            <div class="col-md-2">
+            <div class="col-lg-2 col-md-3">
                 <label for="board" class="form-label">Platform</label>
                 <select class="form-select" id="board" name="board">
                     <option value="all" {% if board_filter == 'all' %}selected{% endif %}>All Platforms</option>
                     <option value="linkedin" {% if board_filter == 'linkedin' %}selected{% endif %}>LinkedIn</option>
                     <option value="indeed" {% if board_filter == 'indeed' %}selected{% endif %}>Indeed</option>
                     <option value="glassdoor" {% if board_filter == 'glassdoor' %}selected{% endif %}>Glassdoor</option>
+                    <option value="ziprecruiter" {% if board_filter == 'ziprecruiter' %}selected{% endif %}>ZipRecruiter</option>
                 </select>
             </div>
             
-            <div class="col-md-2">
+            <div class="col-lg-2 col-md-3">
                 <label for="apply_type" class="form-label">Application Type</label>
                 <select class="form-select" id="apply_type" name="apply_type">
                     <option value="all" {% if apply_type_filter == 'all' %}selected{% endif %}>All Types</option>
@@ -170,7 +315,20 @@
                 </select>
             </div>
             
-            <div class="col-md-2 d-flex align-items-end">
+            <div class="col-lg-2 col-md-3">
+                <label for="salary_filter" class="form-label">Minimum Salary</label>
+                <select class="form-select" id="salary_filter" name="salary_filter">
+                    <option value="" {% if not salary_filter %}selected{% endif %}>Any Salary</option>
+                    <option value="30000" {% if salary_filter == '30000' %}selected{% endif %}>$30,000+</option>
+                    <option value="50000" {% if salary_filter == '50000' %}selected{% endif %}>$50,000+</option>
+                    <option value="70000" {% if salary_filter == '70000' %}selected{% endif %}>$70,000+</option>
+                    <option value="90000" {% if salary_filter == '90000' %}selected{% endif %}>$90,000+</option>
+                    <option value="120000" {% if salary_filter == '120000' %}selected{% endif %}>$120,000+</option>
+                    <option value="150000" {% if salary_filter == '150000' %}selected{% endif %}>$150,000+</option>
+                </select>
+            </div>
+            
+            <div class="col-12 mt-3">
                 <button type="submit" class="btn btn-primary me-2">
                     <i class="fas fa-search me-1"></i>Filter
                 </button>
@@ -185,7 +343,7 @@
 <!-- Quick Stats -->
 {% if jobs.items %}
 <div class="row mb-3">
-    <div class="col-md-6">
+    <div class="col-lg-6 col-md-6">
         <div class="card border-success">
             <div class="card-body text-center py-2">
                 <small class="text-muted d-block">Quick Apply Jobs</small>
@@ -202,7 +360,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-lg-6 col-md-6">
         <div class="card border-info">
             <div class="card-body text-center py-2">
                 <small class="text-muted d-block">Manual Apply Jobs</small>
@@ -254,24 +412,43 @@
     <div class="card-body p-0">
         {% if jobs.items %}
             <div class="table-responsive">
-                <table class="table table-hover mb-0">
+                <table class="table table-hover mb-0" style="width: 100%;">
                     <thead class="table-light">
                         <tr>
-                            <th width="50">
-                                <input type="checkbox" id="selectAllHeader" onchange="toggleAllJobs()">
+                            <th style="width: 60px;">
+                                <input type="checkbox" id="selectAllHeader" onchange="toggleSelectAll()">
                             </th>
-                            <th>Job Details</th>
-                            <th>Company</th>
-                            <th>Location</th>
-                            <th>Platform</th>
-                            <th>Status</th>
-                            <th>Date</th>
-                            <th>Actions</th>
+                            <th class="sortable" data-column="title" style="cursor: pointer; width: 30%;">
+                                Job Details <i class="fas fa-sort text-muted"></i>
+                            </th>
+                            <th class="sortable" data-column="company" style="cursor: pointer; width: 20%;">
+                                Company <i class="fas fa-sort text-muted"></i>
+                            </th>
+                            <th class="sortable" data-column="location" style="cursor: pointer; width: 12%;">
+                                Location <i class="fas fa-sort text-muted"></i>
+                            </th>
+                            <th class="sortable" data-column="salary" style="cursor: pointer; width: 15%;">
+                                Salary <i class="fas fa-sort text-muted"></i>
+                            </th>
+                            <th style="width: 10%;">Platform</th>
+                            <th class="sortable" data-column="status" style="cursor: pointer; width: 12%;">
+                                Status <i class="fas fa-sort text-muted"></i>
+                            </th>
+                            <th class="sortable" data-column="date" style="cursor: pointer; width: 8%;">
+                                Date <i class="fas fa-sort text-muted"></i>
+                            </th>
+                            <th style="width: 15%;">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for job in jobs.items %}
-                        <tr id="job-row-{{ job.id }}">
+                        <tr id="job-row-{{ job.id }}" 
+                            data-title="{{ job.title }}"
+                            data-company="{{ job.company }}" 
+                            data-location="{{ job.location }}" 
+                            data-salary="{{ job.salary_range or '' }}"
+                            data-status="{{ job.application_status }}" 
+                            data-date="{{ job.scraped_date.strftime('%Y-%m-%d') if job.scraped_date else '1970-01-01' }}">
                             <td>
                                 <input type="checkbox" class="job-checkbox" value="{{ job.id }}" 
                                        {% if job.application_status != 'not_applied' %}disabled{% endif %}>
@@ -295,6 +472,13 @@
                             </td>
                             <td>{{ job.location }}</td>
                             <td>
+                                {% if job.salary_range %}
+                                    <small class="text-success fw-bold">{{ job.salary_range }}</small>
+                                {% else %}
+                                    <small class="text-muted">Not specified</small>
+                                {% endif %}
+                            </td>
+                            <td>
                                 <span class="badge bg-secondary">
                                     <i class="fab fa-{{ job.job_board }} me-1"></i>
                                     {{ job.job_board|title }}
@@ -311,17 +495,16 @@
                                 {% endif %}
                             </td>
                             <td>
-                                {% if job.application_status == 'applied' %}
-                                    <span class="badge bg-success">Applied</span>
-                                    {% if job.applied_date %}
-                                        <br><small class="text-muted">{{ job.applied_date.strftime('%m/%d/%Y') }}</small>
-                                    {% endif %}
-                                {% elif job.application_status == 'failed' %}
-                                    <span class="badge bg-danger">Failed</span>
-                                {% elif job.application_status == 'ready_to_apply' %}
-                                    <span class="badge bg-info">Ready to Apply</span>
-                                {% else %}
-                                    <span class="badge bg-warning">Pending</span>
+                                <select class="form-select form-select-sm status-dropdown" onchange="changeJobStatusFromDropdown({{ job.id }}, this.value)" data-job-id="{{ job.id }}">
+                                    <option value="not_applied" {% if job.application_status == 'not_applied' %}selected{% endif %}>Not Applied</option>
+                                    <option value="applied" {% if job.application_status == 'applied' %}selected{% endif %}>Applied</option>
+                                    <option value="rejected" {% if job.application_status == 'rejected' %}selected{% endif %}>Rejected</option>
+                                    <option value="interview" {% if job.application_status == 'interview' %}selected{% endif %}>Interview</option>
+                                    <option value="accepted" {% if job.application_status == 'accepted' %}selected{% endif %}>Accepted</option>
+                                    <option value="failed" {% if job.application_status == 'failed' %}selected{% endif %}>Failed</option>
+                                </select>
+                                {% if job.applied_date %}
+                                    <br><small class="text-muted">Applied: {{ job.applied_date.strftime('%m/%d/%Y') }}</small>
                                 {% endif %}
                             </td>
                             <td>
@@ -340,13 +523,6 @@
                                     {% if job.application_status == 'not_applied' %}
                                     <button class="btn btn-outline-success btn-sm" onclick="applyToJob({{ job.id }})" title="Apply Now">
                                         <i class="fas fa-paper-plane"></i>
-                                    </button>
-                                    <button class="btn btn-outline-primary btn-sm" onclick="markAsApplied({{ job.id }})" title="Mark as Applied">
-                                        <i class="fas fa-check"></i>
-                                    </button>
-                                    {% elif job.application_status == 'failed' %}
-                                    <button class="btn btn-outline-primary btn-sm" onclick="markAsApplied({{ job.id }})" title="Mark as Applied">
-                                        <i class="fas fa-check"></i>
                                     </button>
                                     {% endif %}
                                     
@@ -459,13 +635,16 @@ function getStatusBadgeClass(status) {
     }
 }
 
-function toggleAllJobs() {
-    const selectAll = document.getElementById('selectAll') || document.getElementById('selectAllHeader');
+function toggleSelectAll() {
+    const selectAll = document.getElementById('selectAllHeader');
     const checkboxes = document.querySelectorAll('.job-checkbox:not([disabled])');
     
     checkboxes.forEach(checkbox => {
         checkbox.checked = selectAll.checked;
     });
+    
+    // Update the selected count
+    updateSelectedCount();
 }
 
 function applyToSelectedJobs() {
@@ -682,59 +861,153 @@ function deleteJob(jobId) {
     });
 }
 
-function markAsApplied(jobId) {
-    if (!confirm('Mark this job as applied? This will update the job status to "applied".')) {
+function changeJobStatus(jobId, newStatus) {
+    const statusLabels = {
+        'applied': 'Applied',
+        'rejected': 'Rejected', 
+        'interview': 'Interview',
+        'accepted': 'Accepted',
+        'not_applied': 'Not Applied'
+    };
+    
+    const statusLabel = statusLabels[newStatus] || newStatus;
+    
+    if (!confirm(`Change job status to "${statusLabel}"?`)) {
         return;
     }
     
-    // Show loading state
+    // Show loading state on the dropdown button
     const jobRow = document.getElementById(`job-row-${jobId}`);
-    const markBtn = jobRow.querySelector('.btn-outline-primary[title="Mark as Applied"]');
-    const originalContent = markBtn.innerHTML;
-    markBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-    markBtn.disabled = true;
+    const dropdownBtn = jobRow.querySelector('.dropdown-toggle');
+    const originalContent = dropdownBtn.innerHTML;
+    dropdownBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+    dropdownBtn.disabled = true;
     
-    fetch(`/api/jobs/${jobId}/mark-applied`, {
+    fetch(`/api/jobs/${jobId}/change-status`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
-        }
+        },
+        body: JSON.stringify({
+            status: newStatus
+        })
     })
     .then(response => response.json())
     .then(data => {
         if (data.status === 'success') {
             // Update the status badge
-            const statusBadge = jobRow.querySelector('.badge');
-            statusBadge.className = 'badge bg-success';
-            statusBadge.textContent = 'Applied';
+            const statusCell = jobRow.children[5]; // Status is the 6th column (0-indexed)
+            const statusBadge = statusCell.querySelector('.badge');
+            if (statusBadge) {
+                // Set badge color based on status
+                const statusColors = {
+                    'applied': 'bg-success',
+                    'rejected': 'bg-danger',
+                    'interview': 'bg-warning',
+                    'accepted': 'bg-primary',
+                    'not_applied': 'bg-secondary'
+                };
+                statusBadge.className = `badge ${statusColors[newStatus] || 'bg-secondary'}`;
+                statusBadge.textContent = statusLabel;
+            }
             
-            // Remove the action buttons for applied jobs
-            const applyBtn = jobRow.querySelector('.btn-outline-success');
-            const markAppliedBtn = jobRow.querySelector('.btn-outline-primary[title="Mark as Applied"]');
-            if (applyBtn) applyBtn.remove();
-            if (markAppliedBtn) markAppliedBtn.remove();
-            
-            // Disable the checkbox
+            // Update checkbox state - disable if not 'not_applied'
             const checkbox = jobRow.querySelector('.job-checkbox');
-            if (checkbox) checkbox.disabled = true;
+            if (checkbox) {
+                checkbox.disabled = newStatus !== 'not_applied';
+                if (newStatus !== 'not_applied') {
+                    checkbox.checked = false;
+                }
+            }
             
-            showAlert('success', data.message || 'Job marked as applied successfully');
+            // Update row data attribute
+            jobRow.setAttribute('data-status', newStatus);
+            
+            showAlert('success', data.message || `Job status changed to ${statusLabel} successfully`);
             
             // Update stats if available
             if (typeof refreshStats === 'function') {
                 refreshStats();
             }
         } else {
-            throw new Error(data.message || 'Failed to mark job as applied');
+            throw new Error(data.message || 'Failed to change job status');
         }
     })
     .catch(error => {
-        console.error('Mark as applied error:', error);
-        showAlert('error', 'Failed to mark job as applied: ' + error.message);
-        
+        console.error('Change status error:', error);
+        showAlert('error', 'Failed to change job status: ' + error.message);
+    })
+    .finally(() => {
         // Restore button state
-        markBtn.innerHTML = originalContent;
-        markBtn.disabled = false;
+        dropdownBtn.innerHTML = originalContent;
+        dropdownBtn.disabled = false;
+    });
+}
+
+// Keep the old function for backward compatibility
+function markAsApplied(jobId) {
+    changeJobStatus(jobId, 'applied');
+}
+
+// New function for handling dropdown status changes
+function changeJobStatusFromDropdown(jobId, newStatus) {
+    const dropdown = document.querySelector(`select[data-job-id="${jobId}"]`);
+    const originalValue = dropdown.getAttribute('data-original-value') || dropdown.value;
+    
+    // Store original value for rollback if needed
+    dropdown.setAttribute('data-original-value', originalValue);
+    
+    // Show loading state
+    dropdown.disabled = true;
+    
+    fetch(`/api/jobs/${jobId}/change-status`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            status: newStatus
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            // Update the row data attribute
+            const jobRow = document.getElementById(`job-row-${jobId}`);
+            jobRow.setAttribute('data-status', newStatus);
+            
+            // Update checkbox state - disable if not 'not_applied'
+            const checkbox = jobRow.querySelector('.job-checkbox');
+            if (checkbox) {
+                checkbox.disabled = newStatus !== 'not_applied';
+                if (newStatus !== 'not_applied') {
+                    checkbox.checked = false;
+                }
+            }
+            
+            // Update original value to new status
+            dropdown.setAttribute('data-original-value', newStatus);
+            
+            showAlert('success', data.message || `Job status changed successfully`);
+            
+            // Update stats if available
+            if (typeof refreshStats === 'function') {
+                refreshStats();
+            }
+        } else {
+            throw new Error(data.message || 'Failed to change job status');
+        }
+    })
+    .catch(error => {
+        console.error('Change status error:', error);
+        showAlert('error', 'Failed to change job status: ' + error.message);
+        
+        // Rollback dropdown to original value
+        dropdown.value = originalValue;
+    })
+    .finally(() => {
+        // Re-enable dropdown
+        dropdown.disabled = false;
     });
 }
 
@@ -836,7 +1109,101 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initial count update
     updateSelectedCount();
+    
+    // Add sorting functionality
+    initTableSorting();
 });
+
+// Table sorting functionality
+let currentSortColumn = null;
+let currentSortDirection = 'asc';
+
+function initTableSorting() {
+    const sortableHeaders = document.querySelectorAll('.sortable');
+    
+    sortableHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            const column = this.getAttribute('data-column');
+            sortTable(column);
+        });
+    });
+}
+
+function sortTable(column) {
+    const table = document.querySelector('.table tbody');
+    const rows = Array.from(table.querySelectorAll('tr'));
+    
+    // Determine sort direction
+    if (currentSortColumn === column) {
+        currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+        currentSortDirection = 'asc';
+        currentSortColumn = column;
+    }
+    
+    // Update header icons
+    updateSortIcons(column, currentSortDirection);
+    
+    // Sort rows
+    rows.sort((a, b) => {
+        let aVal = a.getAttribute(`data-${column}`) || '';
+        let bVal = b.getAttribute(`data-${column}`) || '';
+        
+        // Handle different data types
+        if (column === 'date') {
+            aVal = new Date(aVal);
+            bVal = new Date(bVal);
+        } else if (column === 'status') {
+            // Custom sorting order for status
+            const statusOrder = {
+                'not_applied': 0,
+                'ready_to_apply': 1,
+                'applied': 2,
+                'failed': 3
+            };
+            aVal = statusOrder[aVal] !== undefined ? statusOrder[aVal] : 999;
+            bVal = statusOrder[bVal] !== undefined ? statusOrder[bVal] : 999;
+        } else if (column === 'salary') {
+            // Extract numeric values from salary strings for comparison
+            const extractSalary = (salaryStr) => {
+                if (!salaryStr) return 0;
+                // Extract the first number from salary string (e.g., "$80,000 - $120,000" -> 80000)
+                const match = salaryStr.match(/[\d,]+/);
+                return match ? parseInt(match[0].replace(/,/g, '')) : 0;
+            };
+            aVal = extractSalary(aVal);
+            bVal = extractSalary(bVal);
+        } else {
+            // String comparison for company, location, and title
+            aVal = aVal.toLowerCase();
+            bVal = bVal.toLowerCase();
+        }
+        
+        if (aVal < bVal) return currentSortDirection === 'asc' ? -1 : 1;
+        if (aVal > bVal) return currentSortDirection === 'asc' ? 1 : -1;
+        return 0;
+    });
+    
+    // Re-append sorted rows
+    rows.forEach(row => table.appendChild(row));
+}
+
+function updateSortIcons(activeColumn, direction) {
+    // Reset all icons
+    document.querySelectorAll('.sortable i').forEach(icon => {
+        icon.className = 'fas fa-sort text-muted';
+    });
+    
+    // Update active column icon
+    const activeHeader = document.querySelector(`[data-column="${activeColumn}"] i`);
+    if (activeHeader) {
+        if (direction === 'asc') {
+            activeHeader.className = 'fas fa-sort-up text-primary';
+        } else {
+            activeHeader.className = 'fas fa-sort-down text-primary';
+        }
+    }
+}
 </script>
 
 <!-- Search Jobs Modal -->
@@ -906,6 +1273,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <input class="form-check-input" type="checkbox" id="board_glassdoor" name="job_boards" value="glassdoor">
                                 <label class="form-check-label" for="board_glassdoor">Glassdoor</label>
                             </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="board_ziprecruiter" name="job_boards" value="ziprecruiter">
+                                <label class="form-check-label" for="board_ziprecruiter">ZipRecruiter</label>
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <label for="job_limit" class="form-label">Jobs per Search</label>
@@ -945,19 +1316,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     <!-- Experience Levels and Job Types -->
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label class="form-label">Experience Level</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="exp_entry" name="experience_levels" value="entry">
-                                <label class="form-check-label" for="exp_entry">Entry Level</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="exp_mid" name="experience_levels" value="mid" checked>
-                                <label class="form-check-label" for="exp_mid">Mid Level</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="exp_senior" name="experience_levels" value="senior" checked>
-                                <label class="form-check-label" for="exp_senior">Senior Level</label>
-                            </div>
+                            <label for="experience_level" class="form-label">Experience Level</label>
+                            <select class="form-select" id="experience_level" name="experience_level">
+                                <option value="any">Any Experience Level</option>
+                                <option value="entry">Entry Level</option>
+                                <option value="mid" selected>Mid Level</option>
+                                <option value="senior">Senior Level</option>
+                            </select>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Job Type</label>
@@ -995,6 +1360,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-warning me-auto" onclick="clearPendingJobs()">
+                        <i class="fas fa-trash me-1"></i>Clear Pending Jobs
+                    </button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-search me-1"></i>Start Job Search
@@ -1068,6 +1436,13 @@ document.addEventListener('DOMContentLoaded', function() {
     loadSearchPreferences();
     initializeBubbleInputs();
     
+    // Load preferences when the search modal is shown
+    const searchModal = document.getElementById('searchJobsModal');
+    searchModal.addEventListener('shown.bs.modal', function () {
+        console.log('Search modal shown, reloading preferences...');
+        loadSearchPreferences();
+    });
+    
     // Handle search form submission
     document.getElementById('searchJobsForm').addEventListener('submit', function(e) {
         e.preventDefault();
@@ -1115,6 +1490,9 @@ function addKeyword() {
         keywords.push(keyword);
         input.value = '';
         renderKeywords();
+        
+        // Immediately save to database
+        saveKeywordsToDatabase();
     }
 }
 
@@ -1126,17 +1504,64 @@ function addLocation() {
         locations.push(location);
         input.value = '';
         renderLocations();
+        
+        // Immediately save to database
+        saveLocationsToDatabase();
     }
+}
+
+function saveKeywordsToDatabase() {
+    const formData = new FormData();
+    formData.append('keywords', JSON.stringify(keywords));
+    
+    fetch('/preferences', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status !== 'success') {
+            console.error('Failed to save keywords:', data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error saving keywords:', error);
+    });
+}
+
+function saveLocationsToDatabase() {
+    const formData = new FormData();
+    formData.append('locations', JSON.stringify(locations));
+    
+    fetch('/preferences', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status !== 'success') {
+            console.error('Failed to save locations:', data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error saving locations:', error);
+    });
 }
 
 function removeKeyword(keyword) {
     keywords = keywords.filter(k => k !== keyword);
     renderKeywords();
+    
+    // Immediately save to database
+    saveKeywordsToDatabase();
 }
 
 function removeLocation(location) {
     locations = locations.filter(l => l !== location);
     renderLocations();
+    
+    // Immediately save to database
+    saveLocationsToDatabase();
 }
 
 function renderKeywords() {
@@ -1228,17 +1653,38 @@ function loadSearchPreferences() {
                     document.getElementById('salary_min').value = prefs.salary_min;
                 }
                 
-                // Load experience levels
-                let expLevels = [];
-                try {
-                    expLevels = prefs.experience_levels ? JSON.parse(prefs.experience_levels) : [];
-                } catch (e) {
-                    console.log('Error parsing experience levels:', e);
-                    expLevels = Array.isArray(prefs.experience_levels) ? prefs.experience_levels : [];
+                // Load experience level (single selection)
+                if (prefs.experience_level) {
+                    document.getElementById('experience_level').value = prefs.experience_level;
                 }
-                document.getElementById('exp_entry').checked = expLevels.includes('entry');
-                document.getElementById('exp_mid').checked = expLevels.includes('mid');
-                document.getElementById('exp_senior').checked = expLevels.includes('senior');
+                
+                // Load job boards
+                let jobBoards = ['linkedin', 'indeed']; // Default
+                try {
+                    jobBoards = prefs.job_boards ? (Array.isArray(prefs.job_boards) ? prefs.job_boards : JSON.parse(prefs.job_boards)) : ['linkedin', 'indeed'];
+                    console.log('Loaded job boards from preferences:', jobBoards);
+                } catch (e) {
+                    console.log('Error parsing job boards:', e);
+                    jobBoards = ['linkedin', 'indeed'];
+                }
+                
+                // Check if elements exist before setting them
+                const linkedinCheckbox = document.getElementById('board_linkedin');
+                const indeedCheckbox = document.getElementById('board_indeed');
+                const glassdoorCheckbox = document.getElementById('board_glassdoor');
+                const ziprecruiterCheckbox = document.getElementById('board_ziprecruiter');
+                
+                if (linkedinCheckbox) linkedinCheckbox.checked = jobBoards.includes('linkedin');
+                if (indeedCheckbox) indeedCheckbox.checked = jobBoards.includes('indeed');
+                if (glassdoorCheckbox) glassdoorCheckbox.checked = jobBoards.includes('glassdoor');
+                if (ziprecruiterCheckbox) ziprecruiterCheckbox.checked = jobBoards.includes('ziprecruiter');
+                
+                console.log('Job boards checkboxes set:', {
+                    linkedin: linkedinCheckbox?.checked,
+                    indeed: indeedCheckbox?.checked,
+                    glassdoor: glassdoorCheckbox?.checked,
+                    ziprecruiter: ziprecruiterCheckbox?.checked
+                });
                 
                 // Load job types
                 let jobTypes = [];
@@ -1277,7 +1723,7 @@ function performJobSearch() {
     const jobBoards = formData.getAll('job_boards');
     const jobLimit = parseInt(formData.get('job_limit'));
     const collectScreenshots = formData.get('collect_screenshots') === 'on';
-    const experienceLevels = formData.getAll('experience_levels');
+    const experienceLevel = formData.get('experience_level');
     const jobTypes = formData.getAll('job_types');
     const datePosted = formData.get('date_posted');
     const salaryMin = formData.get('salary_min') ? parseInt(formData.get('salary_min')) : null;
@@ -1286,7 +1732,8 @@ function performJobSearch() {
     const prefsData = {
         keywords: JSON.stringify(keywords),
         locations: JSON.stringify(locations),
-        experience_levels: JSON.stringify(experienceLevels),
+        experience_level: experienceLevel,
+        job_boards: JSON.stringify(jobBoards),
         job_types: JSON.stringify(jobTypes),
         date_posted: datePosted,
         salary_min: salaryMin,
@@ -1475,6 +1922,35 @@ function saveJobNotes() {
         saveBtn.disabled = false;
     });
 }
+
+function clearPendingJobs() {
+    if (confirm('Are you sure you want to delete all pending job postings? This action cannot be undone.')) {
+        showLoading('Clearing pending jobs...');
+        
+        fetch('/api/clear_pending_jobs', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            hideLoading();
+            if (data.status === 'success') {
+                showAlert('success', data.message);
+                // Reload the page to show updated job list
+                setTimeout(() => location.reload(), 1500);
+            } else {
+                showAlert('error', data.message || 'Failed to clear pending jobs');
+            }
+        })
+        .catch(error => {
+            hideLoading();
+            showAlert('error', 'Error: ' + error.message);
+        });
+    }
+}
 </script>
 
+</div> <!-- Close container-fluid -->
 {% endblock %}
